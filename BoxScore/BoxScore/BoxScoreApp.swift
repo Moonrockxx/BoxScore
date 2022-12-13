@@ -11,7 +11,8 @@ import SwiftUI
 struct BoxScoreApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DashboardView()
+                .background(Color.background)
         }
     }
 }

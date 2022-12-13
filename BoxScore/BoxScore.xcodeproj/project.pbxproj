@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */; };
-		605E14D6293F7B6A00B906A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D5293F7B6A00B906A4 /* ContentView.swift */; };
+		605E14D6293F7B6A00B906A4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D5293F7B6A00B906A4 /* DashboardView.swift */; };
 		605E14D8293F7B6C00B906A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605E14D7293F7B6C00B906A4 /* Assets.xcassets */; };
 		605E14DB293F7B6C00B906A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605E14DA293F7B6C00B906A4 /* Preview Assets.xcassets */; };
 		605E14E5293F7B6C00B906A4 /* BoxScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14E4293F7B6C00B906A4 /* BoxScoreTests.swift */; };
 		605E14EF293F7B6C00B906A4 /* BoxScoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14EE293F7B6C00B906A4 /* BoxScoreUITests.swift */; };
 		605E14F1293F7B6C00B906A4 /* BoxScoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14F0293F7B6C00B906A4 /* BoxScoreUITestsLaunchTests.swift */; };
+		605E1502293F7E8300B906A4 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1501293F7E8300B906A4 /* Colors+Extension.swift */; };
+		605E1504293F822F00B906A4 /* DashboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1503293F822F00B906A4 /* DashboardRowView.swift */; };
+		605E1506293F824100B906A4 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1505293F824100B906A4 /* DashboardViewModel.swift */; };
+		60A4EE9A2948BC9800E8747B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE992948BC9800E8747B /* Game.swift */; };
+		60A4EE9C2948BCA600E8747B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9B2948BCA600E8747B /* Team.swift */; };
+		60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9D2948BCBA00E8747B /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* Begin PBXFileReference section */
 		605E14D0293F7B6A00B906A4 /* BoxScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreApp.swift; sourceTree = "<group>"; };
-		605E14D5293F7B6A00B906A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		605E14D5293F7B6A00B906A4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		605E14D7293F7B6C00B906A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		605E14DA293F7B6C00B906A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		605E14E0293F7B6C00B906A4 /* BoxScoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxScoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +50,12 @@
 		605E14EA293F7B6C00B906A4 /* BoxScoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxScoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605E14EE293F7B6C00B906A4 /* BoxScoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreUITests.swift; sourceTree = "<group>"; };
 		605E14F0293F7B6C00B906A4 /* BoxScoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		605E1501293F7E8300B906A4 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
+		605E1503293F822F00B906A4 /* DashboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRowView.swift; sourceTree = "<group>"; };
+		605E1505293F824100B906A4 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		60A4EE992948BC9800E8747B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		60A4EE9B2948BCA600E8747B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +106,11 @@
 		605E14D2293F7B6A00B906A4 /* BoxScore */ = {
 			isa = PBXGroup;
 			children = (
+				605E1500293F7E6400B906A4 /* Extensions */,
+				605E14FF293F7BFE00B906A4 /* Model */,
+				605E14FE293F7BF100B906A4 /* ViewModel */,
+				605E14FD293F7BDE00B906A4 /* View */,
 				605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */,
-				605E14D5293F7B6A00B906A4 /* ContentView.swift */,
 				605E14D7293F7B6C00B906A4 /* Assets.xcassets */,
 				605E14D9293F7B6C00B906A4 /* Preview Content */,
 			);
@@ -125,6 +140,41 @@
 				605E14F0293F7B6C00B906A4 /* BoxScoreUITestsLaunchTests.swift */,
 			);
 			path = BoxScoreUITests;
+			sourceTree = "<group>";
+		};
+		605E14FD293F7BDE00B906A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				605E14D5293F7B6A00B906A4 /* DashboardView.swift */,
+				605E1503293F822F00B906A4 /* DashboardRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		605E14FE293F7BF100B906A4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				605E1505293F824100B906A4 /* DashboardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		605E14FF293F7BFE00B906A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60A4EE992948BC9800E8747B /* Game.swift */,
+				60A4EE9B2948BCA600E8747B /* Team.swift */,
+				60A4EE9D2948BCBA00E8747B /* Player.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		605E1500293F7E6400B906A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				605E1501293F7E8300B906A4 /* Colors+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				605E14D6293F7B6A00B906A4 /* ContentView.swift in Sources */,
+				605E1504293F822F00B906A4 /* DashboardRowView.swift in Sources */,
+				60A4EE9A2948BC9800E8747B /* Game.swift in Sources */,
+				60A4EE9C2948BCA600E8747B /* Team.swift in Sources */,
+				605E1506293F824100B906A4 /* DashboardViewModel.swift in Sources */,
+				60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */,
+				605E1502293F7E8300B906A4 /* Colors+Extension.swift in Sources */,
+				605E14D6293F7B6A00B906A4 /* DashboardView.swift in Sources */,
 				605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
