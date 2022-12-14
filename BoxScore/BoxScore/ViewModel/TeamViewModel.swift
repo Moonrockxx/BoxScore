@@ -20,7 +20,12 @@ public class TeamViewModel: ObservableObject {
     
     @Published public var teamName: String = ""
     @Published public var teamGender: Int = 0
+    
+    @Published public var playerName: String = ""
+    @Published public var playerNumber: String = ""
+    
     @Published public var showNewTeamSheet: Bool = false
+    @Published public var showNewPlayerSheet: Bool = false
     
     public func fetchTeams() {
         // Core data fetch teams
@@ -28,7 +33,7 @@ public class TeamViewModel: ObservableObject {
     
     public func saveTeam() {
         if !teamName.isEmpty {
-            let team = Team(id: UUID().uuidString,
+            var team = Team(id: UUID().uuidString,
                             name: teamName,
                             score: 0,
                             players: [],
@@ -38,6 +43,27 @@ public class TeamViewModel: ObservableObject {
             // Replace by core data add team management
             teamSamples.append(team)
             showNewTeamSheet = false
+        } else {
+            // display error
+        }
+    }
+    
+    public func fetchPlayers() {
+        // Core data fetch players
+    }
+    
+    public func savePlayer(team: Team) {
+        guard let number = Int(playerNumber) else { return }
+        
+        if !playerName.isEmpty, (0...100).contains(number) {
+            let player = Player(id: UUID().uuidString, firstName: "Tom", lastName: "Ferré", number: "8", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowAttempts: 0, freeThrowMade: 0, twoPointAttempts: 0, twoPointMade: 0, threePointAttempts: 0, threePointMade: 0, freeThrowPercentage: 0, twoPointPercentage: 0, threePointPercentage: 0)
+            
+            // Replace by core data add player management
+            //TODO: Resolver Cannot use mutating member on immutable value: 'team' is a 'let' constant
+//            team.players.append(player)
+            showNewPlayerSheet = false
+        } else {
+            // display error
         }
     }
 }

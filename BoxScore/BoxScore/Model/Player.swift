@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct Player {
+public struct Player: Identifiable {
     public var id: String
     
     public var firstName: String
     public var lastName: String
-    public var number: Int
+    public var number: String
     
     public var points: Int
     public var rebonds: Int

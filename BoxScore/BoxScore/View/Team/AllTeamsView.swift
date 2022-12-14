@@ -15,8 +15,14 @@ struct AllTeamsView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(viewModel.teamSamples) { item in
-                TeamRowView(item: item)
+            if viewModel.teamSamples.isEmpty {
+                Text("No team regristred, add a new team")
+            } else {
+                ForEach(viewModel.teamSamples) { item in
+                    NavigationLink(destination: TeamDetailsView(viewModel: viewModel, item: item)) {
+                        TeamRowView(item: item)
+                    }
+                }
             }
         }
         .padding(.top, 25)

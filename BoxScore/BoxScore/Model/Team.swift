@@ -33,7 +33,3 @@ public struct Team: Identifiable {
         }
     }
 }
-
-extension Team {
-    
-}
