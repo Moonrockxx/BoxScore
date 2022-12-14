@@ -23,6 +23,7 @@
 		60C46ED42949121C00310CF8 /* AllTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED32949121C00310CF8 /* AllTeamsView.swift */; };
 		60C46ED62949126D00310CF8 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED52949126D00310CF8 /* TeamViewModel.swift */; };
 		60C46ED82949173D00310CF8 /* TeamRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED72949173D00310CF8 /* TeamRowView.swift */; };
+		60C46EDA294A23D100310CF8 /* NewTeamFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED9294A23D100310CF8 /* NewTeamFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		60C46ED32949121C00310CF8 /* AllTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsView.swift; sourceTree = "<group>"; };
 		60C46ED52949126D00310CF8 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewModel.swift; sourceTree = "<group>"; };
 		60C46ED72949173D00310CF8 /* TeamRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRowView.swift; sourceTree = "<group>"; };
+		60C46ED9294A23D100310CF8 /* NewTeamFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			children = (
 				60C46ED32949121C00310CF8 /* AllTeamsView.swift */,
 				60C46ED72949173D00310CF8 /* TeamRowView.swift */,
+				60C46ED9294A23D100310CF8 /* NewTeamFormView.swift */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C46EDA294A23D100310CF8 /* NewTeamFormView.swift in Sources */,
 				60C46ED82949173D00310CF8 /* TeamRowView.swift in Sources */,
 				605E1504293F822F00B906A4 /* DashboardRowView.swift in Sources */,
 				60A4EE9A2948BC9800E8747B /* Game.swift in Sources */,

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DashboardView: View {
     @StateObject public var viewModel: DashboardViewModel = DashboardViewModel()
-    @State private var goToNextView: Bool = false
     
     var body: some View {
         NavigationView {
