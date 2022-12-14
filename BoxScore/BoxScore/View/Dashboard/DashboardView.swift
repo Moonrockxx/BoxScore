@@ -8,35 +8,44 @@
 import SwiftUI
 
 struct DashboardView: View {
-    
     @StateObject public var viewModel: DashboardViewModel = DashboardViewModel()
+    @State private var goToNextView: Bool = false
     
     var body: some View {
         NavigationView {
-            VStack {
+            ScrollView {
                 VStack(spacing: 10) {
                     ForEach(viewModel.menuElements) { item in
-                        DashboardRowView(item: item)
+                        NavigationLink {
+                            switch item.linkValue {
+                            case .newGame:
+                                Text("New game")
+                            case .allGames:
+                                Text("All games")
+                            case .teams:
+                                AllTeamsView()
+                            }
+                        } label: {
+                            DashboardRowView(item: item)
+                        }
                     }
                 }
-                .padding(.top, 10)
+                .padding(.top, 25)
                 
                 Spacer()
             }
-            .background(Color.background)
             .navigationTitle("BoxScore")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        // open settings
-                    } label: {
-                        Image(systemName: "gearshape.circle")
-                            .tint(Color.subElement)
-                    }
+            .navigationBarItems(trailing:
+                Button {
+                    // open settings
+                } label: {
+                    Image(systemName: "gearshape.circle")
+                        .tint(Color.subElement)
                 }
-            }
+            )
         }
+        .background(Color.white)
     }
 }
 

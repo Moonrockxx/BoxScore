@@ -41,7 +41,7 @@ struct DashboardRowView: View {
                 .frame(height: 100)
                 .clipped()
         )
-        
+        .cornerRadius(8)
         .frame(height: 100)
         .padding(.horizontal)
     }
@@ -49,6 +49,6 @@ struct DashboardRowView: View {
 
 struct DashboardRowView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardRowView(item: MenuElements(id: UUID().uuidString, title: "Record a new game", image: "team", imageOffset: 0))
+        DashboardRowView(item: MenuElements(id: UUID().uuidString, title: "Record a new game", image: "team", imageOffset: 0, linkValue: .newGame))
     }
 }

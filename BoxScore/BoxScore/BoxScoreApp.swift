@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct BoxScoreApp: App {
+    
+//    init() {
+//        UINavigationBar.appearance().backgroundColor = UIColor(Color.element)
+//    }
+    
     var body: some Scene {
         WindowGroup {
             DashboardView()
