@@ -7,7 +7,9 @@
 
 import Foundation
 
-public class Game {
+public struct Game {
+    public var id: String
+    
     public var homeTeam: Team
     public var awayTeam: Team
 }

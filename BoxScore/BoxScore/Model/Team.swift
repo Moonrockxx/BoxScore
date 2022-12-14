@@ -7,8 +7,33 @@
 
 import Foundation
 
-public class Team {
+public struct Team: Identifiable {
+    public var id: String
+    
     public var name: String
     public var score: Int
     public var players: [Player]
+    public var games: [Game]
+    
+    public var isMenTeam: Bool
+    
+    public var imageForRow: String {
+        if isMenTeam {
+            return "menTeam"
+        } else {
+            return "girlTeam"
+        }
+    }
+    
+    public var offsetForImageRow: Double {
+        if isMenTeam {
+            return 40
+        } else {
+            return 0
+        }
+    }
+}
+
+extension Team {
+    
 }

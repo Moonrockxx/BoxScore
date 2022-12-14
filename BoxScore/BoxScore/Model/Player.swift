@@ -7,7 +7,9 @@
 
 import Foundation
 
-public class Player {
+public struct Player {
+    public var id: String
+    
     public var firstName: String
     public var lastName: String
     public var number: Int

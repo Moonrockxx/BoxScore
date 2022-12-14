@@ -14,7 +14,7 @@ public class DashboardViewModel: ObservableObject {
 }
 
 //extension DashboardViewModel {
-public struct MenuElements: Identifiable {
+public struct MenuElements: Identifiable, Hashable {
         public var id: String
         public var title: String
         public var image: String
