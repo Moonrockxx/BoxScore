@@ -12,8 +12,8 @@ public struct Team: Identifiable {
     
     public var name: String
     public var score: Int
-    public var players: [Player]
-    public var games: [Game]
+    public var players: [Player]?
+    public var games: [Game]?
     
     public var isMenTeam: Bool
     

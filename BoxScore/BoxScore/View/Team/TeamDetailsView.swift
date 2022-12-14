@@ -14,10 +14,10 @@ struct TeamDetailsView: View {
     
     var body: some View {
         ScrollView {
-            if item.players.isEmpty {
+            if ((item.players?.isEmpty) != nil) {
                 Text("Add new players to build your team")
             } else {
-                ForEach(item.players) { player in
+                ForEach(item.players!) { player in
                     HStack {
                         Text("\(player.number)")
                         Text("\(player.firstName) \(player.lastName)")
