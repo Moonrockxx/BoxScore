@@ -56,7 +56,7 @@ public class TeamViewModel: ObservableObject {
         guard let number = Int(playerNumber) else { return }
         
         if !playerName.isEmpty, (0...100).contains(number) {
-            let player = Player(id: UUID().uuidString, firstName: "Tom", lastName: "Ferré", number: "8")
+            let player = Player(firstName: "Tom", lastName: "Ferré", number: "8")
             
             // Replace by core data add player management
             //TODO: Resolver Cannot use mutating member on immutable value: 'team' is a 'let' constant

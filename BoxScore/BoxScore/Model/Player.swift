@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Player: Identifiable {
-    public var id: String
+    public var id = UUID()
     
     public var firstName: String
     public var lastName: String
@@ -33,4 +33,8 @@ public struct Player: Identifiable {
     public var freeThrowPercentage: Double?
     public var twoPointPercentage: Double?
     public var threePointPercentage: Double?
+}
+
+extension Player: Equatable {
+    
 }

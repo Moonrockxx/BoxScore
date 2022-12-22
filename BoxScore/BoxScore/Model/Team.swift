@@ -8,6 +8,7 @@
 import Foundation
 
 public struct Team: Identifiable {
+    
     public var id: String
     
     public var name: String
@@ -31,5 +32,15 @@ public struct Team: Identifiable {
         } else {
             return 0
         }
+    }
+}
+
+extension Team: Hashable {
+    public static func == (lhs: Team, rhs: Team) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

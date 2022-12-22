@@ -13,3 +13,7 @@ public struct Game {
     public var homeTeam: Team
     public var awayTeam: Team
 }
+
+//extension Game: Hashable {
+//    
+//}

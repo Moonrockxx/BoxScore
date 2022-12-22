@@ -18,7 +18,7 @@ struct DashboardView: View {
                         NavigationLink {
                             switch item.linkValue {
                             case .newGame:
-                                Text("New game")
+                                NewGameTeamSelectionView()
                             case .allGames:
                                 Text("All games")
                             case .teams:
