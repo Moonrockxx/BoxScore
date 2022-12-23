@@ -50,11 +50,6 @@ struct TeamRowView: View {
 
 struct TeamRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamRowView(item: Team(id: UUID().uuidString,
-                               name: "U17 - M",
-                               score: 92,
-                               players: [],
-                               games: [],
-                               isMenTeam: true))
+        TeamRowView(item: Team(categorie: .s ,score: 0, isMenTeam: true, isMultipleTeams: false))
     }
 }

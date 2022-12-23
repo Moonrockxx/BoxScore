@@ -35,6 +35,6 @@ struct NewPlayerFormView: View {
 
 struct NewPlayerFormView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPlayerFormView(viewModel: TeamViewModel(), item: Team(id: "", name: "U17 - M", score: 0, players: [], games: [], isMenTeam: true))
+        NewPlayerFormView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
     }
 }

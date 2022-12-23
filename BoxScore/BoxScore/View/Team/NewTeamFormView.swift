@@ -14,13 +14,24 @@ struct NewTeamFormView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Team name", text: $viewModel.teamName)
+                Picker("Select a categorie", selection: $viewModel.categorie) {
+                    ForEach(Team.Categories.allCases, id: \.self) { cat in
+                        Text(cat.rawValue)
+                    }
+                }
+                .pickerStyle(.menu)
                 
                 Picker("Team gender", selection: $viewModel.teamGender) {
                     Text("Male").tag(0)
                     Text("Female").tag(1)
                 }
                 .pickerStyle(.segmented)
+                
+                Toggle("Categorie multiple teams ?", isOn: $viewModel.isMultipleTeams)
+                
+                if viewModel.isMultipleTeams {
+                    TextField("Team number", text: $viewModel.teamNumber)
+                }
             } header: {
                 Text("Team information")
             }

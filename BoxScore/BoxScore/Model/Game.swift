@@ -8,12 +8,9 @@
 import Foundation
 
 public struct Game {
-    public var id: String
+    public var id = UUID()
     
-    public var homeTeam: Team
-    public var awayTeam: Team
+    public var homeTeam: Team?
+    public var awayTeam: Team?
 }
 
-//extension Game: Hashable {
-//    
-//}

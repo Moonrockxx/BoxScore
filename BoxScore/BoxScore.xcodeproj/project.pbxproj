@@ -10,6 +10,7 @@
 		600528C92954EFB2006AB6AC /* StatsRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600528C82954EFB2006AB6AC /* StatsRecorderView.swift */; };
 		600528CB2954F015006AB6AC /* GameStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600528CA2954F015006AB6AC /* GameStatsViewModel.swift */; };
 		600528CD2954FE05006AB6AC /* PlayerRowSelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600528CC2954FE05006AB6AC /* PlayerRowSelectableView.swift */; };
+		60065CBB2955F5C3002929F5 /* AddStatButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CBA2955F5C3002929F5 /* AddStatButtonView.swift */; };
 		605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */; };
 		605E14D6293F7B6A00B906A4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D5293F7B6A00B906A4 /* DashboardView.swift */; };
 		605E14D8293F7B6C00B906A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605E14D7293F7B6C00B906A4 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		600528C82954EFB2006AB6AC /* StatsRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRecorderView.swift; sourceTree = "<group>"; };
 		600528CA2954F015006AB6AC /* GameStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatsViewModel.swift; sourceTree = "<group>"; };
 		600528CC2954FE05006AB6AC /* PlayerRowSelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowSelectableView.swift; sourceTree = "<group>"; };
+		60065CBA2955F5C3002929F5 /* AddStatButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStatButtonView.swift; sourceTree = "<group>"; };
 		605E14D0293F7B6A00B906A4 /* BoxScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreApp.swift; sourceTree = "<group>"; };
 		605E14D5293F7B6A00B906A4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				60D5FC222954BAFF00D86997 /* NewGameTeamSelectionView.swift */,
 				600528C82954EFB2006AB6AC /* StatsRecorderView.swift */,
 				600528CC2954FE05006AB6AC /* PlayerRowSelectableView.swift */,
+				60065CBA2955F5C3002929F5 /* AddStatButtonView.swift */,
 			);
 			path = NewGame;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */,
 				60C46EDC294A2ACA00310CF8 /* TeamDetailsView.swift in Sources */,
 				600528CD2954FE05006AB6AC /* PlayerRowSelectableView.swift in Sources */,
+				60065CBB2955F5C3002929F5 /* AddStatButtonView.swift in Sources */,
 				605E1502293F7E8300B906A4 /* Colors+Extension.swift in Sources */,
 				605E14D6293F7B6A00B906A4 /* DashboardView.swift in Sources */,
 				605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */,

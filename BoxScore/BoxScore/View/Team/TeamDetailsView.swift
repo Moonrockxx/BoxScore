@@ -44,6 +44,6 @@ struct TeamDetailsView: View {
 
 struct TeamDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamDetailsView(viewModel: TeamViewModel(), item: Team(id: "", name: "U17 - M", score: 0, players: [], games: [], isMenTeam: true))
+        TeamDetailsView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
     }
 }

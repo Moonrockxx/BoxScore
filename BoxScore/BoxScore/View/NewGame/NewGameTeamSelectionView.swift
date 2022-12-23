@@ -14,36 +14,33 @@ struct NewGameTeamSelectionView: View {
     @State private var goToNextView: Bool = false
     
     // REMOVE BEFORE FLIGHT
-    let teams: [Team] = [Team(id: UUID().uuidString, name: "U13 - M", score: 0, players: [], games: [], isMenTeam: true),
-                         Team(id: UUID().uuidString, name: "U13 - F", score: 0, players: [], games: [], isMenTeam: false),
-                         Team(id: UUID().uuidString, name: "U15 - M", score: 0, players: [], games: [], isMenTeam: true),
-                         Team(id: UUID().uuidString, name: "U15 - F", score: 0, players: [], games: [], isMenTeam: false),
-                         Team(id: UUID().uuidString, name: "U17 - M", score: 0, players: [], games: [], isMenTeam: true),
-                         Team(id: UUID().uuidString, name: "U20 - M", score: 0, players: [], games: [], isMenTeam: true),
-                         Team(id: UUID().uuidString, name: "SF1", score: 0, players: [], games: [], isMenTeam: false),
-                         Team(id: UUID().uuidString,
-                              name: "SG2",
-                              score: 0,
-                              players: [Player(firstName: "Kobe", lastName: "Bryant", number: "8"),
-                                        Player(firstName: "Lebron", lastName: "James", number: "6"),
-                                        Player(firstName: "Rudy", lastName: "Gobert", number: "32"),
-                                        Player(firstName: "Michael", lastName: "Jordan", number: "23"),
-                                        Player(firstName: "Chris", lastName: "Paul", number: "3"),
-                                        Player(firstName: "Pau", lastName: "Gasol", number: "12"),
-                                        Player(firstName: "Joel", lastName: "Embiid", number: "21"),
-                                        Player(firstName: "Devin", lastName: "Booker", number: "1"),
-                                        Player(firstName: "Thomas", lastName: "Ferré", number: "5")],
-                              games: [],
-                              isMenTeam: true)]
-    
-    @State private var multiSelection = Set<UUID>()
+    let teams: [Team] = [Team(categorie: .u11, score: 0, players: [], games: [], isMenTeam: true, isMultipleTeams: false),
+                             Team(categorie: .u13, score: 0, players: [], games: [], isMenTeam: false, isMultipleTeams: false),
+                             Team(categorie: .u13, score: 0, players: [], games: [], isMenTeam: true, isMultipleTeams: false),
+                             Team(categorie: .u15, score: 0, players: [], games: [], isMenTeam: false, isMultipleTeams: false),
+                             Team(categorie: .u17, score: 0, players: [], games: [], isMenTeam: true, isMultipleTeams: false),
+                             Team(categorie: .u20, score: 0, players: [], games: [], isMenTeam: true, isMultipleTeams: false),
+                             Team(categorie: .s, score: 0, players: [], games: [], isMenTeam: false, isMultipleTeams: false),
+                             Team(categorie: .s ,score: 0,
+                                  players: [Player(firstName: "Kobe", lastName: "Bryant", number: "8", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Lebron", lastName: "James", number: "6", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Rudy", lastName: "Gobert", number: "32", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Michael", lastName: "Jordan", number: "23", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Chris", lastName: "Paul", number: "3", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Pau", lastName: "Gasol", number: "12", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Joel", lastName: "Embiid", number: "21", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Devin", lastName: "Booker", number: "1", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0),
+                                            Player(firstName: "Thomas", lastName: "Ferré", number: "5", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowMade: 0, twoPointMade: 0, threePointMade: 0)],
+                                  games: [],
+                                  isMenTeam: true,
+                                  isMultipleTeams: false)]
     
     var body: some View {
         Form {
             Section {
                 Picker("Select your team", selection: $viewModel.selectedTeam) {
-                    ForEach(teams, id: \.self) { team in
-                        Text(team.name)
+                    ForEach(Team.Categories.allCases, id: \.self) { cat in
+                        Text(cat.rawValue)
                     }
                 }
                 .pickerStyle(.menu)

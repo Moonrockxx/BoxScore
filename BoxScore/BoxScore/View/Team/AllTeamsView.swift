@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AllTeamsView: View {
     
-    
-    
     @StateObject public var viewModel: TeamViewModel = TeamViewModel()
     
     var body: some View {
