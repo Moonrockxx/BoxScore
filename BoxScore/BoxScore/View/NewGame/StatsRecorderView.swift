@@ -10,50 +10,10 @@ import SwiftUI
 struct StatsRecorderView: View {
     
     @StateObject public var viewModel: GameStatsViewModel
+    @AppStorage("clubName") var clubName = ""
     
     var body: some View {
         VStack {
-            Section {
-                VStack(spacing: 15) {
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.pointsRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
-                    }
-                    .frame(height: 75)
-                    
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.secondRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
-                    }
-                    .frame(height: 75)
-                    
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.thirdRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
-                    }
-                    .frame(height: 75)
-                }
-                .padding()
-            } header: {
-                Text("Your team")
-                
-            }
-            
             VStack(spacing: 15) {
                 Text("U17 - M")
                     .padding(.vertical, 8)
@@ -63,12 +23,21 @@ struct StatsRecorderView: View {
                 
                 HStack(alignment: .center) {
                     Spacer()
-                    Text("SO Carcassonne")
-                    Text("88 - 57")
-                        .padding(.horizontal, 16)
-                        .background(Color.subElement)
-                        .clipShape(Capsule())
-                    Text("SO Coursan")
+                    VStack(alignment: .center, spacing: 10) {
+                        Text(clubName)
+                        Text("88")
+                            .padding(.horizontal, 16)
+                            .background(Color.subElement)
+                            .clipShape(Capsule())
+                    }
+                    Spacer()
+                    VStack(alignment: .center, spacing: 10) {
+                        Text("SO Coursan")
+                        Text("57")
+                            .padding(.horizontal, 16)
+                            .background(Color.subElement)
+                            .clipShape(Capsule())
+                    }
                     Spacer()
                 }
                 .padding(.vertical, 8)
@@ -81,45 +50,45 @@ struct StatsRecorderView: View {
             .background(Color.background)
             .foregroundColor(Color.text)
             
-            Section {
-                VStack(spacing: 15) {
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.pointsRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
+            
+            VStack(spacing: 15) {
+                HStack(spacing: 30) {
+                    Spacer()
+                    ForEach(viewModel.pointsRow, id: \.self) { item in
+                        AddStatButtonView(item: item, closure: {
+                            
+                        })
                     }
-                    .frame(height: 75)
-                    
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.secondRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
-                    }
-                    .frame(height: 75)
-                    
-                    HStack(spacing: 30) {
-                        Spacer()
-                        ForEach(viewModel.thirdRow, id: \.self) { item in
-                            AddStatButtonView(item: item, closure: {
-                                
-                            })
-                        }
-                        Spacer()
-                    }
-                    .frame(height: 75)
+                    Spacer()
                 }
-                .padding()
-            } footer: {
-                Text("Opposite team")
+                .frame(height: 75)
+                
+                HStack(spacing: 30) {
+                    Spacer()
+                    ForEach(viewModel.secondRow, id: \.self) { item in
+                        AddStatButtonView(item: item, closure: {
+                            
+                        })
+                    }
+                    Spacer()
+                }
+                .frame(height: 75)
+                
+                HStack(spacing: 30) {
+                    Spacer()
+                    ForEach(viewModel.thirdRow, id: \.self) { item in
+                        AddStatButtonView(item: item, closure: {
+                            
+                        })
+                    }
+                    Spacer()
+                }
+                .frame(height: 75)
             }
+            .padding()
+            
+            Spacer()
+            
         }
         
     }

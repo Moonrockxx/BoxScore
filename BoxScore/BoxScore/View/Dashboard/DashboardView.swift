@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @StateObject public var viewModel: DashboardViewModel = DashboardViewModel()
+    @State private var goToSettings: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,17 +32,22 @@ struct DashboardView: View {
                 }
                 .padding(.top, 25)
                 
+                NavigationLink("", isActive: $goToSettings) {
+                    SettingsView()
+                }
+                .hidden()
+                
                 Spacer()
             }
             .navigationTitle("BoxScore")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
-                Button {
-                    // open settings
-                } label: {
-                    Image(systemName: "gearshape.circle")
-                        .tint(Color.subElement)
-                }
+                                    Button {
+                self.goToSettings = true
+            } label: {
+                Image(systemName: "gearshape.circle")
+                    .tint(Color.subElement)
+            }
             )
         }
         .background(Color.white)
