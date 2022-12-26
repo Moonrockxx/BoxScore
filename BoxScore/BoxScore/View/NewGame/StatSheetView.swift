@@ -10,26 +10,26 @@ import SwiftUI
 struct StatSheetView: View {
     
     @StateObject public var viewModel: GameStatsViewModel
-    @AppStorage("clubName") private var clubName: String = ""
     @State private var showPlayersList: Bool = false
     
     var body: some View {
-        VStack {
-            VStack {
-                HStack {
-                    Text("Which team ?")
-                    Spacer()
-                }
+        
+        Form {
+            Section {
                 HStack {
                     Spacer()
+                    
                     Button {
-                        viewModel.addForWhichTeam = viewModel.game?.homeTeam
-                        self.showPlayersList = true
+                        DispatchQueue.main.async {
+                            viewModel.addForTeam = viewModel.game?.homeTeam
+                            self.showPlayersList = true
+                        }
+                        
                     } label: {
                         Text(viewModel.game?.homeTeam?.clubName ?? "")
                             .foregroundColor(Color.text)
                     }
-                    .frame(height: 75)
+                    .frame(width: 150, height: 75)
                     .padding(.horizontal)
                     .background(Color.element)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
@@ -37,22 +37,116 @@ struct StatSheetView: View {
                     Spacer()
                     
                     Button {
-                        viewModel.addForWhichTeam = viewModel.game?.awayTeam
-                        self.showPlayersList = true
+                        DispatchQueue.main.async {
+                            viewModel.addForTeam = viewModel.game?.awayTeam
+                            self.showPlayersList = true
+                        }
+                        
                     } label: {
                         Text(viewModel.game?.awayTeam?.clubName ?? "")
                             .foregroundColor(Color.text)
                     }
-                    .frame(height: 75)
+                    .frame(width: 150, height: 75)
                     .padding(.horizontal)
                     .background(Color.element)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                     Spacer()
                 }
+            } header: {
+                HStack {
+                    Text("For which team ?")
+                    Spacer()
+                }
                 
             }
-            .padding()
+            
+            if showPlayersList {
+                Section {
+                    List {
+                        ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
+                            PlayerRowSelectableView(isInGame: true, item: player) {
+                                // Add stat for the players
+                                self.viewModel.showAddStatsSheet = false
+                            }
+                        }
+                    }
+                } header: {
+                    HStack {
+                        Text("For which player ?")
+                        Spacer()
+                    }
+                }
+            }
         }
+        //        VStack {
+        //            VStack {
+        //                Section {
+        //                    HStack {
+        //                        Spacer()
+        //
+        //                        Button {
+        //                            viewModel.addForTeam = viewModel.game?.homeTeam
+        //                            self.showPlayersList = true
+        //                        } label: {
+        //                            Text(viewModel.game?.homeTeam?.clubName ?? "")
+        //                                .foregroundColor(Color.text)
+        //                        }
+        //                        .frame(width: 150, height: 75)
+        //                        .padding(.horizontal)
+        //                        .background(Color.element)
+        //                        .clipShape(RoundedRectangle(cornerRadius: 8.0))
+        //
+        //                        Spacer()
+        //
+        //                        Button {
+        //                            viewModel.addForTeam = viewModel.game?.awayTeam
+        //                            self.showPlayersList = true
+        //                        } label: {
+        //                            Text(viewModel.game?.awayTeam?.clubName ?? "")
+        //                                .foregroundColor(Color.text)
+        //                        }
+        //                        .frame(width: 150, height: 75)
+        //                        .padding(.horizontal)
+        //                        .background(Color.element)
+        //                        .clipShape(RoundedRectangle(cornerRadius: 8.0))
+        //                        Spacer()
+        //                    }
+        //                } header: {
+        //                    HStack {
+        //                        Text("For which team ?")
+        //                            .font(.system(size: 18, weight: .semibold))
+        //                        Spacer()
+        //                    }
+        //
+        //                }
+        //
+        //                if showPlayersList {
+        //                    Section {
+        //                        VStack(spacing: 14) {
+        //                            ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
+        //                                PlayerRowSelectableView(isInGame: true, item: player) {
+        //                                    // Add stat for the players
+        //                                    self.viewModel.showAddStatsSheet = false
+        //                                }
+        //                            }
+        //                        }
+        //                        .padding()
+        //                        .background(Color.gray.opacity(0.5))
+        //                        .cornerRadius(8)
+        //                    } header: {
+        //                        HStack {
+        //                            Text("For which player ?")
+        //                                .font(.system(size: 18, weight: .semibold))
+        //                            Spacer()
+        //                        }
+        //                        .padding(.top, 40)
+        //                    }
+        //                }
+        //            }
+        //            .padding()
+        //
+        //            Spacer()
+        //        }
     }
 }
 

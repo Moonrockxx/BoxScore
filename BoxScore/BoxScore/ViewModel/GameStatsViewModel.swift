@@ -80,7 +80,9 @@ public class GameStatsViewModel: ObservableObject {
     
     @Published public var game: Game?
     
-    @Published public var addForWhichTeam: Team?
+    @Published public var addForTeam: Team?
+    
+    @Published public var showAddStatsSheet = false
     
     public let pointsRow: [RecordableStats] = [.freeThrow, .twoPoints, .threePoints]
     public let secondRow: [RecordableStats] = [.rebond, .interception, .block]
@@ -126,23 +128,24 @@ public class GameStatsViewModel: ObservableObject {
                          awayTeam: isHomeGame ? oppositeTeam : yourTeam)
     }
     
-    public func addPoints(type: RecordableStats, for player: Player) {
-        //        switch type {
-        //        case .freeThrow:
-        //            player.freeThrowMade += 1
-        //            player.points += 1
-        //
-        //        case .twoPoints:
-        //            player.twoPointMade += 1
-        //            player.points += 2
-        //
-        //        case .threePoints:
-        //            player.threePointMade += 1
-        //            player.points += 3
-        //
-        //        default:
-        //            break
-        //        }
-    }
+//    public func addStat(type: RecordableStats) {
+//        switch type {
+//        case .freeThrow:
+//            if addForTeam?.players?.isEmpty {
+//                game?.homeTeam.
+//            } else {
+//
+//            }
+//
+//        case .twoPoints:
+//
+//
+//        case .threePoints:
+//
+//
+//        default:
+//            break
+//        }
+//    }
     
 }

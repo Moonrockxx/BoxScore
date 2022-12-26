@@ -58,7 +58,7 @@ struct NewGameTeamSelectionView: View {
                 if ((viewModel.selectedTeam.players?.isEmpty) != nil) {
                     Section {
                         ForEach(viewModel.selectedTeam.players ?? [], id: \.id) { player in
-                            PlayerRowSelectableView(item: player) {
+                            PlayerRowSelectableView(isInGame: false, item: player) {
                                 if !viewModel.activePlayers.contains(where: { $0 == player }) {
                                     viewModel.activePlayers.append(player)
                                 } else {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayerRowSelectableView: View {
     
+    var isInGame: Bool
     var item: Player
     var closure: () -> ()
     
@@ -20,9 +21,11 @@ struct PlayerRowSelectableView: View {
             self.isChecked.toggle()
         } label: {
             HStack {
-                Image(systemName: isChecked ? "checkmark.circle" : "circle")
-                    .renderingMode(.template)
-                    .foregroundColor(isChecked ? Color.subElement : Color.gray)
+                if !isInGame {
+                    Image(systemName: isChecked ? "checkmark.circle" : "circle")
+                        .renderingMode(.template)
+                        .foregroundColor(isChecked ? Color.subElement : Color.gray)
+                }
                 Text(item.lastName + " " + item.firstName)
                 
                 Spacer()
