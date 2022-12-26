@@ -9,6 +9,7 @@ import Foundation
 
 public class TeamViewModel: ObservableObject {
     
+//    public var teamName: String = ""
     public var teamSamples: [Team] = [Team(categorie: .u13 ,score: 0, isMenTeam: true, isMultipleTeams: false),
                                           Team(categorie: .u13 ,score: 0, isMenTeam: false, isMultipleTeams: false),
                                           Team(categorie: .u15 ,score: 0, isMenTeam: true, isMultipleTeams: false),
@@ -18,7 +19,6 @@ public class TeamViewModel: ObservableObject {
                                           Team(categorie: .s ,score: 0, isMenTeam: false, isMultipleTeams: false),
                                           Team(categorie: .s, score: 0, players: [], games: [], teamNumber: "2", isMenTeam: true, isMultipleTeams: true)]
     
-//    @Published public var teamName: String = ""
     @Published public var categorie: Team.Categories = .u11
     @Published public var teamGender: Int = 0
     @Published public var teamNumber: String = ""

@@ -10,29 +10,33 @@ import SwiftUI
 struct StatsRecorderView: View {
     
     @StateObject public var viewModel: GameStatsViewModel
-    @AppStorage("clubName") var clubName = ""
+    @State private var showSheet: Bool = false
     
     var body: some View {
         VStack {
             VStack(spacing: 15) {
-                Text("U17 - M")
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 16)
-                    .background(Color.subElement)
-                    .clipShape(Capsule())
+                if let yourTeam = viewModel.yourTeam {
+                    Text("\(yourTeam.categorie.rawValue) - \(yourTeam.isMenTeam ? "M" : "F")")
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 16)
+                        .background(Color.subElement)
+                        .clipShape(Capsule())
+                }
                 
                 HStack(alignment: .center) {
                     Spacer()
                     VStack(alignment: .center, spacing: 10) {
-                        Text(clubName)
+                        Text(viewModel.clubName)
                         Text("88")
                             .padding(.horizontal, 16)
                             .background(Color.subElement)
                             .clipShape(Capsule())
                     }
-                    Spacer()
+                    
+                    Text("\(viewModel.isHomeGame ? "VS" : "@")")
+                    
                     VStack(alignment: .center, spacing: 10) {
-                        Text("SO Coursan")
+                        Text(viewModel.oppositeTeamName)
                         Text("57")
                             .padding(.horizontal, 16)
                             .background(Color.subElement)
@@ -56,7 +60,7 @@ struct StatsRecorderView: View {
                     Spacer()
                     ForEach(viewModel.pointsRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
-                            
+                            self.showSheet = true
                         })
                     }
                     Spacer()
@@ -67,7 +71,7 @@ struct StatsRecorderView: View {
                     Spacer()
                     ForEach(viewModel.secondRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
-                            
+                            self.showSheet = true
                         })
                     }
                     Spacer()
@@ -78,7 +82,7 @@ struct StatsRecorderView: View {
                     Spacer()
                     ForEach(viewModel.thirdRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
-                            
+                            self.showSheet = true
                         })
                     }
                     Spacer()
@@ -90,7 +94,9 @@ struct StatsRecorderView: View {
             Spacer()
             
         }
-        
+        .sheet(isPresented: $showSheet) {
+            StatSheetView(viewModel: viewModel)
+        }
     }
 }
 

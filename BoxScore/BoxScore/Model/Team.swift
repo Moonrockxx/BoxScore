@@ -29,6 +29,7 @@ public struct Team: Identifiable {
     public var isMenTeam: Bool
     public var isMultipleTeams: Bool
     
+    public var clubName: String = ""
     public var name: String {
         return "\(categorie.rawValue) - \(isMenTeam ? "M" : "F") \(isMultipleTeams ? teamNumber ?? "" : "")"
     }

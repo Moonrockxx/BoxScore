@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public enum RecordableStats: String {
     case freeThrow
@@ -79,28 +80,51 @@ public class GameStatsViewModel: ObservableObject {
     
     @Published public var game: Game?
     
+    @Published public var addForWhichTeam: Team?
+    
     public let pointsRow: [RecordableStats] = [.freeThrow, .twoPoints, .threePoints]
     public let secondRow: [RecordableStats] = [.rebond, .interception, .block]
     public let thirdRow: [RecordableStats] = [.personalFoul, .turnOver]
     
+    public var clubName: String = ""
+    
     public var shouldGoNext: Bool {
-        return selectedTeam.name != ""
-        && !oppositeTeamName.isEmpty
+        !oppositeTeamName.isEmpty
         && oppositeTeamName != ""
     }
     
-    private var isHomeGame: Bool {
+    public var isHomeGame: Bool {
         return homeAwaySelection == 0
     }
     
     public var activePlayers: [Player] = []
     
-    //    public func startNewGame() {
-    //        self.yourTeam = Team(score: 0, players: activePlayers, games: nil, isMenTeam: selectedTeam.isMenTeam, categorie: , isFirstTeam: true)
-    //        self.oppositeTeam = Team(name: oppositeTeamName, score: 0, isMenTeam: selectedTeam.isMenTeam)
-    //        self.game = Game(homeTeam: isHomeGame ? yourTeam : oppositeTeam,
-    //                         awayTeam: isHomeGame ? oppositeTeam : yourTeam)
-    //    }
+    init() {
+        self.clubName = UserDefaults.standard.object(forKey: "clubName") as? String ?? "Your club"
+    }
+    
+    public func startNewGame() {
+        self.yourTeam = Team(categorie: selectedTeam.categorie,
+                             score: 0,
+                             players: activePlayers,
+                             games: nil,
+                             teamNumber: nil,
+                             isMenTeam: selectedTeam.isMenTeam,
+                             isMultipleTeams: false,
+                             clubName: clubName)
+        
+        self.oppositeTeam = Team(categorie: selectedTeam.categorie,
+                                 score: 0,
+                                 players: nil,
+                                 games: nil,
+                                 teamNumber: nil,
+                                 isMenTeam: selectedTeam.isMenTeam,
+                                 isMultipleTeams: false,
+                                 clubName: oppositeTeamName)
+        
+        self.game = Game(homeTeam: isHomeGame ? yourTeam : oppositeTeam,
+                         awayTeam: isHomeGame ? oppositeTeam : yourTeam)
+    }
     
     public func addPoints(type: RecordableStats, for player: Player) {
         //        switch type {

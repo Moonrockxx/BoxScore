@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    
+    @StateObject public var viewModel: SettingsViewModel = SettingsViewModel()
+    
     var body: some View {
         Form {
             Section {
                 NavigationButton {
-                    SettingsClubNameView()
+                    SettingsClubNameView(viewModel: viewModel)
                 } label: {
                     HStack {
                         Text("Club informations")
@@ -34,6 +38,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(viewModel: SettingsViewModel())
     }
 }

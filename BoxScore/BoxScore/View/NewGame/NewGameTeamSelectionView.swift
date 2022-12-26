@@ -83,6 +83,7 @@ struct NewGameTeamSelectionView: View {
             .navigationBarItems(trailing:
                                     Button {
                 self.goToNextView = true
+                self.viewModel.startNewGame()
             } label: {
                 Text("Next")
                     .foregroundColor(viewModel.shouldGoNext ? Color.subElement : Color.gray)
