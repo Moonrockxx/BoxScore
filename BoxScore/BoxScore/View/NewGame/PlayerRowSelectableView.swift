@@ -17,8 +17,10 @@ struct PlayerRowSelectableView: View {
     
     var body: some View {
         Button {
-            closure()
-            self.isChecked.toggle()
+            DispatchQueue.main.async {
+                closure()
+                self.isChecked.toggle()
+            }
         } label: {
             HStack {
                 if !isInGame {

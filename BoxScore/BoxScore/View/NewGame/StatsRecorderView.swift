@@ -25,6 +25,7 @@ struct StatsRecorderView: View {
                 
                 HStack(alignment: .center) {
                     Spacer()
+                    
                     VStack(alignment: .center, spacing: 10) {
                         Text(viewModel.clubName)
                         Text("88")
@@ -32,8 +33,7 @@ struct StatsRecorderView: View {
                             .background(Color.subElement)
                             .clipShape(Capsule())
                     }
-                    
-                    Text("\(viewModel.isHomeGame ? "VS" : "@")")
+                    .frame(width: 150)
                     
                     VStack(alignment: .center, spacing: 10) {
                         Text(viewModel.oppositeTeamName)
@@ -42,13 +42,14 @@ struct StatsRecorderView: View {
                             .background(Color.subElement)
                             .clipShape(Capsule())
                     }
+                    .frame(width: 150)
+                    
                     Spacer()
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
                 .background(Color.element)
                 .clipShape(Capsule())
-                
             }
             .padding()
             .background(Color.background)
@@ -58,34 +59,42 @@ struct StatsRecorderView: View {
             VStack(spacing: 15) {
                 HStack(spacing: 30) {
                     Spacer()
+                    
                     ForEach(viewModel.pointsRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
+                            viewModel.sheetType = item
                             viewModel.showAddStatsSheet = true
                         })
                     }
+                    
                     Spacer()
                 }
                 .frame(height: 75)
                 
                 HStack(spacing: 30) {
                     Spacer()
+                    
                     ForEach(viewModel.secondRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
-                            self.showSheet = true
+                            viewModel.sheetType = item
                             viewModel.showAddStatsSheet = true
                         })
                     }
+                    
                     Spacer()
                 }
                 .frame(height: 75)
                 
                 HStack(spacing: 30) {
                     Spacer()
+                    
                     ForEach(viewModel.thirdRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
+                            viewModel.sheetType = item
                             viewModel.showAddStatsSheet = true
                         })
                     }
+                    
                     Spacer()
                 }
                 .frame(height: 75)
@@ -95,10 +104,9 @@ struct StatsRecorderView: View {
             Spacer()
             
             // Add stats leaders for PTS, AST, REB
-            
         }
         .sheet(isPresented: $viewModel.showAddStatsSheet) {
-            StatSheetView(viewModel: viewModel)
+            StatSheetView(viewModel: viewModel, statType: viewModel.sheetType)
         }
     }
 }

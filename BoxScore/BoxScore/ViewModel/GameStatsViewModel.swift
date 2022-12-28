@@ -71,24 +71,38 @@ public enum RecordableStats: String {
 }
 
 public class GameStatsViewModel: ObservableObject {
+    //MARK: Variables
     @Published public var selectedTeam: Team = Team(categorie: .s ,score: 0, isMenTeam: false, isMultipleTeams: false)
     @Published public var homeAwaySelection: Int = 0
-    @Published public var oppositeTeamName: String = ""
     
     @Published public var yourTeam: Team?
+    @Published public var addForTeam: Team?
+    
     @Published public var oppositeTeam: Team?
+    @Published public var oppositeTeamName: String = ""
+    
+    @Published public var showAddStatsSheet: Bool = false
+    @Published public var isShotMade: Bool = true
+    @Published public var isDefensiveRebond: Bool = false
+    
+    @Published public var sheetType: RecordableStats = .freeThrow
     
     @Published public var game: Game?
     
-    @Published public var addForTeam: Team?
+    public var clubName: String = ""
     
-    @Published public var showAddStatsSheet = false
-    
+    //MARK: Constants
     public let pointsRow: [RecordableStats] = [.freeThrow, .twoPoints, .threePoints]
     public let secondRow: [RecordableStats] = [.rebond, .interception, .block]
     public let thirdRow: [RecordableStats] = [.personalFoul, .turnOver]
     
-    public var clubName: String = ""
+    //MARK: Computed properties
+    public var shouldDisplayToogle: Bool {
+        sheetType == .freeThrow
+        || sheetType == .twoPoints
+        || sheetType == .threePoints
+        || sheetType == .rebond
+    }
     
     public var shouldGoNext: Bool {
         !oppositeTeamName.isEmpty
@@ -105,6 +119,7 @@ public class GameStatsViewModel: ObservableObject {
         self.clubName = UserDefaults.standard.object(forKey: "clubName") as? String ?? "Your club"
     }
     
+    //MARK: Functions
     public func startNewGame() {
         self.yourTeam = Team(categorie: selectedTeam.categorie,
                              score: 0,
