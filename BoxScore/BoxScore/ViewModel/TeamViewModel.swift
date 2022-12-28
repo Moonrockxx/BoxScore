@@ -9,15 +9,15 @@ import Foundation
 
 public class TeamViewModel: ObservableObject {
     
-//    public var teamName: String = ""
+    //    public var teamName: String = ""
     public var teamSamples: [Team] = [Team(categorie: .u13 ,score: 0, isMenTeam: true, isMultipleTeams: false),
-                                          Team(categorie: .u13 ,score: 0, isMenTeam: false, isMultipleTeams: false),
-                                          Team(categorie: .u15 ,score: 0, isMenTeam: true, isMultipleTeams: false),
-                                          Team(categorie: .u15 ,score: 0, isMenTeam: false, isMultipleTeams: false),
-                                          Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false),
-                                          Team(categorie: .u20 ,score: 0, isMenTeam: true, isMultipleTeams: false),
-                                          Team(categorie: .s ,score: 0, isMenTeam: false, isMultipleTeams: false),
-                                          Team(categorie: .s, score: 0, players: [], games: [], teamNumber: "2", isMenTeam: true, isMultipleTeams: true)]
+                                      Team(categorie: .u13 ,score: 0, isMenTeam: false, isMultipleTeams: false),
+                                      Team(categorie: .u15 ,score: 0, isMenTeam: true, isMultipleTeams: false),
+                                      Team(categorie: .u15 ,score: 0, isMenTeam: false, isMultipleTeams: false),
+                                      Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false),
+                                      Team(categorie: .u20 ,score: 0, isMenTeam: true, isMultipleTeams: false),
+                                      Team(categorie: .s ,score: 0, isMenTeam: false, isMultipleTeams: false),
+                                      Team(categorie: .s, players: [], games: [], teamNumber: "2", score: 0, isMenTeam: true, isMultipleTeams: true)]
     
     @Published public var categorie: Team.Categories = .u11
     @Published public var teamGender: Int = 0
@@ -36,16 +36,16 @@ public class TeamViewModel: ObservableObject {
     
     public func saveTeam() {
         var team = Team(categorie: categorie,
-                            score: 0,
-                            players: [],
-                            games: [],
-                            teamNumber: teamNumber,
-                            isMenTeam: teamGender == 0,
-                            isMultipleTeams: isMultipleTeams)
-            
-            // Replace by core data add team management
-            teamSamples.append(team)
-            showNewTeamSheet = false
+                        players: [],
+                        games: [],
+                        teamNumber: teamNumber,
+                        score: 0,
+                        isMenTeam: teamGender == 0,
+                        isMultipleTeams: isMultipleTeams)
+        
+        // Replace by core data add team management
+        teamSamples.append(team)
+        showNewTeamSheet = false
     }
     
     public func fetchPlayers() {
@@ -60,7 +60,7 @@ public class TeamViewModel: ObservableObject {
             
             // Replace by core data add player management
             //TODO: Resolver Cannot use mutating member on immutable value: 'team' is a 'let' constant
-//            team.players.append(player)
+            //            team.players.append(player)
             showNewPlayerSheet = false
         } else {
             // display error

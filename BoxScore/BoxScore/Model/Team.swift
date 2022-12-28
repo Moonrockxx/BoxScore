@@ -18,22 +18,54 @@ public struct Team: Identifiable {
         case s = "Senior"
     }
     
+    //MARK: Informations
     public var id = UUID()
-    
-    public var categorie: Categories
-    public var score: Int
-    public var players: [Player]?
-    public var games: [Game]?
-    public var teamNumber: String? = ""
-    
-    public var isMenTeam: Bool
-    public var isMultipleTeams: Bool
-    
     public var clubName: String = ""
+    public var categorie: Categories
+    
     public var name: String {
         return "\(categorie.rawValue) - \(isMenTeam ? "M" : "F") \(isMultipleTeams ? teamNumber ?? "" : "")"
     }
     
+    public var players: [Player]?
+    public var games: [Game]?
+    public var teamNumber: String? = ""
+    
+    //MARK: Stats
+    public var score: Int
+    public var rebOff: Int?
+    public var rebDef: Int?
+    public var interceptions: Int?
+    public var assists: Int?
+    public var blocks: Int?
+    public var turnovers: Int?
+    public var fouls: Int?
+    
+    public var totalRebonds: Int? {
+        if let rebDef, let rebOff {
+            return rebOff + rebDef
+        } else {
+            return 0
+        }
+    }
+    
+    public var freeThrowAttempts: Double?
+    public var freeThrowMade: Double?
+    
+    public var twoPointAttempts: Double?
+    public var twoPointMade: Double?
+    
+    public var threePointAttempts: Double?
+    public var threePointMade: Double?
+
+    public var freeThrowPercentage: Double?
+    public var twoPointPercentage: Double?
+    public var threePointPercentage: Double?
+    
+    public var isMenTeam: Bool
+    public var isMultipleTeams: Bool
+    
+    //MARK: For Rows
     public var imageForRow: String {
         if isMenTeam {
             return "menTeam"

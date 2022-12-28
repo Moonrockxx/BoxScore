@@ -83,6 +83,29 @@ struct StatSheetView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
+                    .background(Color.element)
+                    
+                    Toggle("Assist ?", isOn: $viewModel.shouldDisplayAssistPicker)
+                        .padding()
+                }
+                .padding()
+            }
+            
+            if viewModel.shouldDisplayAssistPicker {
+                VStack(alignment: .leading) {
+                    Text("Assist from which player ?")
+                        .font(.system(size: 18, weight: .bold))
+                    
+                    List {
+                        ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
+                            PlayerRowSelectableView(isInGame: true, item: player) {
+                                // Add assist for the player selected
+                                self.viewModel.showAddStatsSheet = false
+                            }
+                            .listRowSeparatorTint(Color.subElement)
+                        }
+                    }
+                    .listStyle(PlainListStyle())
                     
                     .background(Color.element)
                 }

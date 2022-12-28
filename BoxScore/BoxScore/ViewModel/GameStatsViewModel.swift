@@ -84,6 +84,7 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var showAddStatsSheet: Bool = false
     @Published public var isShotMade: Bool = true
     @Published public var isDefensiveRebond: Bool = false
+    @Published public var shouldDisplayAssistPicker: Bool = false
     
     @Published public var sheetType: RecordableStats = .freeThrow
     
@@ -121,23 +122,23 @@ public class GameStatsViewModel: ObservableObject {
     
     //MARK: Functions
     public func startNewGame() {
-        self.yourTeam = Team(categorie: selectedTeam.categorie,
-                             score: 0,
+        self.yourTeam = Team(clubName: clubName,
+                             categorie: selectedTeam.categorie,
                              players: activePlayers,
                              games: nil,
                              teamNumber: nil,
+                             score: 0,
                              isMenTeam: selectedTeam.isMenTeam,
-                             isMultipleTeams: false,
-                             clubName: clubName)
+                             isMultipleTeams: false)
         
-        self.oppositeTeam = Team(categorie: selectedTeam.categorie,
-                                 score: 0,
+        self.oppositeTeam = Team(clubName: oppositeTeamName,
+                                 categorie: selectedTeam.categorie,
                                  players: nil,
                                  games: nil,
                                  teamNumber: nil,
+                                 score: 0,
                                  isMenTeam: selectedTeam.isMenTeam,
-                                 isMultipleTeams: false,
-                                 clubName: oppositeTeamName)
+                                 isMultipleTeams: false)
         
         self.game = Game(homeTeam: isHomeGame ? yourTeam : oppositeTeam,
                          awayTeam: isHomeGame ? oppositeTeam : yourTeam)
