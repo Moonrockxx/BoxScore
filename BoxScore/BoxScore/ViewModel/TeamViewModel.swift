@@ -56,7 +56,7 @@ public class TeamViewModel: ObservableObject {
         guard let number = Int(playerNumber) else { return }
         
         if !playerName.isEmpty, (0...100).contains(number) {
-            let player = Player(firstName: "Tom", lastName: "Ferré", number: "8", points: 0, rebonds: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, freeThrowAttempts: 0, freeThrowMade: 0, twoPointAttempts: 0, twoPointMade: 0, threePointAttempts: 0, threePointMade: 0, freeThrowPercentage: 0, twoPointPercentage: 0, threePointPercentage: 0)
+            let player = Player(firstName: "Tom", lastName: "Ferré", number: "8")
             
             // Replace by core data add player management
             //TODO: Resolver Cannot use mutating member on immutable value: 'team' is a 'let' constant

@@ -15,7 +15,6 @@ struct StatSheetView: View {
     public var statType: RecordableStats
     
     var body: some View {
-        
         VStack {
             VStack(alignment: .leading) {
                 Text("For which team ?")
@@ -24,34 +23,35 @@ struct StatSheetView: View {
                 HStack {
                     Button {
                         DispatchQueue.main.async {
-                            viewModel.addForTeam = viewModel.game?.homeTeam
+                            viewModel.addForTeam = viewModel.game?.yourTeam
+                            self.viewModel.shouldHighlightYourTeamButton = true
                             self.showPlayersList = true
                         }
-                        
                     } label: {
-                        Text(viewModel.game?.homeTeam?.clubName ?? "")
+                        Text(viewModel.game?.yourTeam?.clubName ?? "")
                             .foregroundColor(Color.text)
                     }
                     .frame(width: 150, height: 75)
                     .padding(.horizontal)
-                    .background(Color.element)
+                    .background(viewModel.shouldHighlightYourTeamButton ? Color.subElement : Color.element)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                     
                     Spacer()
                     
                     Button {
                         DispatchQueue.main.async {
-                            viewModel.addForTeam = viewModel.game?.awayTeam
-                            self.showPlayersList = true
+                            viewModel.shouldHighlightOppositeTeamButton = true
+                            viewModel.addForTeam = viewModel.game?.oppositeTeam
+                            viewModel.addStat(type: statType, player: nil)
+                            viewModel.showAddStatsSheet = false
                         }
-                        
                     } label: {
-                        Text(viewModel.game?.awayTeam?.clubName ?? "")
+                        Text(viewModel.game?.oppositeTeam?.clubName ?? "")
                             .foregroundColor(Color.text)
                     }
                     .frame(width: 150, height: 75)
                     .padding(.horizontal)
-                    .background(Color.element)
+                    .background(viewModel.shouldHighlightOppositeTeamButton ? Color.subElement : Color.element)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 }
             }
@@ -63,6 +63,10 @@ struct StatSheetView: View {
                         Toggle("Defensive rebond ?", isOn: $viewModel.isDefensiveRebond)
                     } else {
                         Toggle("Shot successful ?", isOn: $viewModel.isShotMade)
+                    }
+                    
+                    if viewModel.sheetType == .twoPoints || viewModel.sheetType == .threePoints {
+                        Toggle("Is there an assist ?", isOn: $viewModel.shouldDisplayAssistPicker)
                     }
                 }
                 .padding()
@@ -76,17 +80,17 @@ struct StatSheetView: View {
                     List {
                         ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
                             PlayerRowSelectableView(isInGame: true, item: player) {
-                                // Add stat for the players
-                                self.viewModel.showAddStatsSheet = false
+                                viewModel.addStat(type: statType, player: player)
+                                
+                                if !viewModel.shouldDisplayAssistPicker {
+                                    self.viewModel.showAddStatsSheet = false
+                                }
                             }
                             .listRowSeparatorTint(Color.subElement)
                         }
                     }
                     .listStyle(PlainListStyle())
                     .background(Color.element)
-                    
-                    Toggle("Assist ?", isOn: $viewModel.shouldDisplayAssistPicker)
-                        .padding()
                 }
                 .padding()
             }
@@ -99,8 +103,9 @@ struct StatSheetView: View {
                     List {
                         ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
                             PlayerRowSelectableView(isInGame: true, item: player) {
-                                // Add assist for the player selected
+                                viewModel.addStat(type: .assist, player: player)
                                 self.viewModel.showAddStatsSheet = false
+                                self.viewModel.shouldDisplayAssistPicker = false
                             }
                             .listRowSeparatorTint(Color.subElement)
                         }
@@ -114,6 +119,8 @@ struct StatSheetView: View {
             
             Spacer()
         }
+        
+        
         .clipShape(RoundedRectangle(cornerRadius: 8.0))
     }
 }

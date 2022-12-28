@@ -32,31 +32,27 @@ public struct Team: Identifiable {
     public var teamNumber: String? = ""
     
     //MARK: Stats
-    public var score: Int
-    public var rebOff: Int?
-    public var rebDef: Int?
-    public var interceptions: Int?
-    public var assists: Int?
-    public var blocks: Int?
-    public var turnovers: Int?
-    public var fouls: Int?
+    public var score: Int = 0
+    public var rebOff: Int = 0
+    public var rebDef: Int = 0
+    public var interceptions: Int = 0
+    public var assists: Int = 0
+    public var blocks: Int = 0
+    public var turnovers: Int = 0
+    public var fouls: Int = 0
     
     public var totalRebonds: Int? {
-        if let rebDef, let rebOff {
-            return rebOff + rebDef
-        } else {
-            return 0
-        }
+        return rebOff + rebDef
     }
     
-    public var freeThrowAttempts: Double?
-    public var freeThrowMade: Double?
+    public var freeThrowAttempts: Double = 0
+    public var freeThrowMade: Double = 0
     
-    public var twoPointAttempts: Double?
-    public var twoPointMade: Double?
+    public var twoPointAttempts: Double = 0
+    public var twoPointMade: Double = 0
     
-    public var threePointAttempts: Double?
-    public var threePointMade: Double?
+    public var threePointAttempts: Double = 0
+    public var threePointMade: Double = 0
 
     public var freeThrowPercentage: Double?
     public var twoPointPercentage: Double?

@@ -28,7 +28,7 @@ struct StatsRecorderView: View {
                     
                     VStack(alignment: .center, spacing: 10) {
                         Text(viewModel.clubName)
-                        Text("88")
+                        Text("\(viewModel.game?.yourTeam?.score ?? 0)")
                             .padding(.horizontal, 16)
                             .background(Color.subElement)
                             .clipShape(Capsule())
@@ -37,7 +37,7 @@ struct StatsRecorderView: View {
                     
                     VStack(alignment: .center, spacing: 10) {
                         Text(viewModel.oppositeTeamName)
-                        Text("57")
+                        Text("\(viewModel.game?.oppositeTeam?.score ?? 0)")
                             .padding(.horizontal, 16)
                             .background(Color.subElement)
                             .clipShape(Capsule())
