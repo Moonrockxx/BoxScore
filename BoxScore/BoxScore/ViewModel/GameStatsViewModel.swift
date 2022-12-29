@@ -147,152 +147,165 @@ public class GameStatsViewModel: ObservableObject {
     }
     
     public func addStat(type: RecordableStats, player: Player?) {
-        switch type {
-        case .freeThrow:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                if isShotMade {
-                    self.game?.yourTeam?.score += 1
-                    self.game?.yourTeam?.players?[index].points += 1
-                    self.game?.yourTeam?.players?[index].freeThrowAttempts += 1
-                    self.game?.yourTeam?.players?[index].freeThrowMade += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
+        DispatchQueue.main.async {
+            switch type {
+            case .freeThrow:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    if self.isShotMade {
+                        self.game?.yourTeam?.score += 1
+                        self.game?.yourTeam?.players?[index].points += 1
+                        self.game?.yourTeam?.players?[index].freeThrowAttempts += 1
+                        self.game?.yourTeam?.players?[index].freeThrowMade += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    } else {
+                        self.game?.yourTeam?.players?[index].freeThrowAttempts += 1
+                        self.game?.yourTeam?.freeThrowAttempts += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    }
                 } else {
-                    self.game?.yourTeam?.players?[index].freeThrowAttempts += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    if self.isShotMade {
+                        self.game?.oppositeTeam?.score += 1
+                        self.game?.oppositeTeam?.freeThrowAttempts += 1
+                        self.game?.oppositeTeam?.freeThrowMade += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    } else {
+                        self.game?.oppositeTeam?.freeThrowAttempts += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    }
                 }
-            } else {
-                if isShotMade {
-                    self.game?.oppositeTeam?.score += 1
-                    self.game?.oppositeTeam?.freeThrowAttempts += 1
-                    self.game?.oppositeTeam?.freeThrowMade += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
+            case .twoPoints:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    if self.isShotMade {
+                        self.game?.yourTeam?.score += 2
+                        self.game?.yourTeam?.players?[index].points += 2
+                        self.game?.yourTeam?.players?[index].twoPointAttempts += 1
+                        self.game?.yourTeam?.players?[index].twoPointMade += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    } else {
+                        self.game?.yourTeam?.players?[index].twoPointAttempts += 1
+                        self.game?.yourTeam?.twoPointAttempts += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    }
                 } else {
-                    self.game?.oppositeTeam?.freeThrowAttempts += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
+                    if self.isShotMade {
+                        self.game?.oppositeTeam?.score += 2
+                        self.game?.oppositeTeam?.twoPointAttempts += 1
+                        self.game?.oppositeTeam?.twoPointMade += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    } else {
+                        self.game?.oppositeTeam?.twoPointAttempts += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    }
+                }
+            case .threePoints:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    if self.isShotMade {
+                        self.game?.yourTeam?.score += 3
+                        self.game?.yourTeam?.players?[index].points += 3
+                        self.game?.yourTeam?.players?[index].threePointAttempts += 1
+                        self.game?.yourTeam?.players?[index].threePointMade += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    } else {
+                        self.game?.yourTeam?.players?[index].threePointAttempts += 1
+                        self.game?.yourTeam?.threePointAttempts += 1
+                        print(self.game?.yourTeam?.players?[index].points ?? 0)
+                    }
+                } else {
+                    if self.isShotMade {
+                        self.game?.oppositeTeam?.score += 3
+                        self.game?.oppositeTeam?.threePointAttempts += 1
+                        self.game?.oppositeTeam?.threePointMade += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    } else {
+                        self.game?.oppositeTeam?.threePointAttempts += 1
+                        print(self.game?.oppositeTeam?.score ?? 0)
+                    }
+                }
+            case .rebond:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    if self.isDefensiveRebond {
+                        self.game?.yourTeam?.players?[index].rebDef += 1
+                        print(self.game?.yourTeam?.players?[index].rebDef ?? 0)
+                    } else {
+                        self.game?.yourTeam?.players?[index].rebOff += 1
+                        print(self.game?.yourTeam?.players?[index].rebOff ?? 0)
+                    }
+                } else {
+                    if self.isDefensiveRebond {
+                        self.game?.oppositeTeam?.rebDef += 1
+                        print(self.game?.oppositeTeam?.rebDef ?? 0)
+                    } else {
+                        self.game?.oppositeTeam?.rebOff += 1
+                        print(self.game?.oppositeTeam?.rebOff ?? 0)
+                    }
+                }
+            case .assist:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    self.game?.yourTeam?.players?[index].assists += 1
+                    print(self.game?.yourTeam?.players?[index].assists ?? 0)
+                } else {
+                    self.game?.oppositeTeam?.assists += 1
+                    print(self.game?.oppositeTeam?.assists ?? 0)
+                }
+                
+//                self.showAddStatsSheet = false
+//                self.shouldHighlightYourTeamButton = false
+//                self.shouldHighlightOppositeTeamButton = false
+            case .interception:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    self.game?.yourTeam?.players?[index].interceptions += 1
+                    print(self.game?.yourTeam?.players?[index].interceptions ?? 0)
+                } else {
+                    self.game?.oppositeTeam?.interceptions += 1
+                    print(self.game?.oppositeTeam?.interceptions ?? 0)
+                }
+            case .block:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    self.game?.yourTeam?.players?[index].blocks += 1
+                    print(self.game?.yourTeam?.players?[index].blocks ?? 0)
+                } else {
+                    self.game?.oppositeTeam?.blocks += 1
+                    print(self.game?.oppositeTeam?.blocks ?? 0)
+                }
+            case .personalFoul:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    self.game?.yourTeam?.players?[index].personalFoul += 1
+                    print(self.game?.yourTeam?.players?[index].personalFoul ?? 0)
+                } else {
+                    self.game?.oppositeTeam?.fouls += 1
+                    print(self.game?.oppositeTeam?.fouls ?? 0)
+                }
+            case .turnOver:
+                if self.game?.yourTeam == self.addForTeam {
+                    guard let plr = player else { return }
+                    guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
+                    self.game?.yourTeam?.players?[index].turnovers += 1
+                    print(self.game?.yourTeam?.players?[index].turnovers ?? 0)
+                } else {
+                    self.game?.oppositeTeam?.turnovers += 1
+                    print(self.game?.oppositeTeam?.turnovers ?? 0)
                 }
             }
-        case .twoPoints:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                if isShotMade {
-                    self.game?.yourTeam?.score += 2
-                    self.game?.yourTeam?.players?[index].points += 2
-                    self.game?.yourTeam?.players?[index].twoPointAttempts += 1
-                    self.game?.yourTeam?.players?[index].twoPointMade += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
-                } else {
-                    self.game?.yourTeam?.players?[index].twoPointAttempts += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
-                }
-            } else {
-                if isShotMade {
-                    self.game?.oppositeTeam?.score += 2
-                    self.game?.oppositeTeam?.twoPointAttempts += 1
-                    self.game?.oppositeTeam?.twoPointMade += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
-                } else {
-                    self.game?.oppositeTeam?.twoPointAttempts += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
-                }
-            }
-
-        case .threePoints:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                if isShotMade {
-                    self.game?.yourTeam?.score += 3
-                    self.game?.yourTeam?.players?[index].points += 3
-                    self.game?.yourTeam?.players?[index].threePointAttempts += 1
-                    self.game?.yourTeam?.players?[index].threePointMade += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
-                } else {
-                    self.game?.yourTeam?.players?[index].twoPointAttempts += 1
-                    print(self.game?.yourTeam?.players?[index].points ?? 0)
-                }
-            } else {
-                if isShotMade {
-                    self.game?.oppositeTeam?.score += 3
-                    self.game?.oppositeTeam?.threePointAttempts += 1
-                    self.game?.oppositeTeam?.threePointMade += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
-                } else {
-                    self.game?.oppositeTeam?.threePointAttempts += 1
-                    print(self.game?.oppositeTeam?.score ?? 0)
-                }
-            }
-        case .rebond:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                if isDefensiveRebond {
-                    self.game?.yourTeam?.players?[index].rebDef += 1
-                    print(self.game?.yourTeam?.players?[index].rebDef ?? 0)
-                } else {
-                    self.game?.yourTeam?.players?[index].rebOff += 1
-                    print(self.game?.yourTeam?.players?[index].rebOff ?? 0)
-                }
-            } else {
-                if isDefensiveRebond {
-                    self.game?.oppositeTeam?.rebDef += 1
-                    print(self.game?.oppositeTeam?.rebDef ?? 0)
-                } else {
-                    self.game?.oppositeTeam?.rebOff += 1
-                    print(self.game?.oppositeTeam?.rebOff ?? 0)
-                }
-            }
-        case .assist:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                self.game?.yourTeam?.players?[index].assists += 1
-                print(self.game?.yourTeam?.players?[index].assists ?? 0)
-            } else {
-                self.game?.oppositeTeam?.assists += 1
-                print(self.game?.oppositeTeam?.assists ?? 0)
-            }
-        case .interception:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                self.game?.yourTeam?.players?[index].interceptions += 1
-                print(self.game?.yourTeam?.players?[index].interceptions ?? 0)
-            } else {
-                self.game?.oppositeTeam?.interceptions += 1
-                print(self.game?.oppositeTeam?.interceptions ?? 0)
-            }
-        case .block:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                self.game?.yourTeam?.players?[index].blocks += 1
-                print(self.game?.yourTeam?.players?[index].blocks ?? 0)
-            } else {
-                self.game?.oppositeTeam?.blocks += 1
-                print(self.game?.oppositeTeam?.blocks ?? 0)
-            }
-        case .personalFoul:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                self.game?.yourTeam?.players?[index].personalFoul += 1
-                print(self.game?.yourTeam?.players?[index].personalFoul ?? 0)
-            } else {
-                self.game?.oppositeTeam?.fouls += 1
-                print(self.game?.oppositeTeam?.fouls ?? 0)
-            }
-        case .turnOver:
-            if self.game?.yourTeam == self.addForTeam {
-                guard let plr = player else { return }
-                guard let index = self.game?.yourTeam?.players?.firstIndex(of: plr) else { return }
-                self.game?.yourTeam?.players?[index].turnovers += 1
-                print(self.game?.yourTeam?.players?[index].turnovers ?? 0)
-            } else {
-                self.game?.oppositeTeam?.turnovers += 1
-                print(self.game?.oppositeTeam?.turnovers ?? 0)
+            
+            if !self.shouldDisplayAssistPicker {
+                self.shouldHighlightYourTeamButton = false
+                self.shouldHighlightOppositeTeamButton = false
             }
         }
     }

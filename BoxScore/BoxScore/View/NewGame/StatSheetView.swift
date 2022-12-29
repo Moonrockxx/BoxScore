@@ -12,6 +12,8 @@ struct StatSheetView: View {
     @StateObject public var viewModel: GameStatsViewModel
     @State private var showPlayersList: Bool = false
     
+    @Environment(\.dismiss) var dismiss
+    
     public var statType: RecordableStats
     
     var body: some View {
@@ -25,6 +27,7 @@ struct StatSheetView: View {
                         DispatchQueue.main.async {
                             viewModel.addForTeam = viewModel.game?.yourTeam
                             self.viewModel.shouldHighlightYourTeamButton = true
+                            self.viewModel.shouldHighlightOppositeTeamButton = false
                             self.showPlayersList = true
                         }
                     } label: {
@@ -40,10 +43,11 @@ struct StatSheetView: View {
                     
                     Button {
                         DispatchQueue.main.async {
-                            viewModel.shouldHighlightOppositeTeamButton = true
                             viewModel.addForTeam = viewModel.game?.oppositeTeam
+                            self.viewModel.shouldHighlightYourTeamButton = false
+                            self.viewModel.shouldHighlightOppositeTeamButton = true
                             viewModel.addStat(type: statType, player: nil)
-                            viewModel.showAddStatsSheet = false
+                            dismiss()
                         }
                     } label: {
                         Text(viewModel.game?.oppositeTeam?.clubName ?? "")
@@ -83,7 +87,7 @@ struct StatSheetView: View {
                                 viewModel.addStat(type: statType, player: player)
                                 
                                 if !viewModel.shouldDisplayAssistPicker {
-                                    self.viewModel.showAddStatsSheet = false
+                                    dismiss()
                                 }
                             }
                             .listRowSeparatorTint(Color.subElement)
@@ -104,14 +108,14 @@ struct StatSheetView: View {
                         ForEach(viewModel.addForTeam?.players ?? [], id: \.id) { player in
                             PlayerRowSelectableView(isInGame: true, item: player) {
                                 viewModel.addStat(type: .assist, player: player)
-                                self.viewModel.showAddStatsSheet = false
+                                dismiss()
+                                self.viewModel.shouldHighlightYourTeamButton = false
                                 self.viewModel.shouldDisplayAssistPicker = false
                             }
                             .listRowSeparatorTint(Color.subElement)
                         }
                     }
                     .listStyle(PlainListStyle())
-                    
                     .background(Color.element)
                 }
                 .padding()
@@ -119,8 +123,6 @@ struct StatSheetView: View {
             
             Spacer()
         }
-        
-        
         .clipShape(RoundedRectangle(cornerRadius: 8.0))
     }
 }

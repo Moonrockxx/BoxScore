@@ -63,7 +63,7 @@ struct StatsRecorderView: View {
                     ForEach(viewModel.pointsRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
                             viewModel.sheetType = item
-                            viewModel.showAddStatsSheet = true
+                            showSheet = true
                         })
                     }
                     
@@ -77,7 +77,7 @@ struct StatsRecorderView: View {
                     ForEach(viewModel.secondRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
                             viewModel.sheetType = item
-                            viewModel.showAddStatsSheet = true
+                            showSheet = true
                         })
                     }
                     
@@ -91,7 +91,7 @@ struct StatsRecorderView: View {
                     ForEach(viewModel.thirdRow, id: \.self) { item in
                         AddStatButtonView(item: item, closure: {
                             viewModel.sheetType = item
-                            viewModel.showAddStatsSheet = true
+                            showSheet = true
                         })
                     }
                     
@@ -105,8 +105,11 @@ struct StatsRecorderView: View {
             
             // Add stats leaders for PTS, AST, REB
         }
-        .sheet(isPresented: $viewModel.showAddStatsSheet) {
+        .sheet(isPresented: $showSheet) {
             StatSheetView(viewModel: viewModel, statType: viewModel.sheetType)
+        }
+        .onChange(of: showSheet) { newValue in
+            viewModel.showAddStatsSheet = newValue
         }
     }
 }
