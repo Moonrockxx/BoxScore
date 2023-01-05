@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject public var viewModel: DashboardViewModel = DashboardViewModel()
     @State private var goToSettings: Bool = false
     
@@ -24,6 +27,8 @@ struct DashboardView: View {
                                 Text("All games")
                             case .teams:
                                 AllTeamsView()
+                                    .environmentObject(controller)
+                                    .environment(\.managedObjectContext, controller.container.viewContext)
                             }
                         } label: {
                             DashboardRowView(item: item)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AllTeamsView: View {
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject public var viewModel: TeamViewModel = TeamViewModel()
     
@@ -17,9 +19,12 @@ struct AllTeamsView: View {
                 Text("No team regristred, add a new team")
             } else {
                 ForEach(viewModel.teamSamples) { item in
-                    NavigationLink(destination: TeamDetailsView(viewModel: viewModel, item: item)) {
-                        TeamRowView(item: item)
-                    }
+                    NavigationLink(destination:
+                                    TeamDetailsView(viewModel: viewModel, item: item)
+                        .environmentObject(controller)
+                        .environment(\.managedObjectContext, controller.container.viewContext)) {
+                            TeamRowView(item: item)
+                        }
                 }
             }
         }

@@ -29,6 +29,8 @@
 		60A4EE9A2948BC9800E8747B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE992948BC9800E8747B /* Game.swift */; };
 		60A4EE9C2948BCA600E8747B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9B2948BCA600E8747B /* Team.swift */; };
 		60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9D2948BCBA00E8747B /* Player.swift */; };
+		60AF6C042965B997002F236F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C032965B997002F236F /* DataController.swift */; };
+		60AF6C072965BC2C002F236F /* Boxscore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */; };
 		60C46ED42949121C00310CF8 /* AllTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED32949121C00310CF8 /* AllTeamsView.swift */; };
 		60C46ED62949126D00310CF8 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED52949126D00310CF8 /* TeamViewModel.swift */; };
 		60C46ED82949173D00310CF8 /* TeamRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED72949173D00310CF8 /* TeamRowView.swift */; };
@@ -81,6 +83,8 @@
 		60A4EE992948BC9800E8747B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		60A4EE9B2948BCA600E8747B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		60AF6C032965B997002F236F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		60AF6C062965BC2C002F236F /* Boxscore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Boxscore.xcdatamodel; sourceTree = "<group>"; };
 		60C46ED32949121C00310CF8 /* AllTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsView.swift; sourceTree = "<group>"; };
 		60C46ED52949126D00310CF8 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewModel.swift; sourceTree = "<group>"; };
 		60C46ED72949173D00310CF8 /* TeamRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRowView.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 		605E14FF293F7BFE00B906A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				60AF6C022965B969002F236F /* CoreData */,
 				60A4EE992948BC9800E8747B /* Game.swift */,
 				60A4EE9B2948BCA600E8747B /* Team.swift */,
 				60A4EE9D2948BCBA00E8747B /* Player.swift */,
@@ -231,6 +236,15 @@
 				605E1501293F7E8300B906A4 /* Colors+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60AF6C022965B969002F236F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				60AF6C032965B997002F236F /* DataController.swift */,
+				60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		60C46ED1294911E200310CF8 /* Dashboard */ = {
@@ -403,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60AF6C072965BC2C002F236F /* Boxscore.xcdatamodeld in Sources */,
 				60C46EDA294A23D100310CF8 /* NewTeamFormView.swift in Sources */,
 				60C46ED82949173D00310CF8 /* TeamRowView.swift in Sources */,
 				600528C92954EFB2006AB6AC /* StatsRecorderView.swift in Sources */,
@@ -413,6 +428,7 @@
 				60065CC3295608B5002929F5 /* NavigationButton.swift in Sources */,
 				60A4EE9A2948BC9800E8747B /* Game.swift in Sources */,
 				60C46ED42949121C00310CF8 /* AllTeamsView.swift in Sources */,
+				60AF6C042965B997002F236F /* DataController.swift in Sources */,
 				60A4EE9C2948BCA600E8747B /* Team.swift in Sources */,
 				605E1506293F824100B906A4 /* DashboardViewModel.swift in Sources */,
 				60C46ED62949126D00310CF8 /* TeamViewModel.swift in Sources */,
@@ -753,6 +769,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				60AF6C062965BC2C002F236F /* Boxscore.xcdatamodel */,
+			);
+			currentVersion = 60AF6C062965BC2C002F236F /* Boxscore.xcdatamodel */;
+			path = Boxscore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 605E14C8293F7B6A00B906A4 /* Project object */;
 }

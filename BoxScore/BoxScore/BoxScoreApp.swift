@@ -10,14 +10,14 @@ import SwiftUI
 @main
 struct BoxScoreApp: App {
     
-//    init() {
-//        UINavigationBar.appearance().backgroundColor = UIColor(Color.element)
-//    }
+    @StateObject private var dataController: DataController = DataController()
     
     var body: some Scene {
         WindowGroup {
             DashboardView()
                 .background(Color.background)
+                .environmentObject(dataController)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

@@ -5,6 +5,7 @@
 //  Created by TomF on 13/12/2022.
 //
 
+import CoreData
 import Foundation
 
 public class TeamViewModel: ObservableObject {
@@ -52,15 +53,14 @@ public class TeamViewModel: ObservableObject {
         // Core data fetch players
     }
     
-    public func savePlayer(team: Team) {
+    public func savePlayer(team: Team, closure: (Player) -> ()) {
         guard let number = Int(playerNumber) else { return }
         
         if !playerName.isEmpty, (0...100).contains(number) {
-            let player = Player(firstName: "Tom", lastName: "Ferré", number: "8")
+            let player = Player(firstName: "Tom", lastName: "Ferré", number: "8", points: 0, rebOff: 0, rebDef: 0, assists: 0, turnovers: 0, interceptions: 0, blocks: 0, personalFoul: 0, freeThrowAttempts: 0, freeThrowMade: 0, twoPointAttempts: 0, twoPointMade: 0, threePointAttempts: 0, threePointMade: 0, freeThrowPercentage: 0, twoPointPercentage: 0, threePointPercentage: 0)
             
-            // Replace by core data add player management
-            //TODO: Resolver Cannot use mutating member on immutable value: 'team' is a 'let' constant
-            //            team.players.append(player)
+            closure(player)
+            
             showNewPlayerSheet = false
         } else {
             // display error

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewPlayerFormView: View {
     
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject public var viewModel: TeamViewModel
     public var item: Team
     
@@ -25,7 +28,9 @@ struct NewPlayerFormView: View {
         .navigationTitle("New player")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-            viewModel.savePlayer(team: item)
+            viewModel.savePlayer(team: item, closure: { player in
+                let newPlayer = BoxscorePlayer(context: viewContext)
+            })
         }, label: {
             Text("Save")
                 .foregroundColor(Color.subElement)

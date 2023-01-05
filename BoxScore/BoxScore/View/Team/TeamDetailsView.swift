@@ -9,6 +9,10 @@ import SwiftUI
 
 struct TeamDetailsView: View {
     
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: []) private var todoItems: FetchedResults<BoxscoreTeam>
+    
     @StateObject public var viewModel: TeamViewModel
     public var item: Team
     
@@ -37,6 +41,8 @@ struct TeamDetailsView: View {
         .sheet(isPresented: $viewModel.showNewPlayerSheet) {
             NavigationView {
                 NewPlayerFormView(viewModel: viewModel, item: item)
+                    .environmentObject(controller)
+                    .environment(\.managedObjectContext, controller.container.viewContext)
             }
         }
     }
