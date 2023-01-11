@@ -24,11 +24,7 @@ public class TeamViewModel: ObservableObject {
     @Published public var showNewTeamSheet: Bool = false
     @Published public var showNewPlayerSheet: Bool = false
     
-    public var newPlayerCreated: [Player] = []
-    
-    public func fetchTeams() {
-        // Core data fetch teams
-    }
+    public var teamId: UUID = UUID()
     
     public func saveTeam(closure: (Team) -> ()) {
         let team = Team(categorie: categorie,
@@ -45,15 +41,12 @@ public class TeamViewModel: ObservableObject {
         showNewTeamSheet = false
     }
     
-    public func fetchPlayers() {
-        // Core data fetch players
-    }
-    
     public func savePlayer(team: BoxscoreTeam, closure: (Player) -> ()) {
         guard let number = Int(playerNumber) else { return }
         
         if !playerName.isEmpty, (0...100).contains(number) {
-            let player = Player(firstName: playerName,
+            let player = Player(teamId: teamId,
+                                firstName: playerName,
                                 lastName: "",
                                 number: playerNumber,
                                 points: 0,
@@ -74,7 +67,6 @@ public class TeamViewModel: ObservableObject {
                                 twoPointPercentage: 0,
                                 threePointPercentage: 0)
             
-            newPlayerCreated.append(player)
             closure(player)
             
             showNewPlayerSheet = false

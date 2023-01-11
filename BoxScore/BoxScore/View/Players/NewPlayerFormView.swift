@@ -25,13 +25,20 @@ struct NewPlayerFormView: View {
                 Text("Player informations")
             }
         }
+        .onAppear(perform: {
+            viewModel.teamId = item.id ?? UUID()
+        })
         .navigationTitle("New player")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
             viewModel.savePlayer(team: item,
                                  closure: { player in
-                let team = BoxscoreTeam(context: viewContext)
-                team.setValue(player, forKey: "players")
+                let newPlayer = BoxscorePlayer(context: viewContext)
+                newPlayer.id = player.id
+                newPlayer.teamId = player.teamId
+                newPlayer.firstName = player.firstName
+                newPlayer.lastName = player.lastName
+                newPlayer.number = player.number
                 try? viewContext.save()
             })
         }, label: {

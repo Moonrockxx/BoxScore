@@ -12,21 +12,23 @@ struct TeamDetailsView: View {
     @EnvironmentObject var controller: DataController
     @Environment(\.managedObjectContext) private var viewContext
     
+    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
+    
     @StateObject public var viewModel: TeamViewModel
     public var item: BoxscoreTeam
     
     var body: some View {
         ScrollView {
-            if item.players == nil {
-                Text("Add new players to build your team")
-            } else {
-                ForEach(item.players as? [Player] ?? []) { player in
+//            if item.players == nil {
+//                Text("Add new players to build your team")
+//            } else {
+                ForEach(players.filter({ $0.teamId == item.id })) { player in
                     HStack {
-                        Text("\(player.number)")
-                        Text("\(player.firstName) \(player.lastName)")
+                        Text("\(player.number ?? "")")
+                        Text("\(player.firstName ?? "") \(player.lastName ?? "")")
                     }
                 }
-            }
+//            }
         }
         .navigationTitle(item.name ?? "")
         .navigationBarTitleDisplayMode(.inline)

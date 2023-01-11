@@ -7,8 +7,11 @@
 
 import Foundation
 
-public struct Player: Codable, Identifiable {
+public class Player: Codable, Identifiable {
+    
+    
     public var id = UUID()
+    public var teamId = UUID()
     
     public var firstName: String
     public var lastName: String
@@ -42,6 +45,7 @@ public struct Player: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
+        case teamId
         case firstName
         case lastName
         case number
@@ -62,6 +66,31 @@ public struct Player: Codable, Identifiable {
         case freeThrowPercentage
         case twoPointPercentage
         case threePointPercentage
+    }
+    
+    public init(id: UUID = UUID(), teamId: UUID, firstName: String, lastName: String, number: String, points: Int = 0, rebOff: Int = 0, rebDef: Int = 0, assists: Int = 0, turnovers: Int = 0, interceptions: Int = 0, blocks: Int = 0, personalFoul: Int = 0, freeThrowAttempts: Double = 0, freeThrowMade: Double = 0, twoPointAttempts: Double = 0, twoPointMade: Double = 0, threePointAttempts: Double = 0, threePointMade: Double = 0, freeThrowPercentage: Double? = nil, twoPointPercentage: Double? = nil, threePointPercentage: Double? = nil) {
+        self.id = id
+        self.teamId = teamId
+        self.firstName = firstName
+        self.lastName = lastName
+        self.number = number
+        self.points = points
+        self.rebOff = rebOff
+        self.rebDef = rebDef
+        self.assists = assists
+        self.turnovers = turnovers
+        self.interceptions = interceptions
+        self.blocks = blocks
+        self.personalFoul = personalFoul
+        self.freeThrowAttempts = freeThrowAttempts
+        self.freeThrowMade = freeThrowMade
+        self.twoPointAttempts = twoPointAttempts
+        self.twoPointMade = twoPointMade
+        self.threePointAttempts = threePointAttempts
+        self.threePointMade = threePointMade
+        self.freeThrowPercentage = freeThrowPercentage
+        self.twoPointPercentage = twoPointPercentage
+        self.threePointPercentage = threePointPercentage
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -91,5 +120,7 @@ public struct Player: Codable, Identifiable {
 }
 
 extension Player: Equatable {
-    
+    public static func == (lhs: Player, rhs: Player) -> Bool {
+        lhs.id == rhs.id
+    }
 }

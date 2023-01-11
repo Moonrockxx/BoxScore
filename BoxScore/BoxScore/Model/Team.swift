@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Team: Codable, Identifiable {
+public class Team: Codable, Identifiable {
     public enum Categories: String, CaseIterable, Codable {
         case u11 = "U11"
         case u13 = "U13"
@@ -139,7 +139,7 @@ public struct Team: Codable, Identifiable {
         case isMultipleTeams
     }
     
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(UUID.self, forKey: .id)
         clubName = try values.decode(String.self, forKey: .clubName)
