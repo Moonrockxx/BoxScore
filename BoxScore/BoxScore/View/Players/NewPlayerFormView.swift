@@ -13,7 +13,7 @@ struct NewPlayerFormView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject public var viewModel: TeamViewModel
-    public var item: Team
+    public var item: BoxscoreTeam
     
     var body: some View {
         Form {
@@ -28,8 +28,11 @@ struct NewPlayerFormView: View {
         .navigationTitle("New player")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-            viewModel.savePlayer(team: item, closure: { player in
-                let newPlayer = BoxscorePlayer(context: viewContext)
+            viewModel.savePlayer(team: item,
+                                 closure: { player in
+                let team = BoxscoreTeam(context: viewContext)
+                team.setValue(player, forKey: "players")
+                try? viewContext.save()
             })
         }, label: {
             Text("Save")
@@ -38,8 +41,8 @@ struct NewPlayerFormView: View {
     }
 }
 
-struct NewPlayerFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewPlayerFormView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
-    }
-}
+//struct NewPlayerFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewPlayerFormView(viewModel: TeamViewModel(), item: Team(categorie: .u17, score: 0, isMenTeam: true, isMultipleTeams: false))
+//    }
+//}

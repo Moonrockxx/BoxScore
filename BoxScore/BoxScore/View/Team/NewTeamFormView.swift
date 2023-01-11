@@ -11,6 +11,9 @@ struct NewTeamFormView: View {
     
     @StateObject public var viewModel: TeamViewModel
     
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
         Form {
             Section {
@@ -39,7 +42,18 @@ struct NewTeamFormView: View {
         .navigationTitle("New team")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-             viewModel.saveTeam()
+             viewModel.saveTeam(closure: { team in
+                 let newTeam = BoxscoreTeam(context: viewContext)
+                 newTeam.id = team.id
+                 newTeam.clubName = team.clubName
+                 newTeam.categorie = team.categorie.rawValue
+                 newTeam.name = team.name
+                 newTeam.teamNumber = team.teamNumber
+                 newTeam.isMenTeam = team.isMenTeam
+                 newTeam.isMultipleTeam = team.isMultipleTeams
+                 
+                 try? viewContext.save()
+             })
         }, label: {
             Text("Save")
                 .foregroundColor(Color.subElement)

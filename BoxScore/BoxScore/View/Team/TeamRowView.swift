@@ -9,14 +9,20 @@ import SwiftUI
 
 struct TeamRowView: View {
     
-    public var item: Team
+    public var item: BoxscoreTeam
+    public var image: String {
+        item.isMenTeam ? "menTeam" : "girlTeam"
+    }
+    public var offsetForImage: Double {
+        item.isMenTeam ? 40 : 0
+    }
     
     var body: some View {
         HStack {
             VStack {
                 Spacer()
                 
-                Text(item.name)
+                Text(item.name ?? "")
                     .foregroundColor(Color.text)
                     .padding(.bottom)
             }
@@ -33,7 +39,7 @@ struct TeamRowView: View {
             LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
         )
         .background(
-            Image(item.imageForRow)
+            Image(item.isMenTeam ? "menTeam" : "girlTeam")
                 .resizable()
                 .saturation(0.2)
                 .aspectRatio(contentMode: .fill)
@@ -48,8 +54,8 @@ struct TeamRowView: View {
     }
 }
 
-struct TeamRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        TeamRowView(item: Team(categorie: .s ,score: 0, isMenTeam: true, isMultipleTeams: false))
-    }
-}
+//struct TeamRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TeamRowView(item: Team(categorie: .s ,score: 0, isMenTeam: true, isMultipleTeams: false))
+//    }
+//}

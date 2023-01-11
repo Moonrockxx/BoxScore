@@ -11,17 +11,16 @@ struct TeamDetailsView: View {
     
     @EnvironmentObject var controller: DataController
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: []) private var todoItems: FetchedResults<BoxscoreTeam>
     
     @StateObject public var viewModel: TeamViewModel
-    public var item: Team
+    public var item: BoxscoreTeam
     
     var body: some View {
         ScrollView {
-            if ((item.players?.isEmpty) != nil) {
+            if item.players == nil {
                 Text("Add new players to build your team")
             } else {
-                ForEach(item.players!) { player in
+                ForEach(item.players as? [Player] ?? []) { player in
                     HStack {
                         Text("\(player.number)")
                         Text("\(player.firstName) \(player.lastName)")
@@ -29,7 +28,7 @@ struct TeamDetailsView: View {
                 }
             }
         }
-        .navigationTitle(item.name)
+        .navigationTitle(item.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
                                 Button {
@@ -48,8 +47,8 @@ struct TeamDetailsView: View {
     }
 }
 
-struct TeamDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TeamDetailsView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
-    }
-}
+//struct TeamDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TeamDetailsView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
+//    }
+//}

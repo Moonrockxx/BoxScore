@@ -72,7 +72,7 @@ public enum RecordableStats: String {
 
 public class GameStatsViewModel: ObservableObject {
     //MARK: Variables
-    @Published public var selectedTeam: Team = Team(categorie: .s ,score: 0, isMenTeam: false, isMultipleTeams: false)
+    @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false)
     @Published public var homeAwaySelection: Int = 0
     
     @Published public var yourTeam: Team?
@@ -126,6 +126,7 @@ public class GameStatsViewModel: ObservableObject {
     public func startNewGame() {
         self.yourTeam = Team(clubName: clubName,
                              categorie: selectedTeam.categorie,
+                             name: "\(selectedTeam.categorie) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? selectedTeam.teamNumber : "")",
                              players: activePlayers,
                              games: nil,
                              teamNumber: nil,
@@ -135,6 +136,7 @@ public class GameStatsViewModel: ObservableObject {
         
         self.oppositeTeam = Team(clubName: oppositeTeamName,
                                  categorie: selectedTeam.categorie,
+                                 name: oppositeTeamName,
                                  players: nil,
                                  games: nil,
                                  teamNumber: nil,

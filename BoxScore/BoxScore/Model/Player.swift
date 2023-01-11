@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Player: Identifiable {
+public struct Player: Codable, Identifiable {
     public var id = UUID()
     
     public var firstName: String
@@ -39,6 +39,55 @@ public struct Player: Identifiable {
     public var freeThrowPercentage: Double?
     public var twoPointPercentage: Double?
     public var threePointPercentage: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName
+        case lastName
+        case number
+        case points
+        case rebOff
+        case rebDef
+        case assists
+        case turnovers
+        case interceptions
+        case blocks
+        case personalFoul
+        case freeThrowAttempts
+        case freeThrowMade
+        case twoPointAttempts
+        case twoPointMade
+        case threePointAttempts
+        case threePointMade
+        case freeThrowPercentage
+        case twoPointPercentage
+        case threePointPercentage
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(firstName, forKey: .firstName)
+        try container.encode(lastName, forKey: .lastName)
+        try container.encode(number, forKey: .number)
+        try container.encode(points, forKey: .points)
+        try container.encode(rebOff, forKey: .rebOff)
+        try container.encode(rebDef, forKey: .rebDef)
+        try container.encode(assists, forKey: .assists)
+        try container.encode(turnovers, forKey: .turnovers)
+        try container.encode(interceptions, forKey: .interceptions)
+        try container.encode(blocks, forKey: .blocks)
+        try container.encode(personalFoul, forKey: .personalFoul)
+        try container.encode(freeThrowAttempts, forKey: .freeThrowAttempts)
+        try container.encode(freeThrowMade, forKey: .freeThrowMade)
+        try container.encode(twoPointAttempts, forKey: .twoPointAttempts)
+        try container.encode(twoPointMade, forKey: .twoPointMade)
+        try container.encode(threePointAttempts, forKey: .threePointAttempts)
+        try container.encode(threePointMade, forKey: .threePointMade)
+        try container.encode(freeThrowPercentage, forKey: .freeThrowPercentage)
+        try container.encode(twoPointPercentage, forKey: .twoPointPercentage)
+        try container.encode(threePointPercentage, forKey: .threePointPercentage)
+    }
 }
 
 extension Player: Equatable {
