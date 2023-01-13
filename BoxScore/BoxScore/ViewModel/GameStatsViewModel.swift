@@ -72,7 +72,11 @@ public enum RecordableStats: String {
 
 public class GameStatsViewModel: ObservableObject {
     //MARK: Variables
-    @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false)
+    @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false) {
+        didSet {
+            shouldShowActivePlayersList = (selectedTeam.players != nil)
+        }
+    }
     @Published public var homeAwaySelection: Int = 0
     
     @Published public var yourTeam: Team?
@@ -87,10 +91,12 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var shouldDisplayAssistPicker: Bool = false
     @Published public var shouldHighlightYourTeamButton: Bool = false
     @Published public var shouldHighlightOppositeTeamButton: Bool = false
+    @Published public var shouldShowActivePlayersList: Bool = false
     
     @Published public var sheetType: RecordableStats = .freeThrow
     
     @Published public var game: Game?
+    @Published public var fetchedTeams: [Team] = []
     
     public var clubName: String = ""
     
@@ -146,6 +152,31 @@ public class GameStatsViewModel: ObservableObject {
         
         self.game = Game(yourTeam: yourTeam,
                          oppositeTeam: oppositeTeam)
+    }
+    
+    public func teamMapper(for teams: FetchedResults<BoxscoreTeam>, with players: FetchedResults<BoxscorePlayer>) {
+        teams.forEach { team in
+            var fetchedTeam = Team(id: team.id ?? UUID(),
+                                   clubName: team.clubName ?? "",
+                                   categorie: Team.Categories(rawValue: team.categorie ?? "") ?? Team.Categories(rawValue: "")!,
+                                   name: team.name ?? "",
+                                   players: [],
+                                   games: [],
+                                   teamNumber: "",
+                                   isMenTeam: team.isMenTeam,
+                                   isMultipleTeams: team.isMultipleTeam)
+            
+            players.filter({ $0.teamId == fetchedTeam.id }).forEach { player in
+                var player = Player(teamId: player.teamId ?? UUID(),
+                                    firstName: player.firstName ?? "",
+                                    lastName: player.lastName ?? "",
+                                    number: player.number ?? "")
+                
+                fetchedTeam.players?.append(player)
+            }
+            
+            self.fetchedTeams.append(fetchedTeam)
+        }
     }
     
     public func addStat(type: RecordableStats, player: Player?) {

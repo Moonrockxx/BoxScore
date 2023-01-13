@@ -10,38 +10,16 @@ import SwiftUI
 struct NewGameTeamSelectionView: View {
     
     @ObservedObject public var viewModel: GameStatsViewModel = GameStatsViewModel()
-    
+    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
+    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
     @State private var goToNextView: Bool = false
-    
-    // REMOVE BEFORE FLIGHT
-    let teams: [Team] = [
-//        Team(categorie: .u11, players: [], games: [], score: 0, isMenTeam: true, isMultipleTeams: false),
-//                         Team(categorie: .u13, players: [], games: [], score: 0, isMenTeam: false, isMultipleTeams: false),
-//                         Team(categorie: .u13, players: [], games: [], score: 0, isMenTeam: true, isMultipleTeams: false),
-//                         Team(categorie: .u15, players: [], games: [], score: 0, isMenTeam: false, isMultipleTeams: false),
-//                         Team(categorie: .u17, players: [], games: [], score: 0, isMenTeam: true, isMultipleTeams: false),
-//                         Team(categorie: .u20, players: [], games: [], score: 0, isMenTeam: true, isMultipleTeams: false),
-//                         Team(categorie: .s, players: [], games: [], score: 0, isMenTeam: false, isMultipleTeams: false),
-        Team(categorie: .s, name: "SM-2", players: [Player(teamId: UUID(), firstName: "Kobe", lastName: "Bryant", number: "8"),
-                                                        Player(teamId: UUID(), firstName: "Lebron", lastName: "James", number: "6"),
-                                                        Player(teamId: UUID(), firstName: "Rudy", lastName: "Gobert", number: "32"),
-                                                        Player(teamId: UUID(), firstName: "Michael", lastName: "Jordan", number: "23"),
-                                                        Player(teamId: UUID(), firstName: "Chris", lastName: "Paul", number: "3"),
-                                                        Player(teamId: UUID(), firstName: "Pau", lastName: "Gasol", number: "12"),
-                                                        Player(teamId: UUID(), firstName: "Joel", lastName: "Embiid", number: "21"),
-                                                        Player(teamId: UUID(), firstName: "Devin", lastName: "Booker", number: "1"),
-                                                        Player(teamId: UUID(), firstName: "Thomas", lastName: "Ferré", number: "5")],
-             games: [],
-                              score: 0,
-                              isMenTeam: true,
-                              isMultipleTeams: false)]
     
     var body: some View {
         VStack {
             Form {
                 Section {
                     Picker("Select your team", selection: $viewModel.selectedTeam) {
-                        ForEach(teams, id: \.self) { team in
+                        ForEach(viewModel.fetchedTeams, id: \.self) { team in
                             Text(team.name)
                         }
                     }
@@ -56,9 +34,9 @@ struct NewGameTeamSelectionView: View {
                     Text("Your team")
                 }
                 
-                if ((viewModel.selectedTeam.players?.isEmpty) != nil) {
+                if let players = viewModel.selectedTeam.players, viewModel.shouldShowActivePlayersList {
                     Section {
-                        ForEach(viewModel.selectedTeam.players ?? [], id: \.id) { player in
+                        ForEach(players, id: \.id) { player in
                             PlayerRowSelectableView(isInGame: false, item: player) {
                                 if !viewModel.activePlayers.contains(where: { $0 == player }) {
                                     viewModel.activePlayers.append(player)
@@ -98,6 +76,9 @@ struct NewGameTeamSelectionView: View {
             .hidden()
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            viewModel.teamMapper(for: teams, with: players)
+        }
     }
 }
 
