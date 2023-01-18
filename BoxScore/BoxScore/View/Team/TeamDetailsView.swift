@@ -9,6 +9,19 @@ import SwiftUI
 
 struct TeamDetailsView: View {
     
+    func removePlayer(at offsets: IndexSet) {
+        for index in offsets {
+            let player = players[index]
+            viewContext.delete(player)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print("Delete team produce an error")
+            }
+        }
+    }
+    
     @EnvironmentObject var controller: DataController
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -18,16 +31,24 @@ struct TeamDetailsView: View {
     public var item: BoxscoreTeam
     
     var body: some View {
-        ScrollView {
+        VStack {
 //            if item.players == nil {
 //                Text("Add new players to build your team")
 //            } else {
+            List {
                 ForEach(players.filter({ $0.teamId == item.id })) { player in
                     HStack {
-                        Text("\(player.number ?? "")")
                         Text("\(player.firstName ?? "") \(player.lastName ?? "")")
+                        Spacer()
+                        Text("\(player.number ?? "")")
+                            .padding(5)
+                            .background(Color.subElement)
+                            .foregroundColor(Color.text)
+                            .clipShape(Capsule())
                     }
                 }
+                .onDelete(perform: removePlayer)
+            }
 //            }
         }
         .navigationTitle(item.name ?? "")

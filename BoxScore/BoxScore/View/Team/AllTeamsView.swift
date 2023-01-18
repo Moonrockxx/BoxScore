@@ -14,6 +14,12 @@ struct AllTeamsView: View {
         for index in offsets {
             let team = teams[index]
             viewContext.delete(team)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print("Delete team produce an error")
+            }
         }
     }
     
@@ -41,6 +47,7 @@ struct AllTeamsView: View {
                                 .opacity(0.0)
                             TeamRowView(item: item)
                         }
+                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         .listRowSeparator(.hidden)
                     }
                     .onDelete(perform: removeTeam)
