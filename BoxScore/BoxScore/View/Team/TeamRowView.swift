@@ -50,7 +50,7 @@ struct TeamRowView: View {
         
         .frame(height: 100)
         .cornerRadius(8)
-        .padding(.horizontal)
+//        .padding(.horizontal)
     }
 }
 

@@ -9,6 +9,14 @@ import SwiftUI
 import CoreData
 
 struct AllTeamsView: View {
+    
+    func removeTeam(at offsets: IndexSet) {
+        for index in offsets {
+            let team = teams[index]
+            viewContext.delete(team)
+        }
+    }
+    
     @EnvironmentObject var controller: DataController
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -21,20 +29,26 @@ struct AllTeamsView: View {
             if teams.isEmpty {
                 Text("No team regristred, add a new team")
             } else {
-                ForEach(teams) { item in
-                    NavigationLink(destination:
-                                    TeamDetailsView(viewModel: viewModel, item: item)
-                        
-                        .environmentObject(controller)
-                        .environment(\.managedObjectContext, controller.container.viewContext)) {
+                List {
+                    ForEach(teams, id: \.self) { item in
+                        ZStack {
+                            NavigationLink(destination:
+                                            TeamDetailsView(viewModel: viewModel, item: item)
+                                .environmentObject(controller)
+                                .environment(\.managedObjectContext, controller.container.viewContext)) {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
                             TeamRowView(item: item)
                         }
+                        .listRowSeparator(.hidden)
+                    }
+                    .onDelete(perform: removeTeam)
                 }
+                .listStyle(InsetListStyle())
             }
             Spacer()
         }
-        .padding(.top, 25)
-        .background(Color.white)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("All teams")
         .navigationBarItems(trailing:
