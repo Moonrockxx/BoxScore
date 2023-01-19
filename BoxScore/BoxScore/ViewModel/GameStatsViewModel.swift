@@ -74,7 +74,11 @@ public class GameStatsViewModel: ObservableObject {
     //MARK: Variables
     @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false) {
         didSet {
-            shouldShowActivePlayersList = (selectedTeam.players != nil)
+            if let players = selectedTeam.players {
+                shouldShowActivePlayersList = !players.isEmpty
+            } else {
+                shouldShowActivePlayersList = false
+            }
         }
     }
     @Published public var homeAwaySelection: Int = 0

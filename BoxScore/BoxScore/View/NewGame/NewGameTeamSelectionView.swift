@@ -34,7 +34,8 @@ struct NewGameTeamSelectionView: View {
                     Text("Your team")
                 }
                 
-                if let players = viewModel.selectedTeam.players, viewModel.shouldShowActivePlayersList {
+                if let players = viewModel.selectedTeam.players,
+                   viewModel.shouldShowActivePlayersList {
                     Section {
                         ForEach(players, id: \.id) { player in
                             PlayerRowSelectableView(isInGame: false, item: player) {
@@ -78,6 +79,9 @@ struct NewGameTeamSelectionView: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             viewModel.teamMapper(for: teams, with: players)
+        }
+        .onDisappear {
+            viewModel.fetchedTeams = []
         }
     }
 }
