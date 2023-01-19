@@ -23,6 +23,8 @@ struct DashboardView: View {
                             switch item.linkValue {
                             case .newGame:
                                 NewGameTeamSelectionView()
+                                    .environmentObject(controller)
+                                    .environment(\.managedObjectContext, controller.container.viewContext)
                             case .allGames:
                                 Text("All games")
                             case .teams:

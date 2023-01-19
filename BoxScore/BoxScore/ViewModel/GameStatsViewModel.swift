@@ -96,6 +96,7 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var shouldHighlightYourTeamButton: Bool = false
     @Published public var shouldHighlightOppositeTeamButton: Bool = false
     @Published public var shouldShowActivePlayersList: Bool = false
+    @Published public var goToFinalView: Bool = false
     
     @Published public var sheetType: RecordableStats = .freeThrow
     
@@ -180,6 +181,13 @@ public class GameStatsViewModel: ObservableObject {
             }
             
             self.fetchedTeams.append(fetchedTeam)
+        }
+    }
+    
+    public func saveGame(closure: (Game) -> ()) {
+        if let game = self.game {
+            closure(game)
+            self.goToFinalView = true
         }
     }
     

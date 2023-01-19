@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Team: Codable, Identifiable {
+public class Team: NSObject, Codable, Identifiable {
     public enum Categories: String, CaseIterable, Codable {
         case u11 = "U11"
         case u13 = "U13"
@@ -199,12 +199,14 @@ public class Team: Codable, Identifiable {
     }
 }
 
-extension Team: Hashable {
-    public static func == (lhs: Team, rhs: Team) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
+//extension Team: Hashable {
+//    public static func == (lhs: Team, rhs: Team) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//    
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//}
+
+

@@ -13,6 +13,14 @@ public struct Game: Codable {
     public var yourTeam: Team?
     public var oppositeTeam: Team?
     
+    public init(id: UUID = UUID(),
+                yourTeam: Team? = nil,
+                oppositeTeam: Team? = nil) {
+        self.id = id
+        self.yourTeam = yourTeam
+        self.oppositeTeam = oppositeTeam
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case yourTeam

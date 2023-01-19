@@ -70,10 +70,13 @@ public class TeamViewModel: ObservableObject {
             closure(player)
             
             showNewPlayerSheet = false
+            playerName = ""
+            playerNumber = ""
         } else {
             // display error
         }
     }
+    
 }
 
 

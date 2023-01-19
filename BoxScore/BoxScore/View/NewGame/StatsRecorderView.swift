@@ -12,6 +12,9 @@ struct StatsRecorderView: View {
     @StateObject public var viewModel: GameStatsViewModel
     @State private var showSheet: Bool = false
     
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
         VStack {
             VStack(spacing: 15) {
@@ -104,7 +107,32 @@ struct StatsRecorderView: View {
             Spacer()
             
             // Add stats leaders for PTS, AST, REB
+            
+            NavigationLink("", isActive: $viewModel.goToFinalView) {
+                FinalGameStatView(viewModel: viewModel)
+            }
+            .hidden()
         }
+        .navigationBarItems(trailing:
+                                Button {
+            viewModel.saveGame(closure: { game in
+                let newGame = BoxscoreGame(context: viewContext)
+                newGame.id = game.id
+                newGame.yourTeam = game.yourTeam
+                newGame.oppositeTeam = game.oppositeTeam
+                
+                do {
+                    try viewContext.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            })
+        } label: {
+            Text("Save")
+                .foregroundColor(viewModel.shouldGoNext ? Color.subElement : Color.gray)
+        }
+            .disabled(!viewModel.shouldGoNext)
+        )
         .sheet(isPresented: $showSheet) {
             StatSheetView(viewModel: viewModel, statType: viewModel.sheetType)
         }

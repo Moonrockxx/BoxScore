@@ -14,6 +14,9 @@ struct NewGameTeamSelectionView: View {
     @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
     @State private var goToNextView: Bool = false
     
+    @EnvironmentObject var controller: DataController
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
         VStack {
             Form {
@@ -73,6 +76,8 @@ struct NewGameTeamSelectionView: View {
             
             NavigationLink("", isActive: $goToNextView) {
                 StatsRecorderView(viewModel: viewModel)
+                    .environmentObject(controller)
+                    .environment(\.managedObjectContext, controller.container.viewContext)
             }
             .hidden()
         }

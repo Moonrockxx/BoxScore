@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BoxscoreGame" representedClassName="BoxscoreGame" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="oppositeTeam" optional="YES" attributeType="Transformable" customClassName="Team"/>
+        <attribute name="yourTeam" optional="YES" attributeType="Transformable" customClassName="Team"/>
+    </entity>
     <entity name="BoxscorePlayer" representedClassName="BoxscorePlayer" syncable="YES" codeGenerationType="class">
         <attribute name="assists" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="blocks" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

@@ -68,7 +68,7 @@ struct AllTeamsView: View {
         .sheet(isPresented: $viewModel.showNewTeamSheet) {
             NavigationView {
                 NewTeamFormView(viewModel: viewModel)
-                environmentObject(controller)
+                    .environmentObject(controller)
                     .environment(\.managedObjectContext, controller.container.viewContext)
             }
         }
