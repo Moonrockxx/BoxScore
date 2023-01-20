@@ -135,9 +135,12 @@ public class GameStatsViewModel: ObservableObject {
     
     //MARK: Functions
     public func startNewGame() {
+        guard let categorie = selectedTeam.categorie else { return }
+        guard let teamNumber = selectedTeam.teamNumber else { return }
+        
         self.yourTeam = Team(clubName: clubName,
-                             categorie: selectedTeam.categorie ?? Team.Categories(rawValue: "")!,
-                             name: "\(selectedTeam.categorie) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? selectedTeam.teamNumber : "")",
+                             categorie: categorie,
+                             name: "\(categorie.rawValue) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? teamNumber : "")",
                              players: activePlayers,
                              games: nil,
                              teamNumber: nil,

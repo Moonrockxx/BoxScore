@@ -32,9 +32,10 @@ struct GameRowView: View {
         HStack {
             VStack {
                 Spacer()
-                
-                Text(item.yourTeam?.name ?? "")
-                    .foregroundColor(Color.text)
+                if let yourTeam = item.yourTeam {
+                    Text(yourTeam.name)
+                        .foregroundColor(Color.text)
+                }
                 
                 HStack {
                     Text(item.yourTeam?.clubName ?? "")
