@@ -19,7 +19,7 @@ struct StatsRecorderView: View {
         VStack {
             VStack(spacing: 15) {
                 if let yourTeam = viewModel.yourTeam {
-                    Text("\(yourTeam.categorie.rawValue) - \(yourTeam.isMenTeam ? "M" : "F")")
+                    Text("\(yourTeam.categorie?.rawValue ?? "") - \(yourTeam.isMenTeam ? "M" : "F")")
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
                         .background(Color.subElement)
@@ -123,7 +123,7 @@ struct StatsRecorderView: View {
                 
                 do {
                     try viewContext.save()
-                } catch {
+                } catch let error as NSError {
                     print(error.localizedDescription)
                 }
             })

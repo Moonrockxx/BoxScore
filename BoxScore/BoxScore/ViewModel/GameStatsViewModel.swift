@@ -136,7 +136,7 @@ public class GameStatsViewModel: ObservableObject {
     //MARK: Functions
     public func startNewGame() {
         self.yourTeam = Team(clubName: clubName,
-                             categorie: selectedTeam.categorie,
+                             categorie: selectedTeam.categorie ?? Team.Categories(rawValue: "")!,
                              name: "\(selectedTeam.categorie) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? selectedTeam.teamNumber : "")",
                              players: activePlayers,
                              games: nil,
@@ -146,7 +146,7 @@ public class GameStatsViewModel: ObservableObject {
                              isMultipleTeams: false)
         
         self.oppositeTeam = Team(clubName: oppositeTeamName,
-                                 categorie: selectedTeam.categorie,
+                                 categorie: selectedTeam.categorie ?? Team.Categories(rawValue: "")!,
                                  name: oppositeTeamName,
                                  players: nil,
                                  games: nil,
@@ -232,17 +232,17 @@ public class GameStatsViewModel: ObservableObject {
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     } else {
                         self.game?.yourTeam?.players?[index].twoPointAttempts += 1
-                        self.game?.yourTeam?.twoPointAttempts += 1
+                        self.game?.yourTeam?.twoPointsAttempts += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     }
                 } else {
                     if self.isShotMade {
                         self.game?.oppositeTeam?.score += 2
-                        self.game?.oppositeTeam?.twoPointAttempts += 1
-                        self.game?.oppositeTeam?.twoPointMade += 1
+                        self.game?.oppositeTeam?.twoPointsAttempts += 1
+                        self.game?.oppositeTeam?.twoPointsMade += 1
                         print(self.game?.oppositeTeam?.score ?? 0)
                     } else {
-                        self.game?.oppositeTeam?.twoPointAttempts += 1
+                        self.game?.oppositeTeam?.twoPointsAttempts += 1
                         print(self.game?.oppositeTeam?.score ?? 0)
                     }
                 }
@@ -258,17 +258,17 @@ public class GameStatsViewModel: ObservableObject {
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     } else {
                         self.game?.yourTeam?.players?[index].threePointAttempts += 1
-                        self.game?.yourTeam?.threePointAttempts += 1
+                        self.game?.yourTeam?.threePointsAttempts += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     }
                 } else {
                     if self.isShotMade {
                         self.game?.oppositeTeam?.score += 3
-                        self.game?.oppositeTeam?.threePointAttempts += 1
-                        self.game?.oppositeTeam?.threePointMade += 1
+                        self.game?.oppositeTeam?.threePointsAttempts += 1
+                        self.game?.oppositeTeam?.threePointsMade += 1
                         print(self.game?.oppositeTeam?.score ?? 0)
                     } else {
-                        self.game?.oppositeTeam?.threePointAttempts += 1
+                        self.game?.oppositeTeam?.threePointsAttempts += 1
                         print(self.game?.oppositeTeam?.score ?? 0)
                     }
                 }

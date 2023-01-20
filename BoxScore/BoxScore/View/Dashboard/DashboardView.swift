@@ -26,7 +26,9 @@ struct DashboardView: View {
                                     .environmentObject(controller)
                                     .environment(\.managedObjectContext, controller.container.viewContext)
                             case .allGames:
-                                Text("All games")
+                                AllGamesView()
+                                    .environmentObject(controller)
+                                    .environment(\.managedObjectContext, controller.container.viewContext)
                             case .teams:
                                 AllTeamsView()
                                     .environmentObject(controller)

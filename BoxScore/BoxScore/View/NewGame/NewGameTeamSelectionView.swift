@@ -22,8 +22,9 @@ struct NewGameTeamSelectionView: View {
             Form {
                 Section {
                     Picker("Select your team", selection: $viewModel.selectedTeam) {
-                        ForEach(viewModel.fetchedTeams, id: \.self) { team in
-                            Text(team.name)
+                        ForEach(viewModel.fetchedTeams, id: \.self) {
+                            Text($0.name)
+                                .tag($0)
                         }
                     }
                     .pickerStyle(.menu)

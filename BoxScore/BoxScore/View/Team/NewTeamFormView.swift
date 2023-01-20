@@ -46,7 +46,7 @@ struct NewTeamFormView: View {
                  let newTeam = BoxscoreTeam(context: viewContext)
                  newTeam.id = team.id
                  newTeam.clubName = team.clubName
-                 newTeam.categorie = team.categorie.rawValue
+                 newTeam.categorie = team.categorie?.rawValue
                  newTeam.name = team.name
                  newTeam.teamNumber = team.teamNumber
                  newTeam.isMenTeam = team.isMenTeam
