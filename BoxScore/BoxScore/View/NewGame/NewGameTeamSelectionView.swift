@@ -62,6 +62,8 @@ struct NewGameTeamSelectionView: View {
                     Text("Opposite team")
                 }
             }
+            .background(Color.white)
+            .adaptsToKeyboard()
             .navigationTitle("Pre-Game")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
@@ -82,6 +84,7 @@ struct NewGameTeamSelectionView: View {
             }
             .hidden()
         }
+        .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             viewModel.teamMapper(for: teams, with: players)
