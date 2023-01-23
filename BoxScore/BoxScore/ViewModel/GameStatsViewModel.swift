@@ -136,14 +136,15 @@ public class GameStatsViewModel: ObservableObject {
     //MARK: Functions
     public func startNewGame() {
         guard let categorie = selectedTeam.categorie else { return }
+        guard let categorieName = selectedTeam.categorie?.rawValue else { return }
         guard let teamNumber = selectedTeam.teamNumber else { return }
         
         self.yourTeam = Team(clubName: clubName,
                              categorie: categorie,
-                             name: "\(categorie.rawValue) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? teamNumber : "")",
+                             name: "\(categorieName) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? teamNumber : "")",
                              players: activePlayers,
                              games: nil,
-                             teamNumber: nil,
+                             teamNumber: teamNumber,
                              score: 0,
                              isMenTeam: selectedTeam.isMenTeam,
                              isMultipleTeams: false)
@@ -164,18 +165,18 @@ public class GameStatsViewModel: ObservableObject {
     
     public func teamMapper(for teams: FetchedResults<BoxscoreTeam>, with players: FetchedResults<BoxscorePlayer>) {
         teams.forEach { team in
-            var fetchedTeam = Team(id: team.id ?? UUID(),
+            let fetchedTeam = Team(id: team.id ?? UUID(),
                                    clubName: team.clubName ?? "",
                                    categorie: Team.Categories(rawValue: team.categorie ?? "") ?? Team.Categories(rawValue: "")!,
                                    name: team.name ?? "",
                                    players: [],
                                    games: [],
-                                   teamNumber: "",
+                                   teamNumber: team.teamNumber,
                                    isMenTeam: team.isMenTeam,
                                    isMultipleTeams: team.isMultipleTeam)
             
             players.filter({ $0.teamId == fetchedTeam.id }).forEach { player in
-                var player = Player(teamId: player.teamId ?? UUID(),
+                let player = Player(teamId: player.teamId ?? UUID(),
                                     firstName: player.firstName ?? "",
                                     lastName: player.lastName ?? "",
                                     number: player.number ?? "")
