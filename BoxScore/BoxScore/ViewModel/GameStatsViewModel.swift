@@ -45,33 +45,28 @@ public enum RecordableStats: String {
             return "TO"
         }
     }
+}
+
+public enum FlowType: Int, CaseIterable {
+    case pregame
+    case recorder
+    case final
     
-    //        var action: () -> () {
-    //            switch self {
-    //            case .freeThrow:
-    //                <#code#>
-    //            case .twoPoints:
-    //                <#code#>
-    //            case .threePoints:
-    //                <#code#>
-    //            case .rebond:
-    //                <#code#>
-    //            case .assist:
-    //                <#code#>
-    //            case .interception:
-    //                <#code#>
-    //            case .block:
-    //                <#code#>
-    //            case .personalFoul:
-    //                <#code#>
-    //            case .turnOver:
-    //                <#code#>
-    //            }
-    //        }
+    public var title: String {
+        switch self {
+        case .pregame:
+            return "Pre-game"
+        case .recorder:
+            return "Recorder"
+        case .final:
+            return "Stats"
+        }
+    }
 }
 
 public class GameStatsViewModel: ObservableObject {
     //MARK: Variables
+    @Published public var flowType: FlowType = .pregame
     @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false) {
         didSet {
             if let players = selectedTeam.players {
@@ -97,6 +92,7 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var shouldHighlightOppositeTeamButton: Bool = false
     @Published public var shouldShowActivePlayersList: Bool = false
     @Published public var goToFinalView: Bool = false
+    @Published public var dismissRecorderFlow: Bool = false
     
     @Published public var sheetType: RecordableStats = .freeThrow
     
@@ -134,6 +130,18 @@ public class GameStatsViewModel: ObservableObject {
     }
     
     //MARK: Functions
+    @ViewBuilder
+    public func view(type: FlowType, viewModel: GameStatsViewModel) -> some View {
+        switch type {
+        case .pregame:
+            NewGameTeamSelectionView(viewModel: viewModel)
+        case .recorder:
+            StatsRecorderView(viewModel: viewModel)
+        case .final:
+            FinalGameStatView(viewModel: viewModel)
+        }
+    }
+    
     public func startNewGame() {
         guard let categorie = selectedTeam.categorie else { return }
         guard let categorieName = selectedTeam.categorie?.rawValue else { return }
@@ -161,6 +169,7 @@ public class GameStatsViewModel: ObservableObject {
         
         self.game = Game(yourTeam: yourTeam,
                          oppositeTeam: oppositeTeam)
+        self.flowType = .recorder
     }
     
     public func teamMapper(for teams: FetchedResults<BoxscoreTeam>, with players: FetchedResults<BoxscorePlayer>) {
@@ -191,8 +200,14 @@ public class GameStatsViewModel: ObservableObject {
     public func saveGame(closure: (Game) -> ()) {
         if let game = self.game {
             closure(game)
-            self.goToFinalView = true
+//            self.goToFinalView = true
+            self.flowType = .final
         }
+    }
+    
+    public func backToDashboard() {
+        self.dismissRecorderFlow = true
+        self.flowType = .pregame
     }
     
     public func addStat(type: RecordableStats, player: Player?) {

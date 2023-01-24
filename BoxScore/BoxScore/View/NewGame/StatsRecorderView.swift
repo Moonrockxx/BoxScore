@@ -108,10 +108,10 @@ struct StatsRecorderView: View {
             
             // Add stats leaders for PTS, AST, REB
             
-            NavigationLink("", isActive: $viewModel.goToFinalView) {
-                FinalGameStatView(viewModel: viewModel)
-            }
-            .hidden()
+//            NavigationLink("", isActive: $viewModel.goToFinalView) {
+//                FinalGameStatView(viewModel: viewModel)
+//            }
+//            .hidden()
         }
         .navigationBarItems(trailing:
                                 Button {

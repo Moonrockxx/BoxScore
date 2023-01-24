@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import Tabler
 
 struct FinalGameStatView: View {
     
     @StateObject public var viewModel: GameStatsViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Final view")
+        }
+        .navigationBarItems(trailing: Button(action: {
+            viewModel.backToDashboard()
+        }, label: {
+            Text("Quit")
+        }))
     }
 }
 

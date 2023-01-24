@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewGameTeamSelectionView: View {
     
-    @ObservedObject public var viewModel: GameStatsViewModel = GameStatsViewModel()
+    @ObservedObject public var viewModel: GameStatsViewModel
     @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
     @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
     @State private var goToNextView: Bool = false
@@ -77,12 +77,12 @@ struct NewGameTeamSelectionView: View {
                 .disabled(!viewModel.shouldGoNext)
             )
             
-            NavigationLink("", isActive: $goToNextView) {
-                StatsRecorderView(viewModel: viewModel)
-                    .environmentObject(controller)
-                    .environment(\.managedObjectContext, controller.container.viewContext)
-            }
-            .hidden()
+//            NavigationLink("", isActive: $goToNextView) {
+//                StatsRecorderView(viewModel: viewModel)
+//                    .environmentObject(controller)
+//                    .environment(\.managedObjectContext, controller.container.viewContext)
+//            }
+//            .hidden()
         }
         .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
@@ -97,6 +97,6 @@ struct NewGameTeamSelectionView: View {
 
 struct NewGameTeamSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameTeamSelectionView()
+        NewGameTeamSelectionView(viewModel: GameStatsViewModel())
     }
 }

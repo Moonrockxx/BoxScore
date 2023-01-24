@@ -22,30 +22,26 @@ struct DashboardView: View {
                         NavigationLink {
                             switch item.linkValue {
                             case .newGame:
-                                NewGameTeamSelectionView()
-                                    .environmentObject(controller)
-                                    .environment(\.managedObjectContext, controller.container.viewContext)
+                                GameRecorderRootView()
                             case .allGames:
                                 AllGamesView()
-                                    .environmentObject(controller)
-                                    .environment(\.managedObjectContext, controller.container.viewContext)
                             case .teams:
                                 AllTeamsView()
-                                    .environmentObject(controller)
-                                    .environment(\.managedObjectContext, controller.container.viewContext)
                             }
                         } label: {
                             DashboardRowView(item: item)
                         }
+                        .environmentObject(controller)
+                        .environment(\.managedObjectContext, controller.container.viewContext)
                     }
                 }
                 .padding(.top, 25)
-                
+
                 NavigationLink("", isActive: $goToSettings) {
                     SettingsView()
                 }
                 .hidden()
-                
+
                 Spacer()
             }
             .navigationTitle("BoxScore")

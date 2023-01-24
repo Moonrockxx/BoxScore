@@ -33,6 +33,8 @@
 		60A4EE9C2948BCA600E8747B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9B2948BCA600E8747B /* Team.swift */; };
 		60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9D2948BCBA00E8747B /* Player.swift */; };
 		60A6E262297BE08800686C32 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */; };
+		60A6E267297ED9E300686C32 /* Tabler in Frameworks */ = {isa = PBXBuildFile; productRef = 60A6E266297ED9E300686C32 /* Tabler */; };
+		60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */; };
 		60AF6C042965B997002F236F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C032965B997002F236F /* DataController.swift */; };
 		60AF6C072965BC2C002F236F /* Boxscore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */; };
 		60C46ED42949121C00310CF8 /* AllTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED32949121C00310CF8 /* AllTeamsView.swift */; };
@@ -92,6 +94,7 @@
 		60A4EE9B2948BCA600E8747B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
+		60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecorderRootView.swift; sourceTree = "<group>"; };
 		60AF6C032965B997002F236F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		60AF6C062965BC2C002F236F /* Boxscore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Boxscore.xcdatamodel; sourceTree = "<group>"; };
 		60C46ED32949121C00310CF8 /* AllTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsView.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A6E267297ED9E300686C32 /* Tabler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +318,7 @@
 				60065CBA2955F5C3002929F5 /* AddStatButtonView.swift */,
 				60065CC629561248002929F5 /* StatSheetView.swift */,
 				60F8F6672979A1C900F79868 /* FinalGameStatView.swift */,
+				60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */,
 			);
 			path = NewGame;
 			sourceTree = "<group>";
@@ -334,6 +339,9 @@
 			dependencies = (
 			);
 			name = BoxScore;
+			packageProductDependencies = (
+				60A6E266297ED9E300686C32 /* Tabler */,
+			);
 			productName = BoxScore;
 			productReference = 605E14D0293F7B6A00B906A4 /* BoxScore.app */;
 			productType = "com.apple.product-type.application";
@@ -406,6 +414,9 @@
 				Base,
 			);
 			mainGroup = 605E14C7293F7B6A00B906A4;
+			packageReferences = (
+				60A6E265297ED9E300686C32 /* XCRemoteSwiftPackageReference "SwiftTabler" */,
+			);
 			productRefGroup = 605E14D1293F7B6A00B906A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -452,6 +463,7 @@
 				60C46EDA294A23D100310CF8 /* NewTeamFormView.swift in Sources */,
 				60C46ED82949173D00310CF8 /* TeamRowView.swift in Sources */,
 				600528C92954EFB2006AB6AC /* StatsRecorderView.swift in Sources */,
+				60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */,
 				60C46EDF294A2D0200310CF8 /* NewPlayerFormView.swift in Sources */,
 				600528CB2954F015006AB6AC /* GameStatsViewModel.swift in Sources */,
 				6000E4AE2979A73500A38845 /* AllGamesView.swift in Sources */,
@@ -805,6 +817,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		60A6E265297ED9E300686C32 /* XCRemoteSwiftPackageReference "SwiftTabler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openalloc/SwiftTabler";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60A6E266297ED9E300686C32 /* Tabler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60A6E265297ED9E300686C32 /* XCRemoteSwiftPackageReference "SwiftTabler" */;
+			productName = Tabler;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */ = {

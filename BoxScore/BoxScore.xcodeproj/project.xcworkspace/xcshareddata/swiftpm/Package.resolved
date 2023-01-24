@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swifttabler",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/openalloc/SwiftTabler",
+      "state" : {
+        "revision" : "863e1be58e49a68ae84184e471f400ff4d760bda",
+        "version" : "0.9.7"
+      }
+    }
+  ],
+  "version" : 2
+}
