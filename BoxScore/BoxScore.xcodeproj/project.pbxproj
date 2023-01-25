@@ -19,6 +19,7 @@
 		60065CC3295608B5002929F5 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC2295608B5002929F5 /* NavigationButton.swift */; };
 		60065CC5295609C9002929F5 /* SettingsClubNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC4295609C9002929F5 /* SettingsClubNameView.swift */; };
 		60065CC729561248002929F5 /* StatSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC629561248002929F5 /* StatSheetView.swift */; };
+		605C5868298052E80091AE8E /* StatLineTitlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C5867298052E80091AE8E /* StatLineTitlesView.swift */; };
 		605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */; };
 		605E14D6293F7B6A00B906A4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D5293F7B6A00B906A4 /* DashboardView.swift */; };
 		605E14D8293F7B6C00B906A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 605E14D7293F7B6C00B906A4 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		60A6E262297BE08800686C32 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */; };
 		60A6E267297ED9E300686C32 /* Tabler in Frameworks */ = {isa = PBXBuildFile; productRef = 60A6E266297ED9E300686C32 /* Tabler */; };
 		60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */; };
+		60A6E26B2980444E00686C32 /* StatLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E26A2980444E00686C32 /* StatLineView.swift */; };
 		60AF6C042965B997002F236F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C032965B997002F236F /* DataController.swift */; };
 		60AF6C072965BC2C002F236F /* Boxscore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */; };
 		60C46ED42949121C00310CF8 /* AllTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46ED32949121C00310CF8 /* AllTeamsView.swift */; };
@@ -77,6 +79,7 @@
 		60065CC2295608B5002929F5 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		60065CC4295609C9002929F5 /* SettingsClubNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClubNameView.swift; sourceTree = "<group>"; };
 		60065CC629561248002929F5 /* StatSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatSheetView.swift; sourceTree = "<group>"; };
+		605C5867298052E80091AE8E /* StatLineTitlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLineTitlesView.swift; sourceTree = "<group>"; };
 		605E14D0293F7B6A00B906A4 /* BoxScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreApp.swift; sourceTree = "<group>"; };
 		605E14D5293F7B6A00B906A4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecorderRootView.swift; sourceTree = "<group>"; };
+		60A6E26A2980444E00686C32 /* StatLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLineView.swift; sourceTree = "<group>"; };
 		60AF6C032965B997002F236F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		60AF6C062965BC2C002F236F /* Boxscore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Boxscore.xcdatamodel; sourceTree = "<group>"; };
 		60C46ED32949121C00310CF8 /* AllTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsView.swift; sourceTree = "<group>"; };
@@ -319,6 +323,8 @@
 				60065CC629561248002929F5 /* StatSheetView.swift */,
 				60F8F6672979A1C900F79868 /* FinalGameStatView.swift */,
 				60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */,
+				60A6E26A2980444E00686C32 /* StatLineView.swift */,
+				605C5867298052E80091AE8E /* StatLineTitlesView.swift */,
 			);
 			path = NewGame;
 			sourceTree = "<group>";
@@ -487,10 +493,12 @@
 				605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */,
 				60065CC5295609C9002929F5 /* SettingsClubNameView.swift in Sources */,
 				60F8F6682979A1C900F79868 /* FinalGameStatView.swift in Sources */,
+				60A6E26B2980444E00686C32 /* StatLineView.swift in Sources */,
 				6000E4B22979CE7D00A38845 /* AllGamesViewModel.swift in Sources */,
 				60D5FC232954BAFF00D86997 /* NewGameTeamSelectionView.swift in Sources */,
 				60065CC729561248002929F5 /* StatSheetView.swift in Sources */,
 				60065CC0295607E5002929F5 /* SettingsViewModel.swift in Sources */,
+				605C5868298052E80091AE8E /* StatLineTitlesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
