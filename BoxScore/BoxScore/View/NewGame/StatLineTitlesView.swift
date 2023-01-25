@@ -10,15 +10,13 @@ import SwiftUI
 struct StatLineTitlesView: View {
     
     var body: some View {
-//            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    FirstStatLineTitlesGroup()
-                    SecondStatLineTitlesGroup()
-                    ThirdStatLineTitlesGroup()
-                    LastStatLineTitlesGroup()
-                }
-                .font(.system(size: 16, weight: .bold))
-//            }
+        HStack {
+            FirstStatLineTitlesGroup()
+            SecondStatLineTitlesGroup()
+            ThirdStatLineTitlesGroup()
+            LastStatLineTitlesGroup()
+        }
+        .font(.system(size: 16, weight: .bold))
     }
 }
 
@@ -26,33 +24,28 @@ struct FirstStatLineTitlesGroup: View {
     
     var body: some View {
         Group {
-            Text("N°")
-                .frame(width: 30)
-//                .font(.system(size: 16, weight: .bold))
-            
-            Spacer(minLength: 10)
-            
-            Text("Name")
-                .frame(width: 150)
-//                .font(.system(size: 16, weight: .bold))
-            
-            Spacer(minLength: 25)
+            //            Text("N°")
+            //                .frame(width: 30)
+            //
+            //            Spacer(minLength: 10)
+            //
+            //            Text("Name")
+            //                .frame(width: 150)
+            //
+            //            Spacer(minLength: 25)
             
             Text("Pts")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("Reb D")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("Reb O")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
         }
@@ -65,32 +58,27 @@ struct SecondStatLineTitlesGroup: View {
         Group {
             Text("Tot")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
-
+            
             Spacer(minLength: 25)
-
+            
             Text("Ast")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
-
+            
             Spacer(minLength: 25)
-
+            
             Text("Blk")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
-
+            
             Spacer(minLength: 25)
-
+            
             Text("Int")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
-
+            
             Spacer(minLength: 25)
-
+            
             Text("TO")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
-
+            
             Spacer(minLength: 25)
         }
     }
@@ -102,25 +90,21 @@ struct ThirdStatLineTitlesGroup: View {
         Group {
             Text("PF")
                 .frame(width: 75)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("FT A/M")
                 .frame(width: 100)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("FT %")
                 .frame(width: 100)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("2pts A/M")
                 .frame(width: 100)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
         }
@@ -128,24 +112,37 @@ struct ThirdStatLineTitlesGroup: View {
 }
 
 struct LastStatLineTitlesGroup: View {
-    
     var body: some View {
         Group {
             Text("2pts %")
                 .frame(width: 100)
-                
+            
             
             Spacer(minLength: 25)
             
             Text("3pts A/M")
                 .frame(width: 100)
-//                .font(.system(size: 16, weight: .bold))
             
             Spacer(minLength: 25)
             
             Text("3pts %")
                 .frame(width: 100)
-//                .font(.system(size: 16, weight: .bold))
+        }
+    }
+}
+
+struct NumberAndNameTitlesGroupView: View {
+    var body: some View {
+        HStack {
+            Text("N°")
+                .frame(width: 30)
+            
+            Spacer(minLength: 10)
+            
+            Text("Name")
+                .frame(width: 150)
+            
+            Spacer(minLength: 25)
         }
     }
 }

@@ -30,16 +30,16 @@ struct FirstStatLineGroup: View {
     
     var body: some View {
         Group {
-            Text(player.number)
-                .frame(width: 30)
-            
-            Spacer(minLength: 10)
-            
-            Text(player.firstName)
-                .frame(width: 150)
-                .lineLimit(1)
-            
-            Spacer(minLength: 25)
+//            Text(player.number)
+//                .frame(width: 30)
+//
+//            Spacer(minLength: 10)
+//
+//            Text(player.firstName)
+//                .frame(width: 150)
+//                .lineLimit(1)
+//
+//            Spacer(minLength: 25)
             
             Text("\(player.points)")
                 .frame(width: 75)
@@ -141,6 +141,25 @@ struct LastStatLineGroup: View {
     }
 }
 
+struct NumberAndNameGroupView: View {
+    public var player: Player
+    
+    var body: some View {
+        HStack {
+            Text(player.number)
+                .frame(width: 30)
+            
+            Spacer(minLength: 10)
+            
+            Text(player.firstName)
+                .frame(width: 150)
+                .lineLimit(1)
+            
+            Spacer(minLength: 25)
+        }
+    }
+}
+
 struct StatLineView_Previews: PreviewProvider {
     static var previews: some View {
         StatLineView(playerItem: Player(id: UUID(),
@@ -169,9 +188,4 @@ struct StatLineView_Previews: PreviewProvider {
 }
 
 
-extension View {
-    func forTrailingZero(temp: Double) -> String {
-        var tempVar = String(format: "%g", temp)
-        return tempVar
-    }
-}
+

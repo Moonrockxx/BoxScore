@@ -31,7 +31,7 @@ struct FinalGameStatView: View {
                     .background(showYourTeamStats ? Color.subElement : Color.gray)
                     .cornerRadius(8)
                     
-
+                    
                     Button {
                         self.showAlert = true
                     } label: {
@@ -55,18 +55,34 @@ struct FinalGameStatView: View {
             }
             
             if showYourTeamStats {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    StatLineTitlesView()
-                    
-                    Spacer()
-                        .frame(height: 5)
-                    
-                    ForEach(viewModel.game?.yourTeam?.players ?? [], id: \.id) { item in
-                        StatLineView(playerItem: item)
-                            .padding(.vertical, 5)
+                HStack {
+                    VStack {
+                        NumberAndNameTitlesGroupView()
+                            .font(.system(size: 16, weight: .bold))
+                        
+                        Spacer()
+                            .frame(height: 5)
+                        
+                        ForEach(viewModel.game?.yourTeam?.players ?? [], id: \.id) { item in
+                            NumberAndNameGroupView(player: item)
+                                .padding(.vertical, 5)
+                        }
                     }
+                    
+                    ScrollView(.horizontal, showsIndicators: true) {
+                        StatLineTitlesView()
+                        
+                        Spacer()
+                            .frame(height: 5)
+                        
+                        ForEach(viewModel.game?.yourTeam?.players ?? [], id: \.id) { item in
+                            StatLineView(playerItem: item)
+                                .padding(.vertical, 5)
+                        }
+                        
+                    }
+                    .padding(.vertical, 30)
                 }
-                .padding(.vertical, 30)
             }
             
             Spacer()
