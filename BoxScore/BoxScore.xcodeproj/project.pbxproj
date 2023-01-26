@@ -19,6 +19,7 @@
 		60065CC3295608B5002929F5 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC2295608B5002929F5 /* NavigationButton.swift */; };
 		60065CC5295609C9002929F5 /* SettingsClubNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC4295609C9002929F5 /* SettingsClubNameView.swift */; };
 		60065CC729561248002929F5 /* StatSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60065CC629561248002929F5 /* StatSheetView.swift */; };
+		6009CA3429827ABB00C7ECAE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009CA3329827ABB00C7ECAE /* CoreDataManager.swift */; };
 		605C5868298052E80091AE8E /* StatLineTitlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C5867298052E80091AE8E /* StatLineTitlesView.swift */; };
 		605C586A298183C10091AE8E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C5869298183C10091AE8E /* View+Extensions.swift */; };
 		605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */; };
@@ -80,6 +81,7 @@
 		60065CC2295608B5002929F5 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		60065CC4295609C9002929F5 /* SettingsClubNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClubNameView.swift; sourceTree = "<group>"; };
 		60065CC629561248002929F5 /* StatSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatSheetView.swift; sourceTree = "<group>"; };
+		6009CA3329827ABB00C7ECAE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		605C5867298052E80091AE8E /* StatLineTitlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLineTitlesView.swift; sourceTree = "<group>"; };
 		605C5869298183C10091AE8E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		605E14D0293F7B6A00B906A4 /* BoxScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +286,7 @@
 			children = (
 				60AF6C032965B997002F236F /* DataController.swift */,
 				60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */,
+				6009CA3329827ABB00C7ECAE /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				605C586A298183C10091AE8E /* View+Extensions.swift in Sources */,
 				600528C92954EFB2006AB6AC /* StatsRecorderView.swift in Sources */,
 				60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */,
+				6009CA3429827ABB00C7ECAE /* CoreDataManager.swift in Sources */,
 				60C46EDF294A2D0200310CF8 /* NewPlayerFormView.swift in Sources */,
 				600528CB2954F015006AB6AC /* GameStatsViewModel.swift in Sources */,
 				6000E4AE2979A73500A38845 /* AllGamesView.swift in Sources */,
