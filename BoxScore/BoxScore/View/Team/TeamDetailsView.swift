@@ -9,26 +9,26 @@ import SwiftUI
 
 struct TeamDetailsView: View {
     
-    func removePlayer(at offsets: IndexSet) {
-        for index in offsets {
-            let player = players[index]
-            viewContext.delete(player)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                print("Delete team produce an error")
-            }
-        }
-    }
-    
-    @EnvironmentObject var controller: DataController
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
+//    func removePlayer(at offsets: IndexSet) {
+//        for index in offsets {
+//            let player = players[index]
+//            viewContext.delete(player)
+//
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                print("Delete team produce an error")
+//            }
+//        }
+//    }
+//
+//    @EnvironmentObject var controller: DataController
+//    @Environment(\.managedObjectContext) private var viewContext
+//
+//    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
     
     @StateObject public var viewModel: TeamViewModel
-    public var item: BoxscoreTeam
+    public var item: Team
     
     var body: some View {
         VStack {
@@ -36,18 +36,18 @@ struct TeamDetailsView: View {
 //                Text("Add new players to build your team")
 //            } else {
             List {
-                ForEach(players.filter({ $0.teamId == item.id })) { player in
-                    HStack {
-                        Text("\(player.firstName ?? "") \(player.lastName ?? "")")
-                        Spacer()
-                        Text("\(player.number ?? "")")
-                            .padding(5)
-                            .background(Color.subElement)
-                            .foregroundColor(Color.text)
-                            .clipShape(Capsule())
-                    }
-                }
-                .onDelete(perform: removePlayer)
+//                ForEach(players.filter({ $0.teamId == item.id })) { player in
+//                    HStack {
+//                        Text("\(player.firstName ?? "") \(player.lastName ?? "")")
+//                        Spacer()
+//                        Text("\(player.number ?? "")")
+//                            .padding(5)
+//                            .background(Color.subElement)
+//                            .foregroundColor(Color.text)
+//                            .clipShape(Capsule())
+//                    }
+//                }
+//                .onDelete(perform: removePlayer)
             }
 //            }
         }
@@ -63,8 +63,8 @@ struct TeamDetailsView: View {
         .sheet(isPresented: $viewModel.showNewPlayerSheet) {
             NavigationView {
                 NewPlayerFormView(viewModel: viewModel, item: item)
-                    .environmentObject(controller)
-                    .environment(\.managedObjectContext, controller.container.viewContext)
+//                    .environmentObject(controller)
+//                    .environment(\.managedObjectContext, controller.container.viewContext)
             }
         }
     }

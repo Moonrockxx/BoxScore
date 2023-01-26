@@ -10,38 +10,35 @@ import CoreData
 
 struct AllTeamsView: View {
     
-    func removeTeam(at offsets: IndexSet) {
-        for index in offsets {
-            let team = teams[index]
-            viewContext.delete(team)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                print("Delete team produce an error")
-            }
-        }
-    }
-    
-    @EnvironmentObject var controller: DataController
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
+//    func removeTeam(at offsets: IndexSet) {
+//        for index in offsets {
+//            let team = teams[index]
+//            viewContext.delete(team)
+//            
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                print("Delete team produce an error")
+//            }
+//        }
+//    }
+//    
+//    @EnvironmentObject var controller: DataController
+//    @Environment(\.managedObjectContext) private var viewContext
+//    
+//    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
     
     @StateObject public var viewModel: TeamViewModel = TeamViewModel()
     
     var body: some View {
         VStack {
-            if teams.isEmpty {
+            if viewModel.fetchedTeams.isEmpty {
                 Text("No team regristred, add a new team")
             } else {
                 List {
-                    ForEach(teams, id: \.self) { item in
+                    ForEach(viewModel.fetchedTeams, id: \.self) { item in
                         ZStack {
-                            NavigationLink(destination:
-                                            TeamDetailsView(viewModel: viewModel, item: item)
-                                .environmentObject(controller)
-                                .environment(\.managedObjectContext, controller.container.viewContext)) {
+                            NavigationLink(destination: TeamDetailsView(viewModel: viewModel, item: item)) {
                                     EmptyView()
                                 }
                                 .opacity(0.0)
@@ -50,12 +47,20 @@ struct AllTeamsView: View {
                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         .listRowSeparator(.hidden)
                     }
-                    .onDelete(perform: removeTeam)
+//                    .onDelete(perform: removeTeam)
                 }
                 .listStyle(InsetListStyle())
             }
             Spacer()
         }
+        .alert(viewModel.error,
+                isPresented: $viewModel.showTeamError,
+                actions: {
+             Button("OK", role: .cancel) { viewModel.showTeamError = false }
+         })
+        .onAppear(perform: {
+            viewModel.fetchTeams()
+        })
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("All teams")
         .navigationBarItems(trailing:
@@ -68,8 +73,6 @@ struct AllTeamsView: View {
         .sheet(isPresented: $viewModel.showNewTeamSheet) {
             NavigationView {
                 NewTeamFormView(viewModel: viewModel)
-                    .environmentObject(controller)
-                    .environment(\.managedObjectContext, controller.container.viewContext)
             }
         }
     }

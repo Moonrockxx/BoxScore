@@ -9,11 +9,11 @@ import SwiftUI
 
 struct NewPlayerFormView: View {
     
-    @EnvironmentObject var controller: DataController
-    @Environment(\.managedObjectContext) private var viewContext
+//    @EnvironmentObject var controller: DataController
+//    @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject public var viewModel: TeamViewModel
-    public var item: BoxscoreTeam
+    public var item: Team
     
     var body: some View {
         Form {
@@ -26,21 +26,21 @@ struct NewPlayerFormView: View {
             }
         }
         .onAppear(perform: {
-            viewModel.teamId = item.id ?? UUID()
+            viewModel.teamId = item.id
         })
         .navigationTitle("New player")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-            viewModel.savePlayer(team: item,
-                                 closure: { player in
-                let newPlayer = BoxscorePlayer(context: viewContext)
-                newPlayer.id = player.id
-                newPlayer.teamId = player.teamId
-                newPlayer.firstName = player.firstName
-                newPlayer.lastName = player.lastName
-                newPlayer.number = player.number
-                try? viewContext.save()
-            })
+//            viewModel.savePlayer(team: item,
+//                                 closure: { player in
+//                let newPlayer = BoxscorePlayer(context: viewContext)
+//                newPlayer.id = player.id
+//                newPlayer.teamId = player.teamId
+//                newPlayer.firstName = player.firstName
+//                newPlayer.lastName = player.lastName
+//                newPlayer.number = player.number
+//                try? viewContext.save()
+//            })
         }, label: {
             Text("Save")
                 .foregroundColor(Color.subElement)

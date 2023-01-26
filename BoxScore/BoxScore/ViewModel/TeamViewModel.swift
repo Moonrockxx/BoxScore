@@ -10,7 +10,8 @@ import Foundation
 
 public class TeamViewModel: ObservableObject {
     
-    //    public var teamName: String = ""
+    let coreDataManager: CoreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
+    
     public var teamSamples: [Team] = [Team(categorie: .s, name: "U20-M", players: [], games: [], teamNumber: "2", score: 0, isMenTeam: true, isMultipleTeams: true)]
     
     @Published public var categorie: Team.Categories = .u11
@@ -23,59 +24,143 @@ public class TeamViewModel: ObservableObject {
     
     @Published public var showNewTeamSheet: Bool = false
     @Published public var showNewPlayerSheet: Bool = false
+    @Published public var showTeamError: Bool = false
+    
+    @Published public var error: String = ""
+    
+    @Published public var fetchedPlayers: [Player] = []
+    @Published public var fetchedTeams: [Team] = []
+
     
     public var teamId: UUID = UUID()
     
-    public func saveTeam(closure: (Team) -> ()) {
-        let team = Team(categorie: categorie,
-                        name: "\(categorie.rawValue) - \(teamGender == 0 ? "M" : "F") \(isMultipleTeams ? teamNumber : "")",
-                        players: [],
-                        games: [],
-                        teamNumber: teamNumber,
-                        score: 0,
-                        isMenTeam: teamGender == 0,
-                        isMultipleTeams: isMultipleTeams)
-        
-        closure(team)
-        teamSamples.append(team)
-        showNewTeamSheet = false
-    }
-    
-    public func savePlayer(team: BoxscoreTeam, closure: (Player) -> ()) {
-        guard let number = Int(playerNumber) else { return }
-        
-        if !playerName.isEmpty, (0...100).contains(number) {
-            let player = Player(teamId: teamId,
-                                firstName: playerName,
-                                lastName: "",
-                                number: playerNumber,
-                                points: 0,
-                                rebOff: 0,
-                                rebDef: 0,
-                                assists: 0,
-                                turnovers: 0,
-                                interceptions: 0,
-                                blocks: 0,
-                                personalFoul: 0,
-                                freeThrowAttempts: 0,
-                                freeThrowMade: 0,
-                                twoPointAttempts: 0,
-                                twoPointMade: 0,
-                                threePointAttempts: 0,
-                                threePointMade: 0,
-                                freeThrowPercentage: 0,
-                                twoPointPercentage: 0,
-                                threePointPercentage: 0)
-            
-            closure(player)
-            
-            showNewPlayerSheet = false
-            playerName = ""
-            playerNumber = ""
-        } else {
-            // display error
+    public func fetchPlayers() {
+        coreDataManager.fetchPlayers { result in
+            switch result {
+            case .success(let players):
+                players.forEach { bsPlayer in
+                    let player = Player(id: bsPlayer.id ?? UUID(),
+                                        teamId: bsPlayer.teamId ?? UUID(),
+                                        firstName: bsPlayer.firstName ?? "",
+                                        lastName: bsPlayer.lastName ?? "",
+                                        number: bsPlayer.number ?? "",
+                                        points: Int(bsPlayer.points),
+                                        rebOff: Int(bsPlayer.rebOff),
+                                        rebDef: Int(bsPlayer.rebDef),
+                                        assists: Int(bsPlayer.assists),
+                                        turnovers: Int(bsPlayer.turnovers),
+                                        interceptions: Int(bsPlayer.interceptions),
+                                        blocks: Int(bsPlayer.blocks),
+                                        personalFoul: Int(bsPlayer.personalFoul),
+                                        freeThrowAttempts: bsPlayer.freeThrowAttempts,
+                                        freeThrowMade: bsPlayer.freeThrowMade,
+                                        twoPointAttempts: bsPlayer.twoPointsAttempts,
+                                        twoPointMade: bsPlayer.twoPointsMade,
+                                        threePointAttempts: bsPlayer.threePointsAttempts,
+                                        threePointMade: bsPlayer.threePointsMade,
+                                        freeThrowPercentage: bsPlayer.freeThrowPercentage,
+                                        twoPointPercentage: bsPlayer.twoPointsPercentage,
+                                        threePointPercentage: bsPlayer.threePointsPercentage)
+                    
+                    self.fetchedPlayers.append(player)
+                }
+            case .failure(let error):
+                self.error = error.localizedDescription
+            }
         }
     }
+    
+    public func fetchTeams() {
+        coreDataManager.fetchTeam { result in
+            switch result {
+            case .success(let teams):
+                teams.forEach { bsTeam in
+                    let team = Team(id: bsTeam.id ?? UUID(),
+                                    clubName: bsTeam.clubName ?? "",
+                                    categorie: Team.Categories(rawValue: bsTeam.categorie ?? "") ?? .s,
+                                    name: bsTeam.name ?? "",
+                                    players: self.fetchedPlayers.filter({ $0.teamId == self.teamId }),
+                                    games: nil,
+                                    teamNumber: bsTeam.teamNumber,
+                                    score: Int(bsTeam.score),
+                                    rebOff: Int(bsTeam.rebOff),
+                                    rebDef: Int(bsTeam.rebDef),
+                                    interceptions: Int(bsTeam.interceptions),
+                                    assists: Int(bsTeam.assists),
+                                    blocks: Int(bsTeam.blocks),
+                                    turnovers: Int(bsTeam.turnovers),
+                                    fouls: Int(bsTeam.fouls),
+                                    freeThrowAttempts: Int(bsTeam.freeThrowAttempts),
+                                    freeThrowMade: Int(bsTeam.freeThrowMade),
+                                    twoPointsAttempts: Int(bsTeam.twoPointsAttempts),
+                                    twoPointsMade: Int(bsTeam.twoPointsMade),
+                                    threePointsAttempts: Int(bsTeam.threePointsAttempts),
+                                    threePointsMade: Int(bsTeam.threePointsMade),
+                                    freeThrowPercentage: Int(bsTeam.freeThrowPercentage),
+                                    twoPointsPercentage: Int(bsTeam.twoPointsPercentage),
+                                    threePointsPercentage: Int(bsTeam.threePointsPercentage),
+                                    isMenTeam: bsTeam.isMenTeam,
+                                    isMultipleTeams: bsTeam.isMultipleTeam)
+                    
+                    self.fetchedTeams.append(team)
+                }
+            case .failure(let error):
+                self.showTeamError = true
+                self.error = error.localizedDescription
+            }
+        }
+    }
+    
+//    public func saveTeam(closure: (Team) -> ()) {
+//        let team = Team(categorie: categorie,
+//                        name: "\(categorie.rawValue) - \(teamGender == 0 ? "M" : "F") \(isMultipleTeams ? teamNumber : "")",
+//                        players: [],
+//                        games: [],
+//                        teamNumber: teamNumber,
+//                        score: 0,
+//                        isMenTeam: teamGender == 0,
+//                        isMultipleTeams: isMultipleTeams)
+//
+//        closure(team)
+//        teamSamples.append(team)
+//        showNewTeamSheet = false
+//    }
+//
+//    public func savePlayer(team: BoxscoreTeam, closure: (Player) -> ()) {
+//        guard let number = Int(playerNumber) else { return }
+//
+//        if !playerName.isEmpty, (0...100).contains(number) {
+//            let player = Player(teamId: teamId,
+//                                firstName: playerName,
+//                                lastName: "",
+//                                number: playerNumber,
+//                                points: 0,
+//                                rebOff: 0,
+//                                rebDef: 0,
+//                                assists: 0,
+//                                turnovers: 0,
+//                                interceptions: 0,
+//                                blocks: 0,
+//                                personalFoul: 0,
+//                                freeThrowAttempts: 0,
+//                                freeThrowMade: 0,
+//                                twoPointAttempts: 0,
+//                                twoPointMade: 0,
+//                                threePointAttempts: 0,
+//                                threePointMade: 0,
+//                                freeThrowPercentage: 0,
+//                                twoPointPercentage: 0,
+//                                threePointPercentage: 0)
+//
+//            closure(player)
+//
+//            showNewPlayerSheet = false
+//            playerName = ""
+//            playerNumber = ""
+//        } else {
+//            // display error
+//        }
+//    }
     
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TeamRowView: View {
     
-    public var item: BoxscoreTeam
+    public var item: Team
     public var image: String {
         item.isMenTeam ? "menTeam" : "girlTeam"
     }

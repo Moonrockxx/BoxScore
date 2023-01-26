@@ -8,23 +8,6 @@
 import SwiftUI
 
 struct AllGamesView: View {
-    func removeGame(at offsets: IndexSet) {
-        for index in offsets {
-            let game = games[index]
-            viewContext.delete(game)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                print("Delete team produce an error")
-            }
-        }
-    }
-    
-    @EnvironmentObject var controller: DataController
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: []) var games: FetchedResults<BoxscoreGame>
     
     @StateObject public var viewModel: AllGamesViewModel = AllGamesViewModel()
     
@@ -37,9 +20,7 @@ struct AllGamesView: View {
                     ForEach(viewModel.fetchedGames, id: \.id) { item in
                         ZStack {
 //                            NavigationLink(destination:
-//                                            TeamDetailsView(viewModel: viewModel, item: item)
-//                                .environmentObject(controller)
-//                                .environment(\.managedObjectContext, controller.container.viewContext)) {
+//                                            TeamDetailsView(viewModel: viewModel, item: item) {
 //                                    EmptyView()
 //                                }
 //                                .opacity(0.0)
@@ -50,14 +31,14 @@ struct AllGamesView: View {
                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         .listRowSeparator(.hidden)
                     }
-                    .onDelete(perform: removeGame)
+//                    .onDelete(perform: removeGame)
                 }
                 .listStyle(InsetListStyle())
             }
             Spacer()
         }
         .onAppear {
-            viewModel.gameMapper(for: games)
+//            viewModel.gameMapper(for: games)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("All games")

@@ -10,12 +10,12 @@ import SwiftUI
 struct NewGameTeamSelectionView: View {
     
     @ObservedObject public var viewModel: GameStatsViewModel
-    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
-    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
+//    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
+//    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
     @State private var goToNextView: Bool = false
     
-    @EnvironmentObject var controller: DataController
-    @Environment(\.managedObjectContext) private var viewContext
+//    @EnvironmentObject var controller: DataController
+//    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         VStack {
@@ -87,7 +87,7 @@ struct NewGameTeamSelectionView: View {
         .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            viewModel.teamMapper(for: teams, with: players)
+//            viewModel.teamMapper(for: teams, with: players)
         }
         .onDisappear {
             viewModel.fetchedTeams = []
