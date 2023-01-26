@@ -10,31 +10,13 @@ import CoreData
 
 struct AllTeamsView: View {
     
-//    func removeTeam(at offsets: IndexSet) {
-//        for index in offsets {
-//            let team = teams[index]
-//            viewContext.delete(team)
-//            
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                print("Delete team produce an error")
-//            }
-//        }
-//    }
-//    
-//    @EnvironmentObject var controller: DataController
-//    @Environment(\.managedObjectContext) private var viewContext
-//    
-//    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<BoxscoreTeam>
-    
     @StateObject public var viewModel: TeamViewModel = TeamViewModel()
     
     var body: some View {
         VStack {
-            if viewModel.fetchedTeams.isEmpty {
-                Text("No team regristred, add a new team")
-            } else {
+//            if viewModel.fetchedTeams.isEmpty {
+//                Text("No team regristred, add a new team")
+//            } else {
                 List {
                     ForEach(viewModel.fetchedTeams, id: \.self) { item in
                         ZStack {
@@ -50,7 +32,7 @@ struct AllTeamsView: View {
 //                    .onDelete(perform: removeTeam)
                 }
                 .listStyle(InsetListStyle())
-            }
+//            }
             Spacer()
         }
         .alert(viewModel.error,
@@ -58,9 +40,6 @@ struct AllTeamsView: View {
                 actions: {
              Button("OK", role: .cancel) { viewModel.showTeamError = false }
          })
-        .onAppear(perform: {
-            viewModel.fetchTeams()
-        })
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("All teams")
         .navigationBarItems(trailing:

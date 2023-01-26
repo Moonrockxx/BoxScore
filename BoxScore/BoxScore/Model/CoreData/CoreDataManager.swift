@@ -11,6 +11,7 @@ import CoreData
 class CoreDataManager {
     enum CDErrors: Error {
         case noData
+        case saveError
     }
     
     let managedObjectContext: NSManagedObjectContext
@@ -20,7 +21,7 @@ class CoreDataManager {
     }
     
     //MARK: Players
-    func savePlayer(player: Player) {
+    func savePlayer(player: Player, completionHandler: @escaping (Result<BoxscorePlayer, CDErrors>) -> Void) {
         let entity = BoxscorePlayer(context: managedObjectContext)
         entity.id = player.id
         entity.teamId = player.teamId
@@ -47,8 +48,10 @@ class CoreDataManager {
         
         do {
             try CoreDataStack.shared.mainContext.save()
+            completionHandler(.success(entity))
         } catch {
             print(error)
+            completionHandler(.failure(.saveError))
         }
     }
     
@@ -133,37 +136,41 @@ class CoreDataManager {
     
     
     //MARK: Team
-    func saveTeam(team: Team) {
-        let entity = BoxscoreTeam(context: managedObjectContext)
-        entity.id = team.id
-        entity.clubName = team.clubName
-        entity.categorie = team.categorie?.rawValue
-        entity.name = team.name
-        entity.teamNumber = team.teamNumber
-        entity.score = Int64(team.score)
-        entity.rebOff = Int64(team.rebOff)
-        entity.rebDef = Int64(team.rebDef)
-        entity.interceptions = Int64(team.interceptions)
-        entity.assists = Int64(team.assists)
-        entity.blocks = Int64(team.blocks)
-        entity.turnovers = Int64(team.turnovers)
-        entity.fouls = Int64(team.fouls)
-        entity.freeThrowAttempts = Int64(team.freeThrowAttempts)
-        entity.freeThrowMade = Int64(team.freeThrowMade)
-        entity.twoPointsAttempts = Int64(team.twoPointsAttempts)
-        entity.twoPointsMade = Int64(team.twoPointsMade)
-        entity.threePointsAttempts = Int64(team.threePointsAttempts)
-        entity.threePointsMade = Int64(team.threePointsMade)
-        entity.freeThrowPercentage = Int64(team.freeThrowPercentage)
-        entity.twoPointsPercentage = Int64(team.twoPointsPercentage)
-        entity.threePointsPercentage = Int64(team.threePointsPercentage)
-        entity.isMenTeam = team.isMenTeam
-        entity.isMultipleTeam = team.isMultipleTeams
-        
-        do {
-            try CoreDataStack.shared.mainContext.save()
-        } catch {
-            print(error)
+    func saveTeam(team: Team, completionHandler: @escaping (Result<BoxscoreTeam, CDErrors>) -> Void)  {
+        DispatchQueue.main.async {
+            let entity = BoxscoreTeam(context: self.managedObjectContext)
+            entity.id = team.id
+            entity.clubName = team.clubName
+            entity.categorie = team.categorie?.rawValue
+            entity.name = team.name
+            entity.teamNumber = team.teamNumber
+            entity.score = Int64(team.score)
+            entity.rebOff = Int64(team.rebOff)
+            entity.rebDef = Int64(team.rebDef)
+            entity.interceptions = Int64(team.interceptions)
+            entity.assists = Int64(team.assists)
+            entity.blocks = Int64(team.blocks)
+            entity.turnovers = Int64(team.turnovers)
+            entity.fouls = Int64(team.fouls)
+            entity.freeThrowAttempts = Int64(team.freeThrowAttempts)
+            entity.freeThrowMade = Int64(team.freeThrowMade)
+            entity.twoPointsAttempts = Int64(team.twoPointsAttempts)
+            entity.twoPointsMade = Int64(team.twoPointsMade)
+            entity.threePointsAttempts = Int64(team.threePointsAttempts)
+            entity.threePointsMade = Int64(team.threePointsMade)
+            entity.freeThrowPercentage = Int64(team.freeThrowPercentage)
+            entity.twoPointsPercentage = Int64(team.twoPointsPercentage)
+            entity.threePointsPercentage = Int64(team.threePointsPercentage)
+            entity.isMenTeam = team.isMenTeam
+            entity.isMultipleTeam = team.isMultipleTeams
+            
+            do {
+                try CoreDataStack.shared.mainContext.save()
+                completionHandler(.success(entity))
+            } catch {
+                print(error)
+                completionHandler(.failure(.saveError))
+            }
         }
     }
     
@@ -183,14 +190,16 @@ class CoreDataManager {
     }
     
     func fetchTeam(completionHandler: @escaping (Result<[BoxscoreTeam], CDErrors>) -> Void) {
-        let request: NSFetchRequest = BoxscoreTeam.fetchRequest()
-        
-        do {
-            let fetchedTeams = try managedObjectContext.fetch(request)
-            return completionHandler(.success(fetchedTeams))
-        } catch {
-            print("Fetch teams fails with error : \(error.localizedDescription)")
-            return completionHandler(.failure(.noData))
+        DispatchQueue.main.async {
+            let request: NSFetchRequest = BoxscoreTeam.fetchRequest()
+            
+            do {
+                let fetchedTeams = try self.managedObjectContext.fetch(request)
+                return completionHandler(.success(fetchedTeams))
+            } catch {
+                print("Fetch teams fails with error : \(error.localizedDescription)")
+                return completionHandler(.failure(.noData))
+            }
         }
     }
 }

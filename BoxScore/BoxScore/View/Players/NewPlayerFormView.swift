@@ -31,6 +31,7 @@ struct NewPlayerFormView: View {
         .navigationTitle("New player")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
+            viewModel.savePlayer()
 //            viewModel.savePlayer(team: item,
 //                                 closure: { player in
 //                let newPlayer = BoxscorePlayer(context: viewContext)

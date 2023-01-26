@@ -51,7 +51,7 @@ struct TeamDetailsView: View {
             }
 //            }
         }
-        .navigationTitle(item.name ?? "")
+        .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
                                 Button {
@@ -63,8 +63,6 @@ struct TeamDetailsView: View {
         .sheet(isPresented: $viewModel.showNewPlayerSheet) {
             NavigationView {
                 NewPlayerFormView(viewModel: viewModel, item: item)
-//                    .environmentObject(controller)
-//                    .environment(\.managedObjectContext, controller.container.viewContext)
             }
         }
     }
