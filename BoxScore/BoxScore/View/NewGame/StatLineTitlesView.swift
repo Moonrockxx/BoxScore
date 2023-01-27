@@ -24,16 +24,6 @@ struct FirstStatLineTitlesGroup: View {
     
     var body: some View {
         Group {
-            //            Text("N°")
-            //                .frame(width: 30)
-            //
-            //            Spacer(minLength: 10)
-            //
-            //            Text("Name")
-            //                .frame(width: 150)
-            //
-            //            Spacer(minLength: 25)
-            
             Text("Pts")
                 .frame(width: 75)
             
@@ -116,7 +106,6 @@ struct LastStatLineTitlesGroup: View {
         Group {
             Text("2pts %")
                 .frame(width: 100)
-            
             
             Spacer(minLength: 25)
             

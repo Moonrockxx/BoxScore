@@ -8,8 +8,6 @@
 import Foundation
 
 public class Player: Codable, Identifiable {
-    
-    
     public var id = UUID()
     public var teamId = UUID()
     

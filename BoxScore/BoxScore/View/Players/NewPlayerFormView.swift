@@ -9,9 +9,6 @@ import SwiftUI
 
 struct NewPlayerFormView: View {
     
-//    @EnvironmentObject var controller: DataController
-//    @Environment(\.managedObjectContext) private var viewContext
-    
     @StateObject public var viewModel: TeamViewModel
     public var item: Team
     

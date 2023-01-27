@@ -9,24 +9,6 @@ import SwiftUI
 
 struct TeamDetailsView: View {
     
-//    func removePlayer(at offsets: IndexSet) {
-//        for index in offsets {
-//            let player = players[index]
-//            viewContext.delete(player)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                print("Delete team produce an error")
-//            }
-//        }
-//    }
-//
-//    @EnvironmentObject var controller: DataController
-//    @Environment(\.managedObjectContext) private var viewContext
-//
-//    @FetchRequest(sortDescriptors: []) var players: FetchedResults<BoxscorePlayer>
-    
     @StateObject public var viewModel: TeamViewModel
     public var item: Team
     

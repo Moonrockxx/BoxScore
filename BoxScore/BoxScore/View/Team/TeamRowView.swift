@@ -22,7 +22,7 @@ struct TeamRowView: View {
             VStack {
                 Spacer()
                 
-                Text(item.name ?? "")
+                Text(item.name)
                     .foregroundColor(Color.text)
                     .padding(.bottom)
             }
@@ -50,7 +50,6 @@ struct TeamRowView: View {
         
         .frame(height: 100)
         .cornerRadius(8)
-//        .padding(.horizontal)
     }
 }
 

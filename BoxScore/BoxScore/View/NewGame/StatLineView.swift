@@ -13,14 +13,12 @@ struct StatLineView: View {
     
     var body: some View {
         if let player = playerItem {
-//            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    FirstStatLineGroup(player: player)
-                    SecondStatLineGroup(player: player)
-                    ThirdStatLineGroup(player: player)
-                    LastStatLineGroup(player: player)
-                }
-//            }
+            HStack {
+                FirstStatLineGroup(player: player)
+                SecondStatLineGroup(player: player)
+                ThirdStatLineGroup(player: player)
+                LastStatLineGroup(player: player)
+            }
         }
     }
 }
@@ -30,16 +28,6 @@ struct FirstStatLineGroup: View {
     
     var body: some View {
         Group {
-//            Text(player.number)
-//                .frame(width: 30)
-//
-//            Spacer(minLength: 10)
-//
-//            Text(player.firstName)
-//                .frame(width: 150)
-//                .lineLimit(1)
-//
-//            Spacer(minLength: 25)
             
             Text("\(player.points)")
                 .frame(width: 75)
@@ -66,27 +54,27 @@ struct SecondStatLineGroup: View {
         Group {
             Text("\(player.rebOff + player.rebDef)")
                 .frame(width: 75)
-
+            
             Spacer(minLength: 25)
-
+            
             Text("\(player.assists)")
                 .frame(width: 75)
-
+            
             Spacer(minLength: 25)
-
+            
             Text("\(player.blocks)")
                 .frame(width: 75)
-
+            
             Spacer(minLength: 25)
-
+            
             Text("\(player.interceptions)")
                 .frame(width: 75)
-
+            
             Spacer(minLength: 25)
-
+            
             Text("\(player.turnovers)")
                 .frame(width: 75)
-
+            
             Spacer(minLength: 25)
         }
     }
@@ -164,8 +152,8 @@ struct StatLineView_Previews: PreviewProvider {
     static var previews: some View {
         StatLineView(playerItem: Player(id: UUID(),
                                         teamId: UUID(),
-                                        firstName: "Thomas Ferré de la pampa",
-                                        lastName: "Thomas Ferré de la pampa ",
+                                        firstName: "Thomas Ferré",
+                                        lastName: "Thomas Ferré",
                                         number: "8",
                                         points: 11,
                                         rebOff: 2,

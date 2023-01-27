@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct DashboardView: View {
-//    @EnvironmentObject var controller: DataController
-//    @Environment(\.managedObjectContext) private var viewContext
-    
     @StateObject public var viewModel: DashboardViewModel = DashboardViewModel()
     @State private var goToSettings: Bool = false
     
@@ -31,8 +28,6 @@ struct DashboardView: View {
                         } label: {
                             DashboardRowView(item: item)
                         }
-//                        .environmentObject(controller)
-//                        .environment(\.managedObjectContext, controller.container.viewContext)
                     }
                 }
                 .padding(.top, 25)
@@ -52,8 +47,7 @@ struct DashboardView: View {
             } label: {
                 Image(systemName: "gearshape.circle")
                     .tint(Color.subElement)
-            }
-            )
+            })
         }
         .background(Color.white)
     }

@@ -12,9 +12,6 @@ struct StatsRecorderView: View {
     @StateObject public var viewModel: GameStatsViewModel
     @State private var showSheet: Bool = false
     
-//    @EnvironmentObject var controller: DataController
-//    @Environment(\.managedObjectContext) private var viewContext
-    
     var body: some View {
         VStack {
             VStack(spacing: 15) {

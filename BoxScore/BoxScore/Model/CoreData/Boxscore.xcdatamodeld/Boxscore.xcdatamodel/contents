@@ -29,7 +29,7 @@
         <attribute name="twoPointsMade" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="twoPointsPercentage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="BoxscoreTeam" representedClassName="BoxscoreTeam" syncable="YES" codeGenerationType="class">
+    <entity name="BoxscoreTeam" representedClassName=".BoxscoreTeam" syncable="YES" codeGenerationType="category">
         <attribute name="assists" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="blocks" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="categorie" optional="YES" attributeType="String"/>

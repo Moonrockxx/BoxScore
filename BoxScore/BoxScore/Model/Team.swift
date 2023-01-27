@@ -8,10 +8,6 @@
 import Foundation
 
 public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
-    
-    
-    
-    
     public enum Categories: String, CaseIterable, Codable {
         case u11 = "U11"
         case u13 = "U13"
@@ -196,62 +192,6 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         isMenTeam = coder.decodeBool(forKey: "isMenTeam")
         isMultipleTeams = coder.decodeBool(forKey: "isMultipleTeams")
     }
-    
-    
-    //    required public init(from decoder: Decoder) throws {
-    //        let values = try decoder.container(keyedBy: CodingKeys.self)
-    //        id = try values.decode(UUID.self, forKey: .id)
-    //        clubName = try values.decode(String.self, forKey: .clubName)
-    //        categorie = try values.decode(Team.Categories.self, forKey: .categorie)
-    //        name = try values.decode(String.self, forKey: .name)
-    //        teamNumber = try values.decode(String.self, forKey: .teamNumber)
-    //        score = try values.decode(Int.self, forKey: .score)
-    //        rebOff = try values.decode(Int.self, forKey: .rebOff)
-    //        rebDef = try values.decode(Int.self, forKey: .rebDef)
-    //        interceptions = try values.decode(Int.self, forKey: .interceptions)
-    //        assists = try values.decode(Int.self, forKey: .assists)
-    //        blocks = try values.decode(Int.self, forKey: .blocks)
-    //        turnovers = try values.decode(Int.self, forKey: .turnovers)
-    //        fouls = try values.decode(Int.self, forKey: .fouls)
-    //        freeThrowAttempts = try values.decode(Double.self, forKey: .freeThrowAttempts)
-    //        freeThrowMade = try values.decode(Double.self, forKey: .freeThrowMade)
-    //        twoPointAttempts = try values.decode(Double.self, forKey: .twoPointAttempts)
-    //        twoPointMade = try values.decode(Double.self, forKey: .twoPointMade)
-    //        threePointAttempts = try values.decode(Double.self, forKey: .threePointAttempts)
-    //        threePointMade = try values.decode(Double.self, forKey: .threePointMade)
-    //        freeThrowPercentage = try values.decode(Double.self, forKey: .freeThrowPercentage)
-    //        twoPointPercentage = try values.decode(Double.self, forKey: .twoPointPercentage)
-    //        threePointPercentage = try values.decode(Double.self, forKey: .threePointPercentage)
-    //        isMenTeam = try values.decode(Bool.self, forKey: .isMenTeam)
-    //        isMultipleTeams = try values.decode(Bool.self, forKey: .isMultipleTeams)
-    //    }
-    
-    //    public func encode(to encoder: Encoder) throws {
-    //        var container = encoder.container(keyedBy: CodingKeys.self)
-    //        try container.encode(id, forKey: .id)
-    //        try container.encode(clubName, forKey: .clubName)
-    //        try container.encode(categorie.rawValue, forKey: .categorie)
-    //        try container.encode(teamNumber, forKey: .teamNumber)
-    //        try container.encode(score, forKey: .score)
-    //        try container.encode(rebOff, forKey: .rebOff)
-    //        try container.encode(rebDef, forKey: .rebDef)
-    //        try container.encode(interceptions, forKey: .interceptions)
-    //        try container.encode(assists, forKey: .assists)
-    //        try container.encode(blocks, forKey: .blocks)
-    //        try container.encode(turnovers, forKey: .turnovers)
-    //        try container.encode(fouls, forKey: .fouls)
-    //        try container.encode(freeThrowAttempts, forKey: .freeThrowAttempts)
-    //        try container.encode(freeThrowMade, forKey: .freeThrowMade)
-    //        try container.encode(twoPointAttempts, forKey: .twoPointAttempts)
-    //        try container.encode(twoPointMade, forKey: .twoPointMade)
-    //        try container.encode(threePointAttempts, forKey: .threePointAttempts)
-    //        try container.encode(threePointMade, forKey: .threePointMade)
-    //        try container.encode(freeThrowPercentage, forKey: .freeThrowPercentage)
-    //        try container.encode(twoPointPercentage, forKey: .twoPointPercentage)
-    //        try container.encode(threePointPercentage, forKey: .threePointPercentage)
-    //        try container.encode(isMenTeam, forKey: .isMenTeam)
-    //        try container.encode(isMultipleTeams, forKey: .isMultipleTeams)
-    //    }
 }
 
 @objc(TeamTransformer)
@@ -270,13 +210,3 @@ class TeamTransformer: NSSecureUnarchiveFromDataTransformer {
     }
     
 }
-
-//extension Team: Hashable {
-//    public static func == (lhs: Team, rhs: Team) -> Bool {
-//        return lhs.id == rhs.id
-//    }
-//
-//    public func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//}

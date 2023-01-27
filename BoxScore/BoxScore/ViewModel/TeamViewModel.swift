@@ -110,8 +110,6 @@ public class TeamViewModel: ObservableObject {
                                         isMultipleTeams: bsTeam.isMultipleTeam)
                         
                         self.fetchedTeams.append(team)
-                        
-                        
                     }
                 case .failure(let error):
                     self.showTeamError = true

@@ -34,14 +34,4 @@ class CoreDataStack {
         })
         
     }
-
-//    // MARK: - Method to save the context
-//    func saveContext() {
-//        do {
-//            try mainContext.save()
-//        }
-//        catch {
-//            print(error.localizedDescription)
-//        }
-//    }
 }
