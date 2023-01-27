@@ -15,6 +15,8 @@ struct FinalGameStatView: View {
     @State private var showOppositeTeamStats: Bool = false
     @State private var showAlert: Bool = false
     
+    public var item: Game
+    
     var body: some View {
         VStack(alignment: .leading) {
             Section {
@@ -23,7 +25,7 @@ struct FinalGameStatView: View {
                         self.showYourTeamStats.toggle()
                         self.showOppositeTeamStats = false
                     } label: {
-                        Text(viewModel.game?.yourTeam?.clubName ?? "SO Carcassonne")
+                        Text(item.yourTeam?.clubName ?? "SO Carcassonne")
                             .foregroundColor(Color.white)
                     }
                     .frame(width: 150)
@@ -35,7 +37,7 @@ struct FinalGameStatView: View {
                     Button {
                         self.showAlert = true
                     } label: {
-                        Text(viewModel.game?.oppositeTeam?.clubName ?? "SO Coursan")
+                        Text(item.oppositeTeam?.clubName ?? "SO Coursan")
                             .foregroundColor(Color.white)
                     }
                     .frame(width: 150)
@@ -63,7 +65,7 @@ struct FinalGameStatView: View {
                         Spacer()
                             .frame(height: 5)
                         
-                        ForEach(viewModel.game?.yourTeam?.players ?? [], id: \.id) { item in
+                        ForEach(item.yourTeam?.players ?? [], id: \.id) { item in
                             NumberAndNameGroupView(player: item)
                                 .padding(.vertical, 5)
                         }
@@ -75,7 +77,7 @@ struct FinalGameStatView: View {
                         Spacer()
                             .frame(height: 5)
                         
-                        ForEach(viewModel.game?.yourTeam?.players ?? [], id: \.id) { item in
+                        ForEach(item.yourTeam?.players ?? [], id: \.id) { item in
                             StatLineView(playerItem: item)
                                 .padding(.vertical, 5)
                         }
@@ -89,7 +91,7 @@ struct FinalGameStatView: View {
         }
         .padding(.horizontal)
         .padding(.top, 10)
-        .alert("No stats for \(viewModel.game?.oppositeTeam?.clubName ?? "") players",
+        .alert("No stats for \(item.oppositeTeam?.clubName ?? "") players",
                isPresented: $showAlert,
                actions: {
             Button("OK", role: .cancel) { }
@@ -104,6 +106,6 @@ struct FinalGameStatView: View {
 
 struct FinalGameStatView_Previews: PreviewProvider {
     static var previews: some View {
-        FinalGameStatView(viewModel: GameStatsViewModel())
+        FinalGameStatView(viewModel: GameStatsViewModel(), item: Game())
     }
 }

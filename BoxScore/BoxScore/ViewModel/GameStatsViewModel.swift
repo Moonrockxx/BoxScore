@@ -65,6 +65,8 @@ public enum FlowType: Int, CaseIterable {
 }
 
 public class GameStatsViewModel: ObservableObject {
+    let coreDataManager: CoreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
+    
     //MARK: Variables
     @Published public var flowType: FlowType = .pregame
     @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false) {
@@ -98,6 +100,7 @@ public class GameStatsViewModel: ObservableObject {
     
     @Published public var game: Game?
     @Published public var fetchedTeams: [Team] = []
+    @Published public var fetchedPlayers: [Player] = []
     
     public var clubName: String = ""
     
@@ -127,6 +130,8 @@ public class GameStatsViewModel: ObservableObject {
     
     init() {
         self.clubName = UserDefaults.standard.object(forKey: "clubName") as? String ?? "Your club"
+        self.fetchPlayers()
+        self.fetchTeams()
     }
     
     //MARK: Functions
@@ -138,7 +143,7 @@ public class GameStatsViewModel: ObservableObject {
         case .recorder:
             StatsRecorderView(viewModel: viewModel)
         case .final:
-            FinalGameStatView(viewModel: viewModel)
+            FinalGameStatView(viewModel: viewModel, item: self.game ?? Game())
         }
     }
     
@@ -167,41 +172,77 @@ public class GameStatsViewModel: ObservableObject {
                                  isMenTeam: selectedTeam.isMenTeam,
                                  isMultipleTeams: false)
         
-        self.game = Game(yourTeam: yourTeam,
-                         oppositeTeam: oppositeTeam)
+        self.game = Game(yourTeam: yourTeam, oppositeTeam: oppositeTeam)
         self.flowType = .recorder
     }
     
-    public func teamMapper(for teams: FetchedResults<BoxscoreTeam>, with players: FetchedResults<BoxscorePlayer>) {
-        teams.forEach { team in
-            let fetchedTeam = Team(id: team.id ?? UUID(),
-                                   clubName: team.clubName ?? "",
-                                   categorie: Team.Categories(rawValue: team.categorie ?? "") ?? Team.Categories(rawValue: "")!,
-                                   name: team.name ?? "",
-                                   players: [],
-                                   games: [],
-                                   teamNumber: team.teamNumber,
-                                   isMenTeam: team.isMenTeam,
-                                   isMultipleTeams: team.isMultipleTeam)
-            
-            players.filter({ $0.teamId == fetchedTeam.id }).forEach { player in
-                let player = Player(teamId: player.teamId ?? UUID(),
-                                    firstName: player.firstName ?? "",
-                                    lastName: player.lastName ?? "",
-                                    number: player.number ?? "")
-                
-                fetchedTeam.players?.append(player)
+    public func fetchTeams() {
+        fetchPlayers()
+        coreDataManager.fetchTeam { result in
+            switch result {
+            case .success(let teams):
+                teams.forEach { team in
+                    let fetchedTeam = Team(id: team.id ?? UUID(),
+                                           clubName: team.clubName ?? "",
+                                           categorie: Team.Categories(rawValue: team.categorie ?? "") ?? Team.Categories(rawValue: "")!,
+                                           name: team.name ?? "",
+                                           players: [],
+                                           games: [],
+                                           teamNumber: team.teamNumber,
+                                           isMenTeam: team.isMenTeam,
+                                           isMultipleTeams: team.isMultipleTeam)
+                    
+                    self.fetchedPlayers.filter({ $0.teamId == fetchedTeam.id }).forEach { player in
+                        fetchedTeam.players?.append(player)
+                    }
+                    
+                    self.fetchedTeams.append(fetchedTeam)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            
-            self.fetchedTeams.append(fetchedTeam)
         }
     }
     
-    public func saveGame(closure: (Game) -> ()) {
+    public func fetchPlayers() {
+        coreDataManager.fetchPlayers { result in
+            switch result {
+            case .success(let players):
+                players.forEach { player in
+                    let fetchedPlayer = Player(id: player.id ?? UUID(),
+                                               teamId: player.teamId ?? UUID(),
+                                               firstName: player.firstName ?? "",
+                                               lastName: player.lastName ?? "",
+                                               number: player.number ?? "",
+                                               points: Int(player.points),
+                                               rebOff: Int(player.rebOff),
+                                               rebDef: Int(player.rebDef),
+                                               assists: Int(player.assists),
+                                               turnovers: Int(player.turnovers),
+                                               interceptions: Int(player.interceptions),
+                                               blocks: Int(player.blocks),
+                                               personalFoul: Int(player.personalFoul),
+                                               freeThrowAttempts: player.freeThrowAttempts,
+                                               freeThrowMade: player.freeThrowMade,
+                                               twoPointAttempts: player.twoPointsAttempts,
+                                               twoPointMade: player.twoPointsMade,
+                                               threePointAttempts: player.threePointsAttempts,
+                                               threePointMade: player.threePointsMade,
+                                               freeThrowPercentage: player.freeThrowPercentage,
+                                               twoPointPercentage: player.twoPointsPercentage,
+                                               threePointPercentage: player.threePointsPercentage)
+                    
+                    self.fetchedPlayers.append(fetchedPlayer)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func saveGame() {
         if let game = self.game {
-            closure(game)
-//            self.goToFinalView = true
-            self.flowType = .final
+            coreDataManager.saveGame(game: game)
         }
     }
     

@@ -19,11 +19,12 @@ struct AllGamesView: View {
                 List {
                     ForEach(viewModel.fetchedGames, id: \.id) { item in
                         ZStack {
-//                            NavigationLink(destination:
-//                                            TeamDetailsView(viewModel: viewModel, item: item) {
-//                                    EmptyView()
-//                                }
-//                                .opacity(0.0)
+                            NavigationLink {
+                                FinalGameStatView(viewModel: GameStatsViewModel(), item: item)
+                            } label: {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
                             
                             GameRowView(item: item)
                             
@@ -31,14 +32,14 @@ struct AllGamesView: View {
                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         .listRowSeparator(.hidden)
                     }
-//                    .onDelete(perform: removeGame)
+                    .onDelete(perform: removeGame)
                 }
                 .listStyle(InsetListStyle())
             }
             Spacer()
         }
         .onAppear {
-//            viewModel.gameMapper(for: games)
+            viewModel.fetchGames()
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("All games")
@@ -48,5 +49,14 @@ struct AllGamesView: View {
 struct AllGamesView_Previews: PreviewProvider {
     static var previews: some View {
         AllGamesView()
+    }
+}
+
+extension AllGamesView {
+    func removeGame(at offsets: IndexSet) {
+        for index in offsets {
+            let game = viewModel.fetchedGames[index]
+            viewModel.coreDataManager.removeGame(id: game.id)
+        }
     }
 }

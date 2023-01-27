@@ -138,7 +138,7 @@ class CoreDataManager {
     //MARK: Team
     func saveTeam(team: Team, completionHandler: @escaping (Result<BoxscoreTeam, CDErrors>) -> Void)  {
         DispatchQueue.main.async {
-            let entity = BoxscoreTeam(context: CoreDataStack.shared.mainContext)
+            let entity = BoxscoreTeam(context: self.managedObjectContext)
             entity.id = team.id
             entity.clubName = team.clubName
             entity.categorie = team.categorie?.rawValue
@@ -165,7 +165,7 @@ class CoreDataManager {
             entity.isMultipleTeam = team.isMultipleTeams
             
             do {
-                try CoreDataStack.shared.mainContext.save()
+                try self.managedObjectContext.save()
                 completionHandler(.success(entity))
             } catch {
                 print(error)
@@ -191,7 +191,7 @@ class CoreDataManager {
     
     func fetchTeam(completionHandler: @escaping (Result<[BoxscoreTeam], CDErrors>) -> Void) {
         DispatchQueue.main.async {
-            let request: NSFetchRequest = BoxscoreTeam.fetchRequest()
+            let request: NSFetchRequest<BoxscoreTeam> = BoxscoreTeam.fetchRequest()
             
             do {
                 let fetchedTeams = try self.managedObjectContext.fetch(request)

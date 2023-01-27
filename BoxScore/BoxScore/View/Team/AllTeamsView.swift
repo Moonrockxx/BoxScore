@@ -10,7 +10,7 @@ import CoreData
 
 struct AllTeamsView: View {
     
-    @StateObject public var viewModel: TeamViewModel = TeamViewModel()
+    @ObservedObject public var viewModel: TeamViewModel = TeamViewModel()
     
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct AllTeamsView: View {
 //                Text("No team regristred, add a new team")
 //            } else {
                 List {
-                    ForEach(viewModel.fetchedTeams, id: \.self) { item in
+                    ForEach(viewModel.fetchedTeams, id: \.id) { item in
                         ZStack {
                             NavigationLink(destination: TeamDetailsView(viewModel: viewModel, item: item)) {
                                     EmptyView()
