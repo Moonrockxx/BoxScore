@@ -14,24 +14,24 @@ struct TeamDetailsView: View {
     
     var body: some View {
         VStack {
-//            if item.players == nil {
-//                Text("Add new players to build your team")
-//            } else {
-            List {
-//                ForEach(players.filter({ $0.teamId == item.id })) { player in
-//                    HStack {
-//                        Text("\(player.firstName ?? "") \(player.lastName ?? "")")
-//                        Spacer()
-//                        Text("\(player.number ?? "")")
-//                            .padding(5)
-//                            .background(Color.subElement)
-//                            .foregroundColor(Color.text)
-//                            .clipShape(Capsule())
-//                    }
-//                }
-//                .onDelete(perform: removePlayer)
+            if item.players == nil {
+                Text("Add new players to build your team")
+            } else {
+                List {
+                    ForEach(viewModel.fetchedPlayers.filter({ $0.teamId == item.id })) { player in
+                        HStack {
+                            Text("\(player.firstName) \(player.lastName)")
+                            Spacer()
+                            Text("\(player.number)")
+                                .padding(5)
+                                .background(Color.subElement)
+                                .foregroundColor(Color.text)
+                                .clipShape(Capsule())
+                        }
+                    }
+                    //                .onDelete(perform: removePlayer)
+                }
             }
-//            }
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)

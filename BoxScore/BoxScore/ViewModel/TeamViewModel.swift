@@ -36,6 +36,7 @@ public class TeamViewModel: ObservableObject {
     
     init() {
         self.fetchTeams()
+        self.fetchPlayers()
     }
     
     public func fetchPlayers() {
