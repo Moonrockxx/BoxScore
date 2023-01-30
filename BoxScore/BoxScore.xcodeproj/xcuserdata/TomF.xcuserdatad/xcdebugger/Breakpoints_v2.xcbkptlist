@@ -14,8 +14,8 @@
             filePath = "BoxScore/View/Team/TeamDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "BoxScore/View/Team/TeamDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "BoxScore/View/Team/TeamDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "removePlayer(at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "BoxScore/View/Team/TeamDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "removePlayer(at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,7 +120,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C397A137-B03B-43FF-B166-8EC0C55B571D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxScore/Model/CoreData/CoreDataManager.swift"
@@ -136,7 +136,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "618B76FD-6CD9-4E93-A972-B1C90BF14B13"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxScore/Model/CoreData/CoreDataManager.swift"
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "22BF4F8F-93B8-4F48-8AAA-B5A11CA86FBD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxScore/Model/CoreData/CoreDataManager.swift"
@@ -168,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9F924F7C-1508-4E75-A6B5-FEB39A4214EB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoxScore/Model/CoreData/CoreDataManager.swift"
@@ -178,6 +178,70 @@
             endingLineNumber = "81"
             landmarkName = "fetchPlayers(completionHandler:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D454FC67-A8A9-4E7C-A091-90CC3E0BD836"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxScore/ViewModel/GameStatsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85017D2E-83B7-42CF-A97B-7C6DEE427936"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoxScore/View/NewGame/NewGameTeamSelectionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "85017D2E-83B7-42CF-A97B-7C6DEE427936 - 14b5ddb7af30b5c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;BoxScore.Team&gt;, BoxScore.Team, &lt;&lt;opaque return type of SwiftUI.View.tag&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt;, SwiftUI.EmptyView&gt;, Swift.Optional&lt;SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.ForEach&lt;Swift.Array&lt;BoxScore.Player&gt;, Foundation.UUID, BoxScore.PlayerRowSelectableView&gt;, SwiftUI.EmptyView&gt;&gt;, SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarItems&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(trailing: &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in BoxScore.NewGameTeamSelectionView.body.getter : some"
+                  moduleName = "BoxScore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P12_Thomas_Ferre%CC%81_122022/BoxScore/BoxScore/BoxScore/View/NewGame/NewGameTeamSelectionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "85017D2E-83B7-42CF-A97B-7C6DEE427936 - f0ab28911a468f5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (BoxScore.Team) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tag&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;BoxScore.Team&gt;, BoxScore.Team, &lt;&lt;opaque return type of SwiftUI.View.tag&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.pickerStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PickerStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt;, SwiftUI.EmptyView&gt;, Swift.Optional&lt;SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.ForEach&lt;Swift.Array&lt;BoxScore.Player&gt;, Foundation.UUID, BoxScore.PlayerRowSelectableView&gt;, SwiftUI.EmptyView&gt;&gt;, SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarItems&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(trailing: &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in BoxScore.NewGameTeamSelectionView.body.getter : some"
+                  moduleName = "BoxScore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P12_Thomas_Ferre%CC%81_122022/BoxScore/BoxScore/BoxScore/View/NewGame/NewGameTeamSelectionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

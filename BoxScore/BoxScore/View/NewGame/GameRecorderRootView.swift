@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameRecorderRootView: View {
     
-    @ObservedObject public var viewModel: GameStatsViewModel = GameStatsViewModel()
+    @StateObject public var viewModel: GameStatsViewModel = GameStatsViewModel()
     
     @Environment(\.presentationMode) var presentationMode
     

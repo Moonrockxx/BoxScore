@@ -71,18 +71,11 @@ struct NewGameTeamSelectionView: View {
             }
                 .disabled(!viewModel.shouldGoNext)
             )
-            
-//            NavigationLink("", isActive: $goToNextView) {
-//                StatsRecorderView(viewModel: viewModel)
-//                    .environmentObject(controller)
-//                    .environment(\.managedObjectContext, controller.container.viewContext)
-//            }
-//            .hidden()
         }
         .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-//            viewModel.teamMapper(for: teams, with: players)
+            viewModel.fetchTeams()
         }
         .onDisappear {
             viewModel.fetchedTeams = []

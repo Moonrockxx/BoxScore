@@ -18,6 +18,8 @@ struct TeamDetailsView: View {
                 Spacer()
                 
                 Text("Add new players to build your team")
+                
+                Spacer()
             } else {
                 List {
                     ForEach(viewModel.fetchedPlayers.filter({ $0.teamId == item.id })) { player in

@@ -94,7 +94,7 @@ class CoreDataManager {
     
     
     //MARK: Game
-    func saveGame(game: Game) {
+    func saveGame(game: Game, completionHandler: @escaping (Result<BoxscoreGame, CDErrors>) -> Void) {
         let entity = BoxscoreGame(context: managedObjectContext)
         entity.id = game.id
         entity.yourTeam = game.yourTeam
@@ -102,8 +102,10 @@ class CoreDataManager {
         
         do {
             try CoreDataStack.shared.mainContext.save()
+            completionHandler(.success(entity))
         } catch {
             print(error)
+            completionHandler(.failure(.saveError))
         }
     }
     

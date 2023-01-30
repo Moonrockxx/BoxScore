@@ -104,26 +104,15 @@ struct StatsRecorderView: View {
             Spacer()
             
             // Add stats leaders for PTS, AST, REB
-            
-//            NavigationLink("", isActive: $viewModel.goToFinalView) {
-//                FinalGameStatView(viewModel: viewModel)
-//            }
-//            .hidden()
         }
+        .alert(viewModel.error,
+                isPresented: $viewModel.showGameError,
+                actions: {
+             Button("OK", role: .cancel) { viewModel.showGameError = false }
+         })
         .navigationBarItems(trailing:
                                 Button {
-//            viewModel.saveGame(closure: { game in
-//                let newGame = BoxscoreGame(context: viewContext)
-//                newGame.id = game.id
-//                newGame.yourTeam = game.yourTeam
-//                newGame.oppositeTeam = game.oppositeTeam
-//                
-//                do {
-//                    try viewContext.save()
-//                } catch let error as NSError {
-//                    print(error.localizedDescription)
-//                }
-//            })
+            viewModel.saveGame()
         } label: {
             Text("Save")
                 .foregroundColor(viewModel.shouldGoNext ? Color.subElement : Color.gray)

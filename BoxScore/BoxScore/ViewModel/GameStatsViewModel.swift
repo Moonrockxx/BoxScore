@@ -102,6 +102,11 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var fetchedTeams: [Team] = []
     @Published public var fetchedPlayers: [Player] = []
     
+    @Published public var showGameError: Bool = false
+    
+    @Published public var error: String = ""
+    @Published public var activePlayers: [Player] = []
+    
     public var clubName: String = ""
     
     //MARK: Constants
@@ -127,12 +132,10 @@ public class GameStatsViewModel: ObservableObject {
         return homeAwaySelection == 0
     }
     
-    public var activePlayers: [Player] = []
-    
+   
     init() {
         self.clubName = UserDefaults.standard.object(forKey: "clubName") as? String ?? "Your club"
         self.fetchPlayers()
-        self.fetchTeams()
     }
     
     //MARK: Functions
@@ -148,37 +151,12 @@ public class GameStatsViewModel: ObservableObject {
         }
     }
     
-    public func startNewGame() {
-        guard let categorie = selectedTeam.categorie else { return }
-        guard let categorieName = selectedTeam.categorie?.rawValue else { return }
-        guard let teamNumber = selectedTeam.teamNumber else { return }
-        
-        self.yourTeam = Team(clubName: clubName,
-                             categorie: categorie,
-                             name: "\(categorieName) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? teamNumber : "")",
-                             players: activePlayers,
-                             games: nil,
-                             teamNumber: teamNumber,
-                             score: 0,
-                             isMenTeam: selectedTeam.isMenTeam,
-                             isMultipleTeams: false)
-        
-        self.oppositeTeam = Team(clubName: oppositeTeamName,
-                                 categorie: selectedTeam.categorie ?? Team.Categories(rawValue: "")!,
-                                 name: oppositeTeamName,
-                                 players: nil,
-                                 games: nil,
-                                 teamNumber: nil,
-                                 score: 0,
-                                 isMenTeam: selectedTeam.isMenTeam,
-                                 isMultipleTeams: false)
-        
-        self.game = Game(yourTeam: yourTeam, oppositeTeam: oppositeTeam)
-        self.flowType = .recorder
-    }
-    
     public func fetchTeams() {
+        self.fetchedPlayers = []
+        self.fetchedTeams = []
+        
         fetchPlayers()
+        
         coreDataManager.fetchTeam { result in
             switch result {
             case .success(let teams):
@@ -206,6 +184,7 @@ public class GameStatsViewModel: ObservableObject {
     }
     
     public func fetchPlayers() {
+        self.fetchedPlayers = []
         coreDataManager.fetchPlayers { result in
             switch result {
             case .success(let players):
@@ -241,9 +220,46 @@ public class GameStatsViewModel: ObservableObject {
         }
     }
     
+    public func startNewGame() {
+        guard let categorie = selectedTeam.categorie else { return }
+        guard let categorieName = selectedTeam.categorie?.rawValue else { return }
+        guard let teamNumber = selectedTeam.teamNumber else { return }
+        
+        self.yourTeam = Team(clubName: clubName,
+                             categorie: categorie,
+                             name: "\(categorieName) - \(selectedTeam.isMenTeam ? "M" : "F") \(selectedTeam.isMultipleTeams ? teamNumber : "")",
+                             players: activePlayers,
+                             games: nil,
+                             teamNumber: teamNumber,
+                             score: 0,
+                             isMenTeam: selectedTeam.isMenTeam,
+                             isMultipleTeams: false)
+        
+        self.oppositeTeam = Team(clubName: oppositeTeamName,
+                                 categorie: selectedTeam.categorie ?? Team.Categories(rawValue: "")!,
+                                 name: oppositeTeamName,
+                                 players: nil,
+                                 games: nil,
+                                 teamNumber: nil,
+                                 score: 0,
+                                 isMenTeam: selectedTeam.isMenTeam,
+                                 isMultipleTeams: false)
+        
+        self.game = Game(yourTeam: yourTeam, oppositeTeam: oppositeTeam)
+        self.flowType = .recorder
+    }
+    
     public func saveGame() {
         if let game = self.game {
-            coreDataManager.saveGame(game: game)
+            coreDataManager.saveGame(game: game, completionHandler: { result in
+                switch result {
+                case .success:
+                    self.flowType = .final
+                case .failure(let error):
+                    self.error = error.title
+                    self.showGameError = true
+                }
+            })
         }
     }
     
