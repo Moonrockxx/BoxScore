@@ -10,7 +10,7 @@ import CoreData
 
 struct AllTeamsView: View {
     
-    @ObservedObject public var viewModel: TeamViewModel = TeamViewModel()
+    @StateObject public var viewModel: TeamViewModel = TeamViewModel()
     
     var body: some View {
         VStack {

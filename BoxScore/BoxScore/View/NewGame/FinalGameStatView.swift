@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Tabler
 
 struct FinalGameStatView: View {
     

@@ -13,32 +13,50 @@ struct DashboardView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(viewModel.menuElements) { item in
-                        NavigationLink {
-                            switch item.linkValue {
-                            case .newGame:
-                                GameRecorderRootView()
-                            case .allGames:
-                                AllGamesView()
-                            case .teams:
-                                AllTeamsView()
-                            }
-                        } label: {
-                            DashboardRowView(item: item)
+            VStack(spacing: 10) {
+                ForEach(viewModel.menuElements) { item in
+                    NavigationLink {
+                        switch item.linkValue {
+                        case .newGame:
+                            GameRecorderRootView()
+                        case .allGames:
+                            AllGamesView()
+                        case .teams:
+                            AllTeamsView()
                         }
+                    } label: {
+                        DashboardRowView(item: item)
                     }
                 }
-                .padding(.top, 25)
-
+                
+                VStack {
+                    HStack {
+                        Text("Recent games")
+                            .font(.system(size: 20, weight: .bold))
+                        
+                        Spacer()
+                    }
+                    
+                    ScrollView(showsIndicators: false) {
+                        ForEach(viewModel.gameSamples, id: \.id) { game in
+                            GameRowView(item: game)
+                        }
+                    }
+                    
+                }
+                .padding(.top, 50)
+                .padding(.horizontal)
+                
+                
                 NavigationLink("", isActive: $goToSettings) {
                     SettingsView()
                 }
                 .hidden()
-
-                Spacer()
+                
+//                Spacer()
             }
+            .edgesIgnoringSafeArea(.bottom)
+            .padding(.top, 25)
             .navigationTitle("BoxScore")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:

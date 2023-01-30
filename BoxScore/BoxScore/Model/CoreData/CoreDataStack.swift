@@ -21,13 +21,14 @@ class CoreDataStack {
 
     // MARK: - Init
     init(modelName: String, persistentStoreDescription: String? = nil) {
-        let description = NSPersistentStoreDescription()
-        if let persistentStoreDescription {
-            description.url = URL(fileURLWithPath: persistentStoreDescription)
+        persistentContainer = NSPersistentContainer(name: modelName)
+        
+        if let psd = persistentStoreDescription {
+            let description = NSPersistentStoreDescription()
+            description.url = URL(fileURLWithPath: psd)
+            persistentContainer.persistentStoreDescriptions = [description]
         }
         
-        persistentContainer = NSPersistentContainer(name: modelName)
-        persistentContainer.persistentStoreDescriptions = [description]
         persistentContainer.loadPersistentStores(completionHandler: { (_, error) in
             guard let unwrappedError = error else { return }
             fatalError("Unresolved error \(unwrappedError.localizedDescription)")

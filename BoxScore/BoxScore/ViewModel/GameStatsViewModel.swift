@@ -120,6 +120,7 @@ public class GameStatsViewModel: ObservableObject {
     public var shouldGoNext: Bool {
         !oppositeTeamName.isEmpty
         && oppositeTeamName != ""
+        && activePlayers.count > 4
     }
     
     public var isHomeGame: Bool {
@@ -362,10 +363,6 @@ public class GameStatsViewModel: ObservableObject {
                     self.game?.oppositeTeam?.assists += 1
                     print(self.game?.oppositeTeam?.assists ?? 0)
                 }
-                
-//                self.showAddStatsSheet = false
-//                self.shouldHighlightYourTeamButton = false
-//                self.shouldHighlightOppositeTeamButton = false
             case .interception:
                 if self.game?.yourTeam == self.addForTeam {
                     guard let plr = player else { return }

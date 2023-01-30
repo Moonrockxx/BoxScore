@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewTeamFormView: View {
     
-    @StateObject public var viewModel: TeamViewModel
+    @ObservedObject public var viewModel: TeamViewModel
     
     var body: some View {
         Form {

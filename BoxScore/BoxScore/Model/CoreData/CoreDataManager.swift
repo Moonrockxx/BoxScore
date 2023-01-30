@@ -191,7 +191,7 @@ class CoreDataManager {
     
     func fetchTeam(completionHandler: @escaping (Result<[BoxscoreTeam], CDErrors>) -> Void) {
         DispatchQueue.main.async {
-            let request: NSFetchRequest<BoxscoreTeam> = BoxscoreTeam.fetchRequest()
+            let request: NSFetchRequest = BoxscoreTeam.fetchRequest()
             
             do {
                 let fetchedTeams = try self.managedObjectContext.fetch(request)
