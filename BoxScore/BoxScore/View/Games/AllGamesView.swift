@@ -14,6 +14,8 @@ struct AllGamesView: View {
     var body: some View {
         VStack {
             if viewModel.fetchedGames.isEmpty {
+                Spacer()
+                
                 Text("No games recorded yet")
             } else {
                 List {

@@ -36,10 +36,10 @@ public class TeamViewModel: ObservableObject {
     
     init() {
         self.fetchTeams()
-        self.fetchPlayers()
     }
     
     public func fetchPlayers() {
+        self.fetchedPlayers = []
         coreDataManager.fetchPlayers { result in
             switch result {
             case .success(let players):
@@ -181,6 +181,7 @@ public class TeamViewModel: ObservableObject {
         coreDataManager.savePlayer(player: player, completionHandler: { result in
             switch result {
             case .success:
+                self.fetchPlayers()
                 self.showNewPlayerSheet = false
             case .failure(let error):
                 self.showTeamError = true

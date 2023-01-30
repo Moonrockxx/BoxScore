@@ -9,12 +9,14 @@ import SwiftUI
 
 struct TeamDetailsView: View {
     
-    @StateObject public var viewModel: TeamViewModel
+    @ObservedObject public var viewModel: TeamViewModel
     public var item: Team
     
     var body: some View {
         VStack {
-            if item.players == nil {
+            if viewModel.fetchedPlayers.filter({ $0.teamId == item.id }).isEmpty {
+                Spacer()
+                
                 Text("Add new players to build your team")
             } else {
                 List {
@@ -29,10 +31,16 @@ struct TeamDetailsView: View {
                                 .clipShape(Capsule())
                         }
                     }
-                    //                .onDelete(perform: removePlayer)
+                    .onDelete(perform: removePlayer)
                 }
             }
         }
+        .onAppear(perform: {
+            viewModel.fetchPlayers()
+        })
+        .onDisappear(perform: {
+            viewModel.fetchedPlayers = []
+        })
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
@@ -55,3 +63,13 @@ struct TeamDetailsView: View {
 //        TeamDetailsView(viewModel: TeamViewModel(), item: Team(categorie: .u17 ,score: 0, isMenTeam: true, isMultipleTeams: false))
 //    }
 //}
+
+extension TeamDetailsView {
+    func removePlayer(at offsets: IndexSet) {
+        for index in offsets {
+            let player = viewModel.fetchedPlayers[index]
+            viewModel.coreDataManager.removePlayer(id: player.id)
+            viewModel.fetchPlayers()
+        }
+    }
+}

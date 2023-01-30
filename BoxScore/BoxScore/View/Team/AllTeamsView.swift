@@ -14,9 +14,11 @@ struct AllTeamsView: View {
     
     var body: some View {
         VStack {
-//            if viewModel.fetchedTeams.isEmpty {
-//                Text("No team regristred, add a new team")
-//            } else {
+            if viewModel.fetchedTeams.isEmpty {
+                Spacer()
+                
+                Text("No team regristred, add a new team")
+            } else {
                 List {
                     ForEach(viewModel.fetchedTeams, id: \.id) { item in
                         ZStack {
@@ -29,10 +31,10 @@ struct AllTeamsView: View {
                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         .listRowSeparator(.hidden)
                     }
-//                    .onDelete(perform: removeTeam)
+                    .onDelete(perform: removeTeam)
                 }
                 .listStyle(InsetListStyle())
-//            }
+            }
             Spacer()
         }
         .alert(viewModel.error,
@@ -61,5 +63,15 @@ struct AllTeamsView: View {
 struct AllTeamsView_Previews: PreviewProvider {
     static var previews: some View {
         AllTeamsView()
+    }
+}
+
+extension AllTeamsView {
+    func removeTeam(at offsets: IndexSet) {
+        for index in offsets {
+            let team = viewModel.fetchedTeams[index]
+            viewModel.coreDataManager.removeTeam(id: team.id)
+            viewModel.fetchTeams()
+        }
     }
 }
