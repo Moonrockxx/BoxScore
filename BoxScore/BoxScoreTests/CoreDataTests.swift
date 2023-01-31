@@ -148,7 +148,7 @@ final class CoreDataTests: XCTestCase {
         coreDataManager.removeAllGames()
         
         coreDataManager.saveGame(game: game,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let game):
                 self.bsGames.append(game)
@@ -167,7 +167,7 @@ final class CoreDataTests: XCTestCase {
         coreDataManager.removeAllGames()
         
         coreDataManager.saveGame(game: game,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success:
                 print("✅ TEST - Save game before fetch")
@@ -198,7 +198,7 @@ final class CoreDataTests: XCTestCase {
         coreDataManager.removeAllGames()
         
         coreDataManager.saveGame(game: game,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
@@ -230,9 +230,9 @@ final class CoreDataTests: XCTestCase {
         guard let game1 = gameSample1 else { return }
         guard let game2 = gameSample1 else { return }
         coreDataManager.removeAllGames()
-
+        
         coreDataManager.saveGame(game: game1,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
@@ -240,9 +240,9 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Save game before fetch : \(failure.title)")
             }
         })
-
+        
         coreDataManager.saveGame(game: game2,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
@@ -250,11 +250,11 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Save game before fetch : \(failure.title)")
             }
         })
-
+        
         coreDataManager.removeAllGames()
         
         self.bsGames = []
-
+        
         coreDataManager.fetchGames { result in
             switch result {
             case .success(let games):
@@ -265,7 +265,7 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Fetch games : \(failure.title)")
             }
         }
-
+        
         XCTAssertTrue(self.bsGames.isEmpty)
     }
     
@@ -292,7 +292,7 @@ final class CoreDataTests: XCTestCase {
         coreDataManager.removeAllTeams()
         
         coreDataManager.saveTeam(team: teamSample1,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success:
                 print("✅ TEST - Save team before fetch")
@@ -321,7 +321,7 @@ final class CoreDataTests: XCTestCase {
         coreDataManager.removeAllTeams()
         
         coreDataManager.saveTeam(team: teamSample1,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
@@ -351,9 +351,9 @@ final class CoreDataTests: XCTestCase {
     // Remove All
     func testRemoveAllTeams() {
         coreDataManager.removeAllTeams()
-
+        
         coreDataManager.saveTeam(team: self.teamSample1,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
@@ -361,9 +361,9 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Save team before fetch : \(failure.title)")
             }
         })
-
+        
         coreDataManager.saveTeam(team: teamSample2,
-                                      completionHandler: { result in
+                                 completionHandler: { result in
             switch result {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
@@ -371,11 +371,11 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Save team before fetch : \(failure.title)")
             }
         })
-
+        
         coreDataManager.removeAllTeams()
         
         self.bsTeams = []
-
+        
         coreDataManager.fetchTeam { result in
             switch result {
             case .success(let teams):
@@ -386,28 +386,129 @@ final class CoreDataTests: XCTestCase {
                 print("❌ TEST - Fetch teams : \(failure.title)")
             }
         }
-
+        
         XCTAssertTrue(self.bsTeams.isEmpty)
     }
     
     //MARK: Players
     // Save
     func testSaveAPlayer() {
+        guard let player1 = self.playerSample1 else { return }
+        coreDataManager.removeAllPlayers()
         
+        coreDataManager.savePlayer(player: player1) { result in
+            switch result {
+            case .success(let player):
+                self.bsPlayers.append(player)
+            case .failure(let failure):
+                print("❌ TEST - Save player : \(failure.title)")
+            }
+        }
+        
+        guard let playerSaved = self.bsPlayers.first else { return }
+        XCTAssertEqual(playerSaved.id, playerSample1?.id)
     }
     
     // Fetch
     func testFetchPlayers() {
+        guard let player1 = self.playerSample1 else { return }
+        coreDataManager.removeAllPlayers()
         
+        coreDataManager.savePlayer(player: player1,
+                                   completionHandler: { result in
+            switch result {
+            case .success:
+                print("✅ TEST - Save player before fetch")
+            case .failure(let failure):
+                print("❌ TEST - Save player before fetch : \(failure.title)")
+            }
+        })
+        
+        coreDataManager.fetchPlayers { result in
+            switch result {
+            case .success(let players):
+                players.forEach { player in
+                    self.bsPlayers.append(player)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch players : \(failure.title)")
+            }
+        }
+        
+        guard let playerSaved = self.bsPlayers.first else { return }
+        XCTAssertEqual(playerSaved.id, self.playerSample1?.id)
     }
     
     // Remove
     func testRemoveAPlayer() {
+        guard let player1 = self.playerSample1 else { return }
+        coreDataManager.removeAllPlayers()
         
+        coreDataManager.savePlayer(player: player1) { result in
+            switch result {
+            case .success(let player):
+                self.bsPlayers.append(player)
+            case .failure(let failure):
+                print("❌ TEST - Save player : \(failure.title)")
+            }
+        }
+        
+        coreDataManager.removePlayer(id: self.bsPlayers.first?.id ?? UUID())
+        
+        self.bsPlayers = []
+        
+        coreDataManager.fetchPlayers { result in
+            switch result {
+            case .success(let players):
+                players.forEach { player in
+                    self.bsPlayers.append(player)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch players : \(failure.title)")
+            }
+        }
+        
+        XCTAssertTrue(self.bsPlayers.isEmpty)
     }
     
     // Remove All
     func testRemoveAllPlayers() {
+        guard let player1 = self.playerSample1 else { return }
+        coreDataManager.removeAllPlayers()
         
+        coreDataManager.savePlayer(player: player1) { result in
+            switch result {
+            case .success(let player):
+                self.bsPlayers.append(player)
+            case .failure(let failure):
+                print("❌ TEST - Save player : \(failure.title)")
+            }
+        }
+        
+        coreDataManager.savePlayer(player: player1) { result in
+            switch result {
+            case .success(let player):
+                self.bsPlayers.append(player)
+            case .failure(let failure):
+                print("❌ TEST - Save player : \(failure.title)")
+            }
+        }
+        
+        coreDataManager.removeAllPlayers()
+        
+        self.bsPlayers = []
+        
+        coreDataManager.fetchPlayers { result in
+            switch result {
+            case .success(let players):
+                players.forEach { player in
+                    self.bsPlayers.append(player)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch players : \(failure.title)")
+            }
+        }
+        
+        XCTAssertTrue(self.bsPlayers.isEmpty)
     }
 }
