@@ -271,20 +271,143 @@ final class CoreDataTests: XCTestCase {
     
     //MARK: Teams
     // Save
+    func testSaveATeam() {
+        coreDataManager.removeAllTeams()
+        
+        coreDataManager.saveTeam(team: self.teamSample1) { result in
+            switch result {
+            case .success(let team):
+                self.bsTeams.append(team)
+            case .failure(let failure):
+                print("❌ TEST - Save team : \(failure.title)")
+            }
+        }
+        
+        guard let teamSaved = self.bsTeams.first else { return }
+        XCTAssertEqual(teamSaved.id, teamSample1.id)
+    }
     
     // Fetch
+    func testFetchTeams() {
+        coreDataManager.removeAllTeams()
+        
+        coreDataManager.saveTeam(team: teamSample1,
+                                      completionHandler: { result in
+            switch result {
+            case .success:
+                print("✅ TEST - Save team before fetch")
+            case .failure(let failure):
+                print("❌ TEST - Save team before fetch : \(failure.title)")
+            }
+        })
+        
+        coreDataManager.fetchTeam { result in
+            switch result {
+            case .success(let teams):
+                teams.forEach { team in
+                    self.bsTeams.append(team)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch teams : \(failure.title)")
+            }
+        }
+        
+        guard let teamSaved = self.bsTeams.first else { return }
+        XCTAssertEqual(teamSaved.id, self.teamSample1.id)
+    }
     
     // Remove
+    func testRemoveATeam() {
+        coreDataManager.removeAllTeams()
+        
+        coreDataManager.saveTeam(team: teamSample1,
+                                      completionHandler: { result in
+            switch result {
+            case .success(let savedTeam):
+                self.bsTeams.append(savedTeam)
+            case .failure(let failure):
+                print("❌ TEST - Save team before fetch : \(failure.title)")
+            }
+        })
+        
+        coreDataManager.removeTeam(id: self.bsTeams.first?.id ?? UUID())
+        
+        self.bsTeams = []
+        
+        coreDataManager.fetchTeam { result in
+            switch result {
+            case .success(let teams):
+                teams.forEach { team in
+                    self.bsTeams.append(team)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch teams : \(failure.title)")
+            }
+        }
+        
+        XCTAssertTrue(self.bsTeams.isEmpty)
+    }
     
     // Remove All
-    
+    func testRemoveAllTeams() {
+        coreDataManager.removeAllTeams()
+
+        coreDataManager.saveTeam(team: self.teamSample1,
+                                      completionHandler: { result in
+            switch result {
+            case .success(let savedTeam):
+                self.bsTeams.append(savedTeam)
+            case .failure(let failure):
+                print("❌ TEST - Save team before fetch : \(failure.title)")
+            }
+        })
+
+        coreDataManager.saveTeam(team: teamSample2,
+                                      completionHandler: { result in
+            switch result {
+            case .success(let savedTeam):
+                self.bsTeams.append(savedTeam)
+            case .failure(let failure):
+                print("❌ TEST - Save team before fetch : \(failure.title)")
+            }
+        })
+
+        coreDataManager.removeAllTeams()
+        
+        self.bsTeams = []
+
+        coreDataManager.fetchTeam { result in
+            switch result {
+            case .success(let teams):
+                teams.forEach { team in
+                    self.bsTeams.append(team)
+                }
+            case .failure(let failure):
+                print("❌ TEST - Fetch teams : \(failure.title)")
+            }
+        }
+
+        XCTAssertTrue(self.bsTeams.isEmpty)
+    }
     
     //MARK: Players
     // Save
+    func testSaveAPlayer() {
+        
+    }
     
     // Fetch
+    func testFetchPlayers() {
+        
+    }
     
     // Remove
+    func testRemoveAPlayer() {
+        
+    }
     
     // Remove All
+    func testRemoveAllPlayers() {
+        
+    }
 }
