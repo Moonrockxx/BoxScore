@@ -79,7 +79,7 @@ final class CoreDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
         coreDataStack = CoreDataStack(modelName: "Boxscore", persistentStoreDescription: "/dev/null")
-        coreDataManager = CoreDataManager()
+        coreDataManager = CoreDataManager(managedObjectContext: coreDataStack.mainContext)
         self.playerSample1 = Player(id: UUID(),
                                     teamId: self.teamSample1.id,
                                     firstName: "Thomas F",
