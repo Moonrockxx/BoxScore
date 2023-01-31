@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28FACFCBE34959B001CFA560 /* Pods_BoxScoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B9D61239058081836D3232 /* Pods_BoxScoreTests.framework */; };
+		52000DC734B4751DCE2BBED0 /* Pods_BoxScore_BoxScoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15D7E2B3BDF804CA9E32C58 /* Pods_BoxScore_BoxScoreUITests.framework */; };
 		6000E4AE2979A73500A38845 /* AllGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6000E4AD2979A73500A38845 /* AllGamesView.swift */; };
 		6000E4B02979A7E500A38845 /* GameRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6000E4AF2979A7E500A38845 /* GameRowView.swift */; };
 		6000E4B22979CE7D00A38845 /* AllGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6000E4B12979CE7D00A38845 /* AllGamesViewModel.swift */; };
@@ -23,10 +25,6 @@
 		6009CA3629827B8C00C7ECAE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009CA3529827B8C00C7ECAE /* CoreDataStack.swift */; };
 		6009CA382984078300C7ECAE /* BoxscoreTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009CA372984078300C7ECAE /* BoxscoreTeam.swift */; };
 		6009CA3A29840D1C00C7ECAE /* CoreDataManager.CDErrors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009CA3929840D1C00C7ECAE /* CoreDataManager.CDErrors+Extensions.swift */; };
-		6009CA3C298429D900C7ECAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6009CA3B298429D800C7ECAE /* GoogleService-Info.plist */; };
-		6009CA3D298429D900C7ECAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6009CA3B298429D800C7ECAE /* GoogleService-Info.plist */; };
-		6009CA3E298429D900C7ECAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6009CA3B298429D800C7ECAE /* GoogleService-Info.plist */; };
-		6009CA4129842A8900C7ECAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6009CA4029842A8900C7ECAE /* FirebaseAnalytics */; };
 		605C5868298052E80091AE8E /* StatLineTitlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C5867298052E80091AE8E /* StatLineTitlesView.swift */; };
 		605C586A298183C10091AE8E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C5869298183C10091AE8E /* View+Extensions.swift */; };
 		605E14D4293F7B6A00B906A4 /* BoxScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E14D3293F7B6A00B906A4 /* BoxScoreApp.swift */; };
@@ -39,9 +37,13 @@
 		605E1502293F7E8300B906A4 /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1501293F7E8300B906A4 /* Colors+Extension.swift */; };
 		605E1504293F822F00B906A4 /* DashboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1503293F822F00B906A4 /* DashboardRowView.swift */; };
 		605E1506293F824100B906A4 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1505293F824100B906A4 /* DashboardViewModel.swift */; };
+		606277D829881ABC00586049 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606277D729881ABC00586049 /* CoreDataTests.swift */; };
 		60A4EE9A2948BC9800E8747B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE992948BC9800E8747B /* Game.swift */; };
 		60A4EE9C2948BCA600E8747B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9B2948BCA600E8747B /* Team.swift */; };
 		60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9D2948BCBA00E8747B /* Player.swift */; };
+		60A5BC4629894D3500E157AD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60A5BC4529894D3500E157AD /* GoogleService-Info.plist */; };
+		60A5BC4729894D3500E157AD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60A5BC4529894D3500E157AD /* GoogleService-Info.plist */; };
+		60A5BC4829894D3500E157AD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60A5BC4529894D3500E157AD /* GoogleService-Info.plist */; };
 		60A6E262297BE08800686C32 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */; };
 		60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */; };
 		60A6E26B2980444E00686C32 /* StatLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6E26A2980444E00686C32 /* StatLineView.swift */; };
@@ -54,6 +56,7 @@
 		60C46EDF294A2D0200310CF8 /* NewPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C46EDE294A2D0200310CF8 /* NewPlayerFormView.swift */; };
 		60D5FC232954BAFF00D86997 /* NewGameTeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D5FC222954BAFF00D86997 /* NewGameTeamSelectionView.swift */; };
 		60F8F6682979A1C900F79868 /* FinalGameStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8F6672979A1C900F79868 /* FinalGameStatView.swift */; };
+		D660FD43B6A6AF13108D588A /* Pods_BoxScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAE2152A54AF849FC3835F0 /* Pods_BoxScore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07B9D61239058081836D3232 /* Pods_BoxScoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxScoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13569D68A93F8FE608EC65B3 /* Pods-BoxScore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScore.debug.xcconfig"; path = "Target Support Files/Pods-BoxScore/Pods-BoxScore.debug.xcconfig"; sourceTree = "<group>"; };
+		1CAE2152A54AF849FC3835F0 /* Pods_BoxScore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxScore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F4F414CD75C9623CA587312 /* Pods-BoxScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScore.release.xcconfig"; path = "Target Support Files/Pods-BoxScore/Pods-BoxScore.release.xcconfig"; sourceTree = "<group>"; };
 		6000E4AD2979A73500A38845 /* AllGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesView.swift; sourceTree = "<group>"; };
 		6000E4AF2979A7E500A38845 /* GameRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRowView.swift; sourceTree = "<group>"; };
 		6000E4B12979CE7D00A38845 /* AllGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesViewModel.swift; sourceTree = "<group>"; };
@@ -90,7 +97,6 @@
 		6009CA3529827B8C00C7ECAE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		6009CA372984078300C7ECAE /* BoxscoreTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxscoreTeam.swift; sourceTree = "<group>"; };
 		6009CA3929840D1C00C7ECAE /* CoreDataManager.CDErrors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager.CDErrors+Extensions.swift"; sourceTree = "<group>"; };
-		6009CA3B298429D800C7ECAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		605C5867298052E80091AE8E /* StatLineTitlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLineTitlesView.swift; sourceTree = "<group>"; };
 		605C5869298183C10091AE8E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		605E14D0293F7B6A00B906A4 /* BoxScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,9 +112,11 @@
 		605E1501293F7E8300B906A4 /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 		605E1503293F822F00B906A4 /* DashboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRowView.swift; sourceTree = "<group>"; };
 		605E1505293F824100B906A4 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		606277D729881ABC00586049 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		60A4EE992948BC9800E8747B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		60A4EE9B2948BCA600E8747B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		60A5BC4529894D3500E157AD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60A6E261297BE08800686C32 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		60A6E26829802D4E00686C32 /* GameRecorderRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecorderRootView.swift; sourceTree = "<group>"; };
 		60A6E26A2980444E00686C32 /* StatLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatLineView.swift; sourceTree = "<group>"; };
@@ -121,6 +129,11 @@
 		60C46EDE294A2D0200310CF8 /* NewPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerFormView.swift; sourceTree = "<group>"; };
 		60D5FC222954BAFF00D86997 /* NewGameTeamSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameTeamSelectionView.swift; sourceTree = "<group>"; };
 		60F8F6672979A1C900F79868 /* FinalGameStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalGameStatView.swift; sourceTree = "<group>"; };
+		7A81B67AEFD0CE03F505A6F5 /* Pods-BoxScoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScoreTests.debug.xcconfig"; path = "Target Support Files/Pods-BoxScoreTests/Pods-BoxScoreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B15D7E2B3BDF804CA9E32C58 /* Pods_BoxScore_BoxScoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxScore_BoxScoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1707B0014764C00FAD2F5A /* Pods-BoxScore-BoxScoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScore-BoxScoreUITests.release.xcconfig"; path = "Target Support Files/Pods-BoxScore-BoxScoreUITests/Pods-BoxScore-BoxScoreUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F4462E426DF2DB7ABC73A733 /* Pods-BoxScore-BoxScoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScore-BoxScoreUITests.debug.xcconfig"; path = "Target Support Files/Pods-BoxScore-BoxScoreUITests/Pods-BoxScore-BoxScoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA6D2FDB300B75E65824D64A /* Pods-BoxScoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScoreTests.release.xcconfig"; path = "Target Support Files/Pods-BoxScoreTests/Pods-BoxScoreTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6009CA4129842A8900C7ECAE /* FirebaseAnalytics in Frameworks */,
+				D660FD43B6A6AF13108D588A /* Pods_BoxScore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FACFCBE34959B001CFA560 /* Pods_BoxScoreTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,12 +157,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52000DC734B4751DCE2BBED0 /* Pods_BoxScore_BoxScoreUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CF1C55CED8D133A3B4BAD28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13569D68A93F8FE608EC65B3 /* Pods-BoxScore.debug.xcconfig */,
+				3F4F414CD75C9623CA587312 /* Pods-BoxScore.release.xcconfig */,
+				F4462E426DF2DB7ABC73A733 /* Pods-BoxScore-BoxScoreUITests.debug.xcconfig */,
+				DF1707B0014764C00FAD2F5A /* Pods-BoxScore-BoxScoreUITests.release.xcconfig */,
+				7A81B67AEFD0CE03F505A6F5 /* Pods-BoxScoreTests.debug.xcconfig */,
+				FA6D2FDB300B75E65824D64A /* Pods-BoxScoreTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6000E4AA2979A70C00A38845 /* Games */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,11 +207,12 @@
 		605E14C7293F7B6A00B906A4 = {
 			isa = PBXGroup;
 			children = (
-				6009CA3B298429D800C7ECAE /* GoogleService-Info.plist */,
 				605E14D2293F7B6A00B906A4 /* BoxScore */,
 				605E14E3293F7B6C00B906A4 /* BoxScoreTests */,
 				605E14ED293F7B6C00B906A4 /* BoxScoreUITests */,
 				605E14D1293F7B6A00B906A4 /* Products */,
+				606277D929881BD700586049 /* Frameworks */,
+				0CF1C55CED8D133A3B4BAD28 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +229,7 @@
 		605E14D2293F7B6A00B906A4 /* BoxScore */ = {
 			isa = PBXGroup;
 			children = (
+				60A5BC4529894D3500E157AD /* GoogleService-Info.plist */,
 				60A6E260297BE06900686C32 /* ViewModifiers */,
 				605E1500293F7E6400B906A4 /* Extensions */,
 				605E14FF293F7BFE00B906A4 /* Model */,
@@ -223,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				605E14E4293F7B6C00B906A4 /* BoxScoreTests.swift */,
+				606277D729881ABC00586049 /* CoreDataTests.swift */,
 			);
 			path = BoxScoreTests;
 			sourceTree = "<group>";
@@ -281,6 +313,16 @@
 				6009CA3929840D1C00C7ECAE /* CoreDataManager.CDErrors+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		606277D929881BD700586049 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CAE2152A54AF849FC3835F0 /* Pods_BoxScore.framework */,
+				B15D7E2B3BDF804CA9E32C58 /* Pods_BoxScore_BoxScoreUITests.framework */,
+				07B9D61239058081836D3232 /* Pods_BoxScoreTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		60A6E260297BE06900686C32 /* ViewModifiers */ = {
@@ -353,18 +395,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 605E14F4293F7B6C00B906A4 /* Build configuration list for PBXNativeTarget "BoxScore" */;
 			buildPhases = (
+				497D63AACCBEC204FD258302 /* [CP] Check Pods Manifest.lock */,
 				605E14CC293F7B6A00B906A4 /* Sources */,
 				605E14CD293F7B6A00B906A4 /* Frameworks */,
 				605E14CE293F7B6A00B906A4 /* Resources */,
+				2ED538326ED4EDE00D2D9BF6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = BoxScore;
-			packageProductDependencies = (
-				6009CA4029842A8900C7ECAE /* FirebaseAnalytics */,
-			);
 			productName = BoxScore;
 			productReference = 605E14D0293F7B6A00B906A4 /* BoxScore.app */;
 			productType = "com.apple.product-type.application";
@@ -373,6 +414,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 605E14F7293F7B6C00B906A4 /* Build configuration list for PBXNativeTarget "BoxScoreTests" */;
 			buildPhases = (
+				AEB51071E6F382D30D197B0C /* [CP] Check Pods Manifest.lock */,
 				605E14DC293F7B6C00B906A4 /* Sources */,
 				605E14DD293F7B6C00B906A4 /* Frameworks */,
 				605E14DE293F7B6C00B906A4 /* Resources */,
@@ -391,9 +433,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 605E14FA293F7B6C00B906A4 /* Build configuration list for PBXNativeTarget "BoxScoreUITests" */;
 			buildPhases = (
+				E2BA45BA10DC70916E507DD0 /* [CP] Check Pods Manifest.lock */,
 				605E14E6293F7B6C00B906A4 /* Sources */,
 				605E14E7293F7B6C00B906A4 /* Frameworks */,
 				605E14E8293F7B6C00B906A4 /* Resources */,
+				DE1BBEAC960ABF456A6C7C1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,9 +481,6 @@
 				Base,
 			);
 			mainGroup = 605E14C7293F7B6A00B906A4;
-			packageReferences = (
-				6009CA3F29842A8900C7ECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-			);
 			productRefGroup = 605E14D1293F7B6A00B906A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -458,7 +499,7 @@
 			files = (
 				605E14DB293F7B6C00B906A4 /* Preview Assets.xcassets in Resources */,
 				605E14D8293F7B6C00B906A4 /* Assets.xcassets in Resources */,
-				6009CA3C298429D900C7ECAE /* GoogleService-Info.plist in Resources */,
+				60A5BC4629894D3500E157AD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6009CA3D298429D900C7ECAE /* GoogleService-Info.plist in Resources */,
+				60A5BC4729894D3500E157AD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,11 +515,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6009CA3E298429D900C7ECAE /* GoogleService-Info.plist in Resources */,
+				60A5BC4829894D3500E157AD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ED538326ED4EDE00D2D9BF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxScore/Pods-BoxScore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxScore/Pods-BoxScore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BoxScore/Pods-BoxScore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		497D63AACCBEC204FD258302 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoxScore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB51071E6F382D30D197B0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoxScoreTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE1BBEAC960ABF456A6C7C1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxScore-BoxScoreUITests/Pods-BoxScore-BoxScoreUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxScore-BoxScoreUITests/Pods-BoxScore-BoxScoreUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BoxScore-BoxScoreUITests/Pods-BoxScore-BoxScoreUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2BA45BA10DC70916E507DD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoxScore-BoxScoreUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		605E14CC293F7B6A00B906A4 /* Sources */ = {
@@ -530,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606277D829881ABC00586049 /* CoreDataTests.swift in Sources */,
 				605E14E5293F7B6C00B906A4 /* BoxScoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +820,7 @@
 		};
 		605E14F5293F7B6C00B906A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13569D68A93F8FE608EC65B3 /* Pods-BoxScore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -707,6 +853,7 @@
 		};
 		605E14F6293F7B6C00B906A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F4F414CD75C9623CA587312 /* Pods-BoxScore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -739,6 +886,7 @@
 		};
 		605E14F8293F7B6C00B906A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A81B67AEFD0CE03F505A6F5 /* Pods-BoxScoreTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -759,6 +907,7 @@
 		};
 		605E14F9293F7B6C00B906A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA6D2FDB300B75E65824D64A /* Pods-BoxScoreTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -779,6 +928,7 @@
 		};
 		605E14FB293F7B6C00B906A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4462E426DF2DB7ABC73A733 /* Pods-BoxScore-BoxScoreUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -797,6 +947,7 @@
 		};
 		605E14FC293F7B6C00B906A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF1707B0014764C00FAD2F5A /* Pods-BoxScore-BoxScoreUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -853,25 +1004,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6009CA3F29842A8900C7ECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6009CA4029842A8900C7ECAE /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6009CA3F29842A8900C7ECAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		60AF6C052965BC2C002F236F /* Boxscore.xcdatamodeld */ = {

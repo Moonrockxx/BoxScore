@@ -82,17 +82,32 @@ class CoreDataManager {
         }
     }
     
-    func playerAlreadySaved(id: UUID, firstName: String) -> Bool {
-        let request: NSFetchRequest<BoxscorePlayer> = BoxscorePlayer.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        request.predicate = NSPredicate(format: "firstName == %@", firstName)
+//    func playerAlreadySaved(id: UUID, firstName: String) -> Bool {
+//        let request: NSFetchRequest<BoxscorePlayer> = BoxscorePlayer.fetchRequest()
+//        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+//        request.predicate = NSPredicate(format: "firstName == %@", firstName)
+//
+//        guard let player = try? managedObjectContext.fetch(request) else { return false }
+//
+//        return !player.isEmpty
+//    }
+    
+    func removeAllPlayers() {
+        let fetchRequest: NSFetchRequest<BoxscorePlayer> = BoxscorePlayer.fetchRequest()
+        let result = try? managedObjectContext.fetch(fetchRequest)
         
-        guard let player = try? managedObjectContext.fetch(request) else { return false }
+        if let results = result {
+            for i in results {
+                managedObjectContext.delete(i)
+            }
+        }
         
-        return !player.isEmpty
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
-    
-    
     //MARK: Game
     func saveGame(game: Game, completionHandler: @escaping (Result<BoxscoreGame, CDErrors>) -> Void) {
         let entity = BoxscoreGame(context: managedObjectContext)
@@ -136,6 +151,22 @@ class CoreDataManager {
         }
     }
     
+    func removeAllGames() {
+        let fetchRequest: NSFetchRequest<BoxscoreGame> = BoxscoreGame.fetchRequest()
+        let result = try? managedObjectContext.fetch(fetchRequest)
+        
+        if let results = result {
+            for i in results {
+                managedObjectContext.delete(i)
+            }
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     
     //MARK: Team
     func saveTeam(team: Team, completionHandler: @escaping (Result<BoxscoreTeam, CDErrors>) -> Void)  {
@@ -202,6 +233,23 @@ class CoreDataManager {
                 print("Fetch teams fails with error : \(error.localizedDescription)")
                 return completionHandler(.failure(.noData))
             }
+        }
+    }
+    
+    func removeAllTeams() {
+        let fetchRequest: NSFetchRequest<BoxscoreTeam> = BoxscoreTeam.fetchRequest()
+        let result = try? managedObjectContext.fetch(fetchRequest)
+        
+        if let results = result {
+            for i in results {
+                managedObjectContext.delete(i)
+            }
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
