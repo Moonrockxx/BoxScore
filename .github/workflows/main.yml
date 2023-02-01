@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     paths-ignore:
-        - 'BoxScore/Pods/**'
+        - '../**/Pods/**'
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
@@ -22,4 +22,4 @@ jobs:
         xcode-version: latest-stable
         
     - name: Build and test
-      run: xcodebuild clean build test -project BoxScore/BoxScoreTests/BoxScoreTests.swift -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      run: xcodebuild clean build test -workspace BoxScore/BoxScore.xcworkspace -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
