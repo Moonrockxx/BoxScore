@@ -38,11 +38,27 @@ struct DashboardView: View {
                     }
                     
                     ScrollView(showsIndicators: false) {
-                        ForEach(viewModel.gameSamples, id: \.id) { game in
-                            GameRowView(item: game)
+                        if viewModel.fetchedGames.isEmpty {
+                            NoDataView(image: "info.circle",
+                                       text: "No game recorded yet")
+                        } else {
+                            ForEach(viewModel.fetchedGames, id: \.id) { game in
+                                ZStack {
+                                    NavigationLink {
+                                        FinalGameStatView(viewModel: GameStatsViewModel(), item: game)
+                                    } label: {
+                                        EmptyView()
+                                    }
+                                    .opacity(0.0)
+                                    
+                                    GameRowView(item: game)
+                                    
+                                }
+                                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                .listRowSeparator(.hidden)
+                            }
                         }
                     }
-                    
                 }
                 .padding(.top, 50)
                 .padding(.horizontal)

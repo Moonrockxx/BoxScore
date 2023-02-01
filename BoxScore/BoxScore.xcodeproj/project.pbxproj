@@ -41,6 +41,7 @@
 		605E1504293F822F00B906A4 /* DashboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1503293F822F00B906A4 /* DashboardRowView.swift */; };
 		605E1506293F824100B906A4 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1505293F824100B906A4 /* DashboardViewModel.swift */; };
 		606277D829881ABC00586049 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606277D729881ABC00586049 /* CoreDataTests.swift */; };
+		608633E7298AC62900CB1FA3 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608633E6298AC62900CB1FA3 /* NoDataView.swift */; };
 		60A4EE9A2948BC9800E8747B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE992948BC9800E8747B /* Game.swift */; };
 		60A4EE9C2948BCA600E8747B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9B2948BCA600E8747B /* Team.swift */; };
 		60A4EE9E2948BCBA00E8747B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4EE9D2948BCBA00E8747B /* Player.swift */; };
@@ -114,6 +115,8 @@
 		605E1503293F822F00B906A4 /* DashboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRowView.swift; sourceTree = "<group>"; };
 		605E1505293F824100B906A4 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		606277D729881ABC00586049 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		608633E6298AC62900CB1FA3 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		608633E8298AC74400CB1FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		60A4EE992948BC9800E8747B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		60A4EE9B2948BCA600E8747B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		60A4EE9D2948BCBA00E8747B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -228,6 +231,7 @@
 		605E14D2293F7B6A00B906A4 /* BoxScore */ = {
 			isa = PBXGroup;
 			children = (
+				608633E8298AC74400CB1FA3 /* Info.plist */,
 				6059B14A298A9A7C000A25FA /* GoogleService-Info.plist */,
 				60A6E260297BE06900686C32 /* ViewModifiers */,
 				605E1500293F7E6400B906A4 /* Extensions */,
@@ -270,6 +274,7 @@
 		605E14FD293F7BDE00B906A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				608633E5298AC61100CB1FA3 /* Empty */,
 				6000E4AA2979A70C00A38845 /* Games */,
 				60065CC129560892002929F5 /* Navigation */,
 				60065CBC295607C6002929F5 /* Settings */,
@@ -322,6 +327,14 @@
 				07B9D61239058081836D3232 /* Pods_BoxScoreTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		608633E5298AC61100CB1FA3 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				608633E6298AC62900CB1FA3 /* NoDataView.swift */,
+			);
+			path = Empty;
 			sourceTree = "<group>";
 		};
 		60A6E260297BE06900686C32 /* ViewModifiers */ = {
@@ -635,6 +648,7 @@
 				600528C92954EFB2006AB6AC /* StatsRecorderView.swift in Sources */,
 				60A6E26929802D4E00686C32 /* GameRecorderRootView.swift in Sources */,
 				6009CA3429827ABB00C7ECAE /* CoreDataManager.swift in Sources */,
+				608633E7298AC62900CB1FA3 /* NoDataView.swift in Sources */,
 				60C46EDF294A2D0200310CF8 /* NewPlayerFormView.swift in Sources */,
 				600528CB2954F015006AB6AC /* GameStatsViewModel.swift in Sources */,
 				6000E4AE2979A73500A38845 /* AllGamesView.swift in Sources */,
@@ -831,6 +845,7 @@
 				DEVELOPMENT_TEAM = 4449N9T968;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoxScore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -864,6 +879,7 @@
 				DEVELOPMENT_TEAM = 4449N9T968;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoxScore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
