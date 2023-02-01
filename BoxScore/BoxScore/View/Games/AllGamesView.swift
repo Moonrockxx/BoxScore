@@ -16,7 +16,8 @@ struct AllGamesView: View {
             if viewModel.fetchedGames.isEmpty {
                 Spacer()
                 
-                Text("No games recorded yet")
+                NoDataView(text: "No game recorded yet")
+                    .padding(.horizontal)
             } else {
                 List {
                     ForEach(viewModel.fetchedGames, id: \.id) { item in

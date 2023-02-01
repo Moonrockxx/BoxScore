@@ -17,7 +17,8 @@ struct TeamDetailsView: View {
             if viewModel.fetchedPlayers.filter({ $0.teamId == item.id }).isEmpty {
                 Spacer()
                 
-                Text("Add new players to build your team")
+                NoDataView(text: "No player registred for this team")
+                    .padding(.horizontal)
                 
                 Spacer()
             } else {
@@ -28,6 +29,7 @@ struct TeamDetailsView: View {
                             Spacer()
                             Text("\(player.number)")
                                 .padding(5)
+                                .frame(width: 30)
                                 .background(Color.subElement)
                                 .foregroundColor(Color.text)
                                 .clipShape(Capsule())

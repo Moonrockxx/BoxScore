@@ -33,6 +33,11 @@ struct PlayerRowSelectableView: View {
                 Spacer()
                 
                 Text(item.number)
+                    .padding(5)
+                    .frame(width: 30)
+                    .background(Color.subElement)
+                    .foregroundColor(Color.text)
+                    .clipShape(Capsule())
             }
             .foregroundColor(Color.black)
         }

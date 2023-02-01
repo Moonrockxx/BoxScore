@@ -13,6 +13,11 @@ struct NoDataView: View {
     public var image: String
     public var text: String
     
+    public init(image: String = "info.circle", text: String) {
+        self.image = image
+        self.text = text
+    }
+    
     var body: some View {
         HStack {
             Spacer()

@@ -17,7 +17,7 @@ struct AllTeamsView: View {
             if viewModel.fetchedTeams.isEmpty {
                 Spacer()
                 
-                Text("No team regristred, add a new team")
+                NoDataView(text: "No team registred yet")
             } else {
                 List {
                     ForEach(viewModel.fetchedTeams, id: \.id) { item in
