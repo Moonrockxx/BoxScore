@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    paths-ignore:
+        - 'Pods/**'
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
