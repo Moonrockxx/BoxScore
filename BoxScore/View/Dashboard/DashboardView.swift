@@ -37,11 +37,11 @@ struct DashboardView: View {
                         Spacer()
                     }
                     
-                    ScrollView(showsIndicators: false) {
-                        if viewModel.fetchedGames.isEmpty {
-                            NoDataView(image: "info.circle",
-                                       text: "No game recorded yet")
-                        } else {
+                    if viewModel.fetchedGames.isEmpty {
+                        NoDataView(image: "info.circle",
+                                   text: "No game recorded yet")
+                    } else {
+                        List {
                             ForEach(viewModel.fetchedGames, id: \.id) { game in
                                 ZStack {
                                     NavigationLink {
@@ -52,24 +52,23 @@ struct DashboardView: View {
                                     .opacity(0.0)
                                     
                                     GameRowView(item: game)
-                                    
                                 }
                                 .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                                 .listRowSeparator(.hidden)
                             }
                         }
+                        .listStyle(InsetListStyle())
                     }
                 }
                 .padding(.top, 50)
                 .padding(.horizontal)
                 
+                Spacer()
                 
                 NavigationLink("", isActive: $goToSettings) {
                     SettingsView()
                 }
                 .hidden()
-                
-//                Spacer()
             }
             .edgesIgnoringSafeArea(.bottom)
             .padding(.top, 25)
@@ -83,7 +82,9 @@ struct DashboardView: View {
                     .tint(Color.subElement)
             })
         }
-        .background(Color.white)
+        .onAppear(perform: {
+            viewModel.fetchGames()
+        })
     }
 }
 

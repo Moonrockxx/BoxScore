@@ -18,6 +18,7 @@ struct AllTeamsView: View {
                 Spacer()
                 
                 NoDataView(text: "No team registred yet")
+                    .padding(.horizontal)
             } else {
                 List {
                     ForEach(viewModel.fetchedTeams, id: \.id) { item in

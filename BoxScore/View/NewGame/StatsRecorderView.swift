@@ -14,7 +14,7 @@ struct StatsRecorderView: View {
     
     var body: some View {
         VStack {
-            VStack(spacing: 15) {
+            VStack(alignment: .center, spacing: 30) {
                 if let yourTeam = viewModel.yourTeam {
                     Text("\(yourTeam.categorie?.rawValue ?? "") - \(yourTeam.isMenTeam ? "M" : "F")")
                         .padding(.vertical, 8)
@@ -51,10 +51,16 @@ struct StatsRecorderView: View {
                 .background(Color.element)
                 .clipShape(Capsule())
             }
+            .frame(height: 140)
             .padding()
-            .background(Color.background)
+//            .background(Color.background)
+            .background(ZStack {
+                Image("basketBall")
+                    .resizable()
+                    .scaledToFill()
+                Color.black.opacity(0.8)
+            })
             .foregroundColor(Color.text)
-            
             
             VStack(spacing: 15) {
                 HStack(spacing: 30) {
@@ -100,16 +106,17 @@ struct StatsRecorderView: View {
                 .frame(height: 75)
             }
             .padding()
+            .padding(.top, 50)
             
             Spacer()
             
             // Add stats leaders for PTS, AST, REB
         }
         .alert(viewModel.error,
-                isPresented: $viewModel.showGameError,
-                actions: {
-             Button("OK", role: .cancel) { viewModel.showGameError = false }
-         })
+               isPresented: $viewModel.showGameError,
+               actions: {
+            Button("OK", role: .cancel) { viewModel.showGameError = false }
+        })
         .navigationBarItems(trailing:
                                 Button {
             viewModel.saveGame()

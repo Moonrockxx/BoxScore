@@ -36,7 +36,15 @@ struct NoDataView: View {
         
         .padding(.horizontal)
         .frame(height: 150)
-        .background(Color.subElement)
+        .background(
+            ZStack {
+                Image("basketBall")
+                    .resizable()
+                    .scaledToFill()
+                Color.black.opacity(0.4)
+            }
+            
+        )
         .cornerRadius(8)
     }
 }
@@ -44,5 +52,6 @@ struct NoDataView: View {
 struct NoDataView_Previews: PreviewProvider {
     static var previews: some View {
         NoDataView(image: "info.circle.fill", text: "No game recorded yet")
+            .padding(.horizontal)
     }
 }
