@@ -42,7 +42,7 @@ struct DashboardView: View {
                                    text: "No game recorded yet")
                     } else {
                         List {
-                            ForEach(viewModel.fetchedGames, id: \.id) { game in
+                            ForEach(viewModel.fetchedGames.reversed(), id: \.id) { game in
                                 ZStack {
                                     NavigationLink {
                                         FinalGameStatView(viewModel: GameStatsViewModel(), isFromRecorderFlow: false, item: game)

@@ -20,7 +20,7 @@ struct AllGamesView: View {
                     .padding(.horizontal)
             } else {
                 List {
-                    ForEach(viewModel.fetchedGames, id: \.id) { item in
+                    ForEach(viewModel.fetchedGames.reversed(), id: \.id) { item in
                         ZStack {
                             NavigationLink {
                                 FinalGameStatView(viewModel: GameStatsViewModel(), isFromRecorderFlow: false, item: item)
