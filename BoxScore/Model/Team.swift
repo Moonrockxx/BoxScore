@@ -49,9 +49,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
     public var threePointsAttempts: Int = 0
     public var threePointsMade: Int = 0
     
-    public var freeThrowPercentage: Int = 0
-    public var twoPointsPercentage: Int = 0
-    public var threePointsPercentage: Int = 0
+//    public var freeThrowPercentage: Int = 0
+//    public var twoPointsPercentage: Int = 0
+//    public var threePointsPercentage: Int = 0
     
     public var isMenTeam: Bool
     public var isMultipleTeams: Bool
@@ -60,7 +60,7 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
                 clubName: String = "",
                 categorie: Team.Categories,
                 name: String,
-                players: [Player]? = nil,
+                players: [Player]?,
                 games: [Game]? = nil,
                 teamNumber: String? = "",
                 score: Int = 0,
@@ -77,9 +77,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
                 twoPointsMade: Int = 0,
                 threePointsAttempts: Int = 0,
                 threePointsMade: Int = 0,
-                freeThrowPercentage: Int = 0,
-                twoPointsPercentage: Int = 0,
-                threePointsPercentage: Int = 0,
+//                freeThrowPercentage: Int = 0,
+//                twoPointsPercentage: Int = 0,
+//                threePointsPercentage: Int = 0,
                 isMenTeam: Bool,
                 isMultipleTeams: Bool) {
         self.id = id
@@ -103,9 +103,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         self.twoPointsMade = twoPointsMade
         self.threePointsAttempts = threePointsAttempts
         self.threePointsMade = threePointsMade
-        self.freeThrowPercentage = freeThrowPercentage
-        self.twoPointsPercentage = twoPointsPercentage
-        self.threePointsPercentage = threePointsPercentage
+//        self.freeThrowPercentage = freeThrowPercentage
+//        self.twoPointsPercentage = twoPointsPercentage
+//        self.threePointsPercentage = threePointsPercentage
         self.isMenTeam = isMenTeam
         self.isMultipleTeams = isMultipleTeams
     }
@@ -115,6 +115,7 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         case clubName
         case categorie
         case name
+        case players
         case teamNumber
         case score
         case rebOff
@@ -130,9 +131,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         case twoPointsMade
         case threePointsAttempts
         case threePointsMade
-        case freeThrowPercentage
-        case twoPointsPercentage
-        case threePointsPercentage
+//        case freeThrowPercentage
+//        case twoPointsPercentage
+//        case threePointsPercentage
         case isMenTeam
         case isMultipleTeams
     }
@@ -144,6 +145,7 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         coder.encode(clubName, forKey: "clubName")
         coder.encode(categorie?.rawValue, forKey: "categorie")
         coder.encode(name, forKey: "name")
+        coder.encode(players, forKey: "players")
         coder.encode(teamNumber, forKey: "teamNumber")
         coder.encode(score, forKey: "score")
         coder.encode(rebOff, forKey: "rebOff")
@@ -159,9 +161,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         coder.encode(twoPointsMade, forKey: "twoPointsMade")
         coder.encode(threePointsAttempts, forKey: "threePointsAttempts")
         coder.encode(threePointsMade, forKey: "threePointsMade")
-        coder.encode(freeThrowPercentage, forKey: "freeThrowPercentage")
-        coder.encode(twoPointsPercentage, forKey: "twoPointsPercentage")
-        coder.encode(threePointsPercentage, forKey: "threePointsPercentage")
+//        coder.encode(freeThrowPercentage, forKey: "freeThrowPercentage")
+//        coder.encode(twoPointsPercentage, forKey: "twoPointsPercentage")
+//        coder.encode(threePointsPercentage, forKey: "threePointsPercentage")
         coder.encode(isMenTeam, forKey: "isMenTeam")
         coder.encode(isMultipleTeams, forKey: "isMultipleTeam")
     }
@@ -171,6 +173,7 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         clubName = coder.decodeObject(of: NSString.self, forKey: "clubName") as String? ?? ""
         categorie = Team.Categories(rawValue: (coder.decodeObject(forKey: "categorie") as? String ?? ""))
         name = coder.decodeObject(of: NSString.self, forKey: "name") as String? ?? ""
+        players = coder.decodeArrayOfObjects(ofClass: Player.self, forKey: "players")
         teamNumber = coder.decodeObject(of: NSString.self, forKey: "teamNumber") as String? ?? ""
         score = Int(coder.decodeInt64(forKey: "score"))
         rebOff = Int(coder.decodeInt64(forKey: "rebOff"))
@@ -186,9 +189,9 @@ public class Team: NSObject, NSSecureCoding, Codable, Identifiable {
         twoPointsMade = Int(coder.decodeInt64(forKey: "twoPointsMade"))
         threePointsAttempts = Int(coder.decodeInt64(forKey: "threePointsAttempts"))
         threePointsMade = Int(coder.decodeInt64(forKey: "threePointsMade"))
-        freeThrowPercentage = Int(coder.decodeInt64(forKey: "freeThrowPercentage"))
-        twoPointsPercentage = Int(coder.decodeInt64(forKey: "twoPointsPercentage"))
-        threePointsPercentage = Int(coder.decodeInt64(forKey: "threePointsPercentage"))
+//        freeThrowPercentage = Int(coder.decodeInt64(forKey: "freeThrowPercentage"))
+//        twoPointsPercentage = Int(coder.decodeInt64(forKey: "twoPointsPercentage"))
+//        threePointsPercentage = Int(coder.decodeInt64(forKey: "threePointsPercentage"))
         isMenTeam = coder.decodeBool(forKey: "isMenTeam")
         isMultipleTeams = coder.decodeBool(forKey: "isMultipleTeams")
     }

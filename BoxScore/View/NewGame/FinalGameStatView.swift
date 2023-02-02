@@ -26,7 +26,7 @@ struct FinalGameStatView: View {
                         self.showYourTeamStats.toggle()
                         self.showOppositeTeamStats = false
                     } label: {
-                        Text(viewModel.game?.yourTeam?.clubName ?? "SO Carcassonne")
+                        Text(viewModel.game?.yourTeam?.clubName ?? "Your team")
                             .foregroundColor(Color.white)
                     }
                     .frame(width: 150)
@@ -38,7 +38,7 @@ struct FinalGameStatView: View {
                     Button {
                         self.showAlert = true
                     } label: {
-                        Text(viewModel.game?.oppositeTeam?.clubName ?? "SO Coursan")
+                        Text(viewModel.game?.oppositeTeam?.clubName ?? "Opposite team")
                             .foregroundColor(Color.white)
                     }
                     .frame(width: 150)

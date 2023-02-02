@@ -69,7 +69,7 @@ public class GameStatsViewModel: ObservableObject {
     
     //MARK: Variables
     @Published public var flowType: FlowType = .pregame
-    @Published public var selectedTeam: Team = Team(categorie: .s, name: "", score: 0, isMenTeam: false, isMultipleTeams: false) {
+    @Published public var selectedTeam: Team = Team(categorie: .s, name: "", players: nil, score: 0, isMenTeam: false, isMultipleTeams: false) {
         didSet {
             if let players = selectedTeam.players {
                 shouldShowActivePlayersList = !players.isEmpty
@@ -223,15 +223,16 @@ public class GameStatsViewModel: ObservableObject {
                                                interceptions: Int(player.interceptions),
                                                blocks: Int(player.blocks),
                                                personalFoul: Int(player.personalFoul),
-                                               freeThrowAttempts: player.freeThrowAttempts,
-                                               freeThrowMade: player.freeThrowMade,
-                                               twoPointAttempts: player.twoPointsAttempts,
-                                               twoPointMade: player.twoPointsMade,
-                                               threePointAttempts: player.threePointsAttempts,
-                                               threePointMade: player.threePointsMade,
-                                               freeThrowPercentage: player.freeThrowPercentage,
-                                               twoPointPercentage: player.twoPointsPercentage,
-                                               threePointPercentage: player.threePointsPercentage)
+                                               freeThrowAttempts: Int(player.freeThrowAttempts),
+                                               freeThrowMade: Int(player.freeThrowMade),
+                                               twoPointsAttempts: Int(player.twoPointsAttempts),
+                                               twoPointsMade: Int(player.twoPointsMade),
+                                               threePointsAttempts: Int(player.threePointsAttempts),
+                                               threePointsMade: Int(player.threePointsMade)
+//                                               freeThrowPercentage: Int(player.freeThrowPercentage),
+//                                               twoPointsPercentage: Int(player.twoPointsPercentage),
+//                                               threePointsPercentage: Int(player.threePointsPercentage)
+                    )
                     
                     self.fetchedPlayers.append(fetchedPlayer)
                 }
@@ -325,11 +326,11 @@ public class GameStatsViewModel: ObservableObject {
                     if self.isShotMade {
                         self.game?.yourTeam?.score += 2
                         self.game?.yourTeam?.players?[index].points += 2
-                        self.game?.yourTeam?.players?[index].twoPointAttempts += 1
-                        self.game?.yourTeam?.players?[index].twoPointMade += 1
+                        self.game?.yourTeam?.players?[index].twoPointsAttempts += 1
+                        self.game?.yourTeam?.players?[index].twoPointsMade += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     } else {
-                        self.game?.yourTeam?.players?[index].twoPointAttempts += 1
+                        self.game?.yourTeam?.players?[index].twoPointsAttempts += 1
                         self.game?.yourTeam?.twoPointsAttempts += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     }
@@ -351,11 +352,11 @@ public class GameStatsViewModel: ObservableObject {
                     if self.isShotMade {
                         self.game?.yourTeam?.score += 3
                         self.game?.yourTeam?.players?[index].points += 3
-                        self.game?.yourTeam?.players?[index].threePointAttempts += 1
-                        self.game?.yourTeam?.players?[index].threePointMade += 1
+                        self.game?.yourTeam?.players?[index].threePointsAttempts += 1
+                        self.game?.yourTeam?.players?[index].threePointsMade += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     } else {
-                        self.game?.yourTeam?.players?[index].threePointAttempts += 1
+                        self.game?.yourTeam?.players?[index].threePointsAttempts += 1
                         self.game?.yourTeam?.threePointsAttempts += 1
                         print(self.game?.yourTeam?.players?[index].points ?? 0)
                     }

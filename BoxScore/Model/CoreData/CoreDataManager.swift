@@ -28,23 +28,23 @@ class CoreDataManager {
         entity.firstName = player.firstName
         entity.lastName = player.lastName
         entity.number = player.number
-        entity.points = Int32(player.points)
-        entity.rebOff = Int32(player.rebOff)
-        entity.rebDef = Int32(player.rebDef)
-        entity.assists = Int32(player.assists)
-        entity.turnovers = Int32(player.turnovers)
-        entity.interceptions = Int32(player.interceptions)
-        entity.blocks = Int32(player.blocks)
-        entity.personalFoul = Int32(player.personalFoul)
-        entity.freeThrowAttempts = player.freeThrowAttempts
-        entity.freeThrowMade = player.freeThrowMade
-        entity.twoPointsAttempts = player.twoPointAttempts
-        entity.twoPointsMade = player.twoPointMade
-        entity.threePointsAttempts = player.threePointAttempts
-        entity.threePointsMade = player.threePointMade
-        entity.freeThrowPercentage = player.freeThrowPercentage ?? 0
-        entity.twoPointsPercentage = player.twoPointPercentage ?? 0
-        entity.threePointsPercentage = player.threePointPercentage ?? 0
+        entity.points = Int64(player.points)
+        entity.rebOff = Int64(player.rebOff)
+        entity.rebDef = Int64(player.rebDef)
+        entity.assists = Int64(player.assists)
+        entity.turnovers = Int64(player.turnovers)
+        entity.interceptions = Int64(player.interceptions)
+        entity.blocks = Int64(player.blocks)
+        entity.personalFoul = Int64(player.personalFoul)
+        entity.freeThrowAttempts = Int64(player.freeThrowAttempts)
+        entity.freeThrowMade = Int64(player.freeThrowMade)
+        entity.twoPointsAttempts = Int64(player.twoPointsAttempts)
+        entity.twoPointsMade = Int64(player.twoPointsMade)
+        entity.threePointsAttempts = Int64(player.threePointsAttempts)
+        entity.threePointsMade = Int64(player.threePointsMade)
+//        entity.freeThrowPercentage = Int64(player.freeThrowPercentage ?? 0)
+//        entity.twoPointsPercentage = Int64(player.twoPointsPercentage ?? 0)
+//        entity.threePointsPercentage = Int64(player.threePointsPercentage ?? 0)
         
         do {
             try CoreDataStack.shared.mainContext.save()
@@ -191,9 +191,9 @@ class CoreDataManager {
             entity.twoPointsMade = Int64(team.twoPointsMade)
             entity.threePointsAttempts = Int64(team.threePointsAttempts)
             entity.threePointsMade = Int64(team.threePointsMade)
-            entity.freeThrowPercentage = Int64(team.freeThrowPercentage)
-            entity.twoPointsPercentage = Int64(team.twoPointsPercentage)
-            entity.threePointsPercentage = Int64(team.threePointsPercentage)
+//            entity.freeThrowPercentage = Int64(team.freeThrowPercentage)
+//            entity.twoPointsPercentage = Int64(team.twoPointsPercentage)
+//            entity.threePointsPercentage = Int64(team.threePointsPercentage)
             entity.isMenTeam = team.isMenTeam
             entity.isMultipleTeam = team.isMultipleTeams
             

@@ -31,7 +31,7 @@ public class TeamViewModel: ObservableObject {
     
     @Published public var fetchedPlayers: [Player] = []
     @Published public var fetchedTeams: [Team] = []
-
+    
     
     public var teamId: UUID = UUID()
     
@@ -58,15 +58,16 @@ public class TeamViewModel: ObservableObject {
                                         interceptions: Int(bsPlayer.interceptions),
                                         blocks: Int(bsPlayer.blocks),
                                         personalFoul: Int(bsPlayer.personalFoul),
-                                        freeThrowAttempts: bsPlayer.freeThrowAttempts,
-                                        freeThrowMade: bsPlayer.freeThrowMade,
-                                        twoPointAttempts: bsPlayer.twoPointsAttempts,
-                                        twoPointMade: bsPlayer.twoPointsMade,
-                                        threePointAttempts: bsPlayer.threePointsAttempts,
-                                        threePointMade: bsPlayer.threePointsMade,
-                                        freeThrowPercentage: bsPlayer.freeThrowPercentage,
-                                        twoPointPercentage: bsPlayer.twoPointsPercentage,
-                                        threePointPercentage: bsPlayer.threePointsPercentage)
+                                        freeThrowAttempts: Int(bsPlayer.freeThrowAttempts),
+                                        freeThrowMade: Int(bsPlayer.freeThrowMade),
+                                        twoPointsAttempts: Int(bsPlayer.twoPointsAttempts),
+                                        twoPointsMade: Int(bsPlayer.twoPointsMade),
+                                        threePointsAttempts: Int(bsPlayer.threePointsAttempts),
+                                        threePointsMade: Int(bsPlayer.threePointsMade)
+//                                        freeThrowPercentage: Int(bsPlayer.freeThrowPercentage),
+//                                        twoPointsPercentage: Int(bsPlayer.twoPointsPercentage),
+//                                        threePointsPercentage: Int(bsPlayer.threePointsPercentage)
+                    )
                     
                     self.fetchedPlayers.append(player)
                 }
@@ -105,9 +106,9 @@ public class TeamViewModel: ObservableObject {
                                         twoPointsMade: Int(bsTeam.twoPointsMade),
                                         threePointsAttempts: Int(bsTeam.threePointsAttempts),
                                         threePointsMade: Int(bsTeam.threePointsMade),
-                                        freeThrowPercentage: Int(bsTeam.freeThrowPercentage),
-                                        twoPointsPercentage: Int(bsTeam.twoPointsPercentage),
-                                        threePointsPercentage: Int(bsTeam.threePointsPercentage),
+//                                        freeThrowPercentage: Int(bsTeam.freeThrowPercentage),
+//                                        twoPointsPercentage: Int(bsTeam.twoPointsPercentage),
+//                                        threePointsPercentage: Int(bsTeam.threePointsPercentage),
                                         isMenTeam: bsTeam.isMenTeam,
                                         isMultipleTeams: bsTeam.isMultipleTeam)
                         
@@ -153,26 +154,27 @@ public class TeamViewModel: ObservableObject {
         
         if !playerName.isEmpty, (0...100).contains(number) {
             player = Player(teamId: teamId,
-                                firstName: playerName,
-                                lastName: "",
-                                number: playerNumber,
-                                points: 0,
-                                rebOff: 0,
-                                rebDef: 0,
-                                assists: 0,
-                                turnovers: 0,
-                                interceptions: 0,
-                                blocks: 0,
-                                personalFoul: 0,
-                                freeThrowAttempts: 0,
-                                freeThrowMade: 0,
-                                twoPointAttempts: 0,
-                                twoPointMade: 0,
-                                threePointAttempts: 0,
-                                threePointMade: 0,
-                                freeThrowPercentage: 0,
-                                twoPointPercentage: 0,
-                                threePointPercentage: 0)
+                            firstName: playerName,
+                            lastName: "",
+                            number: playerNumber,
+                            points: 0,
+                            rebOff: 0,
+                            rebDef: 0,
+                            assists: 0,
+                            turnovers: 0,
+                            interceptions: 0,
+                            blocks: 0,
+                            personalFoul: 0,
+                            freeThrowAttempts: 0,
+                            freeThrowMade: 0,
+                            twoPointsAttempts: 0,
+                            twoPointsMade: 0,
+                            threePointsAttempts: 0,
+                            threePointsMade: 0
+//                            freeThrowPercentage: 0,
+//                            twoPointsPercentage: 0,
+//                            threePointsPercentage: 0
+            )
             
         } else {
             self.showTeamError = true

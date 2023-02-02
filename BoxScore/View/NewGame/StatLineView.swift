@@ -90,17 +90,17 @@ struct ThirdStatLineGroup: View {
             
             Spacer(minLength: 25)
             
-            Text("\(forTrailingZero(temp: player.freeThrowMade))/\(forTrailingZero(temp: player.freeThrowAttempts))")
+            Text("\(player.freeThrowMade)/\(player.freeThrowAttempts)")
                 .frame(width: 100)
             
             Spacer(minLength: 25)
             
-            Text("\(forTrailingZero(temp: player.freeThrowPercentage ?? 0))")
+//            Text("\(player.freeThrowPercentage ?? 0)")
                 .frame(width: 100)
             
             Spacer(minLength: 25)
             
-            Text("\(forTrailingZero(temp: player.twoPointMade))/\(forTrailingZero(temp: player.twoPointAttempts))")
+            Text("\(player.twoPointsMade)/\(player.twoPointsAttempts)")
                 .frame(width: 100)
             
             Spacer(minLength: 25)
@@ -113,18 +113,18 @@ struct LastStatLineGroup: View {
     
     var body: some View {
         Group {
-            Text("\(forTrailingZero(temp: player.twoPointPercentage ?? 0))")
+//            Text("\(player.twoPointsPercentage ?? 0)")
+//                .frame(width: 100)
+            
+//            Spacer(minLength: 25)
+            
+            Text("\(player.threePointsAttempts)/\(player.threePointsMade)")
                 .frame(width: 100)
             
-            Spacer(minLength: 25)
-            
-            Text("\(forTrailingZero(temp: player.threePointAttempts))/\(forTrailingZero(temp: player.threePointMade))")
-                .frame(width: 100)
-            
-            Spacer(minLength: 25)
-            
-            Text("\(forTrailingZero(temp: player.threePointPercentage ?? 0))")
-                .frame(width: 100)
+//            Spacer(minLength: 25)
+//            
+//            Text("\(player.threePointsPercentage ?? 0)")
+//                .frame(width: 100)
         }
     }
 }
@@ -165,14 +165,15 @@ struct StatLineView_Previews: PreviewProvider {
                                         personalFoul: 4,
                                         freeThrowAttempts: 0,
                                         freeThrowMade: 0,
-                                        twoPointAttempts: 2,
-                                        twoPointMade: 1,
-                                        threePointAttempts: 4,
-                                        threePointMade: 3,
-                                        freeThrowPercentage: 0,
-                                        twoPointPercentage: 50,
-                                        threePointPercentage: 75))
-    }
+                                        twoPointsAttempts: 2,
+                                        twoPointsMade: 1,
+                                        threePointsAttempts: 4,
+                                        threePointsMade: 3
+//                                        freeThrowPercentage: 0,
+//                                        twoPointsPercentage: 50,
+//                                        threePointsPercentage: 75)
+        )
+    )}
 }
 
 
