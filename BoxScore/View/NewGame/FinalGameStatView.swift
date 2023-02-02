@@ -92,9 +92,9 @@ struct FinalGameStatView: View {
         }
         .onAppear(perform: {
             viewModel.fetchGames()
-//            if !isFromRecorderFlow {
-//                viewModel.getGame(item: item)
-//            }
+            if !isFromRecorderFlow {
+                viewModel.getGame(item: item)
+            }
         })
         .padding(.horizontal)
         .padding(.top, 10)

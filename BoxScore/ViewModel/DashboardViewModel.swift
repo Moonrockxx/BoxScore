@@ -25,7 +25,29 @@ public class DashboardViewModel: ObservableObject {
             case .success(let games):
                 games.forEach { game in
                     let mappedGame = Game(id: game.id ?? UUID(),
-                                          yourTeam: game.yourTeam,
+                                          yourTeam: Team(id: game.yourTeam?.id ?? UUID(),
+                                                         clubName: game.yourTeam?.clubName ?? "",
+                                                         categorie: Team.Categories(rawValue: game.yourTeam?.categorie?.rawValue ?? "") ?? Team.Categories(rawValue: "")!,
+                                                         name: game.yourTeam?.name ?? "",
+                                                         players: game.yourTeam?.players,
+                                                         games: nil,
+                                                         teamNumber: game.yourTeam?.teamNumber,
+                                                         score: game.yourTeam?.score ?? 0,
+                                                         rebOff: game.yourTeam?.rebOff ?? 0,
+                                                         rebDef: game.yourTeam?.rebDef ?? 0,
+                                                         interceptions: game.yourTeam?.interceptions ?? 0,
+                                                         assists: game.yourTeam?.assists ?? 0,
+                                                         blocks: game.yourTeam?.blocks ?? 0,
+                                                         turnovers: game.yourTeam?.turnovers ?? 0,
+                                                         fouls: game.yourTeam?.fouls ?? 0,
+                                                         freeThrowAttempts: game.yourTeam?.freeThrowAttempts ?? 0,
+                                                         freeThrowMade: game.yourTeam?.freeThrowMade ?? 0,
+                                                         twoPointsAttempts: game.yourTeam?.twoPointsAttempts ?? 0,
+                                                         twoPointsMade: game.yourTeam?.twoPointsMade ?? 0,
+                                                         threePointsAttempts: game.yourTeam?.threePointsAttempts ?? 0,
+                                                         threePointsMade: game.yourTeam?.threePointsMade ?? 0,
+                                                         isMenTeam: game.yourTeam?.isMenTeam ?? true,
+                                                         isMultipleTeams: game.yourTeam?.isMultipleTeams ?? true),
                                           oppositeTeam: game.oppositeTeam)
                     
                     self.fetchedGames.append(mappedGame)

@@ -204,6 +204,10 @@ public class GameStatsViewModel: ObservableObject {
         }
     }
     
+    public func getGame(item: Game) {
+            self.game = self.fetchedGames.first(where: { $0.id == item.id })
+        }
+    
     public func fetchPlayers() {
         self.fetchedPlayers = []
         coreDataManager.fetchPlayers { result in
