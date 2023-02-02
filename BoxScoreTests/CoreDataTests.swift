@@ -44,9 +44,6 @@ final class CoreDataTests: XCTestCase {
                                          twoPointsMade: 0,
                                          threePointsAttempts: 0,
                                          threePointsMade: 0,
-                                         freeThrowPercentage: 0,
-                                         twoPointsPercentage: 0,
-                                         threePointsPercentage: 0,
                                          isMenTeam: true,
                                          isMultipleTeams: true)
     private var teamSample2: Team = Team(id: UUID(),
@@ -70,9 +67,6 @@ final class CoreDataTests: XCTestCase {
                                          twoPointsMade: 0,
                                          threePointsAttempts: 0,
                                          threePointsMade: 0,
-                                         freeThrowPercentage: 0,
-                                         twoPointsPercentage: 0,
-                                         threePointsPercentage: 0,
                                          isMenTeam: true,
                                          isMultipleTeams: true)
     
@@ -95,13 +89,10 @@ final class CoreDataTests: XCTestCase {
                                     personalFoul: 0,
                                     freeThrowAttempts: 0,
                                     freeThrowMade: 0,
-                                    twoPointAttempts: 0,
-                                    twoPointMade: 0,
-                                    threePointAttempts: 0,
-                                    threePointMade: 0,
-                                    freeThrowPercentage: 0,
-                                    twoPointPercentage: 0,
-                                    threePointPercentage: 0)
+                                    twoPointsAttempts: 0,
+                                    twoPointsMade: 0,
+                                    threePointsAttempts: 0,
+                                    threePointsMade: 0)
         self.playerSample2 = Player(id: UUID(),
                                     teamId: self.teamSample1.id,
                                     firstName: "Ali B",
@@ -117,13 +108,10 @@ final class CoreDataTests: XCTestCase {
                                     personalFoul: 0,
                                     freeThrowAttempts: 0,
                                     freeThrowMade: 0,
-                                    twoPointAttempts: 0,
-                                    twoPointMade: 0,
-                                    threePointAttempts: 0,
-                                    threePointMade: 0,
-                                    freeThrowPercentage: 0,
-                                    twoPointPercentage: 0,
-                                    threePointPercentage: 0)
+                                    twoPointsAttempts: 0,
+                                    twoPointsMade: 0,
+                                    threePointsAttempts: 0,
+                                    threePointsMade: 0)
         self.gameSample1 = Game(id: UUID(),
                                 yourTeam: teamSample1,
                                 oppositeTeam: teamSample2)
@@ -153,7 +141,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let game):
                 self.bsGames.append(game)
             case .failure(let failure):
-                print("❌ TEST - Save game : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -172,7 +160,7 @@ final class CoreDataTests: XCTestCase {
             case .success:
                 print("✅ TEST - Save game before fetch")
             case .failure(let failure):
-                print("❌ TEST - Save game before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -183,7 +171,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsGames.append(game)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch games : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -203,7 +191,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
             case .failure(let failure):
-                print("❌ TEST - Save game before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -218,7 +206,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsGames.append(game)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch games : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -237,7 +225,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
             case .failure(let failure):
-                print("❌ TEST - Save game before fetch : \(failure.title)")
+                print("failure.title)
             }
         })
         
@@ -247,7 +235,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedGame):
                 self.bsGames.append(savedGame)
             case .failure(let failure):
-                print("❌ TEST - Save game before fetch : \(failure.title)")
+                print("failure.title)
             }
         })
         
@@ -262,7 +250,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsGames.append(game)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch games : \(failure.title)")
+                print("failure.title)
             }
         }
         
@@ -279,7 +267,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let team):
                 self.bsTeams.append(team)
             case .failure(let failure):
-                print("❌ TEST - Save team : \(failure.title)")
+                print("failure.title)
             }
         }
         
@@ -297,7 +285,7 @@ final class CoreDataTests: XCTestCase {
             case .success:
                 print("✅ TEST - Save team before fetch")
             case .failure(let failure):
-                print("❌ TEST - Save team before fetch : \(failure.title)")
+                print("failure.title)
             }
         })
         
@@ -308,7 +296,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsTeams.append(team)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch teams : \(failure.title)")
+                print("failure.title)
             }
         }
         
@@ -326,7 +314,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
             case .failure(let failure):
-                print("❌ TEST - Save team before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -341,7 +329,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsTeams.append(team)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch teams : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -358,7 +346,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
             case .failure(let failure):
-                print("❌ TEST - Save team before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -368,7 +356,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let savedTeam):
                 self.bsTeams.append(savedTeam)
             case .failure(let failure):
-                print("❌ TEST - Save team before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -383,7 +371,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsTeams.append(team)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch teams : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -401,7 +389,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let player):
                 self.bsPlayers.append(player)
             case .failure(let failure):
-                print("❌ TEST - Save player : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -420,7 +408,7 @@ final class CoreDataTests: XCTestCase {
             case .success:
                 print("✅ TEST - Save player before fetch")
             case .failure(let failure):
-                print("❌ TEST - Save player before fetch : \(failure.title)")
+                print(failure.title)
             }
         })
         
@@ -431,7 +419,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsPlayers.append(player)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch players : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -449,7 +437,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let player):
                 self.bsPlayers.append(player)
             case .failure(let failure):
-                print("❌ TEST - Save player : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -464,7 +452,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsPlayers.append(player)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch players : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -481,7 +469,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let player):
                 self.bsPlayers.append(player)
             case .failure(let failure):
-                print("❌ TEST - Save player : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -490,7 +478,7 @@ final class CoreDataTests: XCTestCase {
             case .success(let player):
                 self.bsPlayers.append(player)
             case .failure(let failure):
-                print("❌ TEST - Save player : \(failure.title)")
+                print(failure.title)
             }
         }
         
@@ -505,7 +493,7 @@ final class CoreDataTests: XCTestCase {
                     self.bsPlayers.append(player)
                 }
             case .failure(let failure):
-                print("❌ TEST - Fetch players : \(failure.title)")
+                print(failure.title)
             }
         }
         
