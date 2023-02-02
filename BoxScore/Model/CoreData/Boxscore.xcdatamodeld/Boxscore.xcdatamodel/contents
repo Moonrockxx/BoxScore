@@ -28,6 +28,7 @@
         <attribute name="twoPointsAttempts" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="twoPointsMade" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="twoPointsPercentage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BoxscoreTeam" inverseName="players" inverseEntity="BoxscoreTeam"/>
     </entity>
     <entity name="BoxscoreTeam" representedClassName=".BoxscoreTeam" syncable="YES" codeGenerationType="category">
         <attribute name="assists" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -54,6 +55,6 @@
         <attribute name="twoPointsAttempts" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="twoPointsMade" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="twoPointsPercentage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BoxscorePlayer"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BoxscorePlayer" inverseName="team" inverseEntity="BoxscorePlayer"/>
     </entity>
 </model>

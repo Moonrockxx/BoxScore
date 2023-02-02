@@ -99,7 +99,7 @@ struct ThirdStatLineGroup: View {
                 Text("0%")
                     .frame(width: 100)
             } else {
-                Text("\((player.freeThrowMade / player.freeThrowAttempts) * 100)%")
+                Text("\(getPercentage(made: player.freeThrowMade, attempts: player.freeThrowAttempts))%")
                     .frame(width: 100)
             }
             
@@ -123,7 +123,7 @@ struct LastStatLineGroup: View {
                 Text("0%")
                     .frame(width: 100)
             } else {
-                Text("\((player.twoPointsMade / player.twoPointsAttempts) * 100)%")
+                Text("\(getPercentage(made: player.twoPointsMade, attempts: player.twoPointsAttempts))%")
                     .frame(width: 100)
             }
             
@@ -138,7 +138,7 @@ struct LastStatLineGroup: View {
                 Text("0%")
                     .frame(width: 100)
             } else {
-                Text("\((player.threePointsMade / player.threePointsAttempts) * 100)%")
+                Text("\(getPercentage(made: player.threePointsMade, attempts: player.threePointsAttempts))%")
                     .frame(width: 100)
             }
         }
@@ -188,5 +188,11 @@ struct StatLineView_Previews: PreviewProvider {
     )}
 }
 
-
+extension View {
+    func getPercentage(made: Int, attempts: Int) -> Int {
+        let floatMade = Float(made)
+        let floatAttempts = Float(attempts)
+        return Int((floatMade/floatAttempts) * 100)
+    }
+}
 
