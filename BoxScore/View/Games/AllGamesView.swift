@@ -23,7 +23,7 @@ struct AllGamesView: View {
                     ForEach(viewModel.fetchedGames, id: \.id) { item in
                         ZStack {
                             NavigationLink {
-                                FinalGameStatView(viewModel: GameStatsViewModel(), item: item)
+                                FinalGameStatView(viewModel: GameStatsViewModel(), isFromRecorderFlow: false, item: item)
                             } label: {
                                 EmptyView()
                             }
@@ -60,6 +60,7 @@ extension AllGamesView {
         for index in offsets {
             let game = viewModel.fetchedGames[index]
             viewModel.coreDataManager.removeGame(id: game.id)
+            viewModel.fetchGames()
         }
     }
 }

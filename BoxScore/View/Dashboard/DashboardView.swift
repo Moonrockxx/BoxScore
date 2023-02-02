@@ -45,7 +45,7 @@ struct DashboardView: View {
                             ForEach(viewModel.fetchedGames, id: \.id) { game in
                                 ZStack {
                                     NavigationLink {
-                                        FinalGameStatView(viewModel: GameStatsViewModel(), item: game)
+                                        FinalGameStatView(viewModel: GameStatsViewModel(), isFromRecorderFlow: false, item: game)
                                     } label: {
                                         EmptyView()
                                     }
@@ -70,6 +70,9 @@ struct DashboardView: View {
                 }
                 .hidden()
             }
+            .onAppear(perform: {
+                viewModel.fetchGames()
+            })
             .edgesIgnoringSafeArea(.bottom)
             .padding(.top, 25)
             .navigationTitle("BoxScore")
@@ -82,9 +85,6 @@ struct DashboardView: View {
                     .tint(Color.subElement)
             })
         }
-        .onAppear(perform: {
-            viewModel.fetchGames()
-        })
     }
 }
 

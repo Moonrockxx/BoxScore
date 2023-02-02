@@ -8,6 +8,7 @@
 import CoreData
 import Foundation
 
+@MainActor
 public class TeamViewModel: ObservableObject {
     
     let coreDataManager: CoreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)

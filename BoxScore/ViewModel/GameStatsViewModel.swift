@@ -101,6 +101,7 @@ public class GameStatsViewModel: ObservableObject {
     @Published public var game: Game?
     @Published public var fetchedTeams: [Team] = []
     @Published public var fetchedPlayers: [Player] = []
+    @Published public var fetchedGames: [Game] = []
     
     @Published public var showGameError: Bool = false
     
@@ -132,7 +133,7 @@ public class GameStatsViewModel: ObservableObject {
         return homeAwaySelection == 0
     }
     
-   
+    
     init() {
         self.clubName = UserDefaults.standard.object(forKey: "clubName") as? String ?? "Your club"
         self.fetchPlayers()
@@ -147,7 +148,27 @@ public class GameStatsViewModel: ObservableObject {
         case .recorder:
             StatsRecorderView(viewModel: viewModel)
         case .final:
-            FinalGameStatView(viewModel: viewModel, item: self.game ?? Game())
+            FinalGameStatView(viewModel: viewModel, isFromRecorderFlow: true, item: self.game ?? Game())
+        }
+    }
+    
+    public func fetchGames() {
+        self.fetchedGames = []
+        
+        self.coreDataManager.fetchGames { result in
+            switch result {
+            case .success(let games):
+                games.forEach { game in
+                    let mappedGame = Game(id: game.id ?? UUID(),
+                                          yourTeam: game.yourTeam,
+                                          oppositeTeam: game.oppositeTeam)
+                    
+                    self.fetchedGames.append(mappedGame)
+                }
+            case .failure(let error):
+                self.showGameError = true
+                self.error = error.localizedDescription
+            }
         }
     }
     
