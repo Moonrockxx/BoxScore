@@ -29,16 +29,6 @@ struct NewPlayerFormView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
             viewModel.savePlayer()
-//            viewModel.savePlayer(team: item,
-//                                 closure: { player in
-//                let newPlayer = BoxscorePlayer(context: viewContext)
-//                newPlayer.id = player.id
-//                newPlayer.teamId = player.teamId
-//                newPlayer.firstName = player.firstName
-//                newPlayer.lastName = player.lastName
-//                newPlayer.number = player.number
-//                try? viewContext.save()
-//            })
         }, label: {
             Text("Save")
                 .foregroundColor(Color.subElement)

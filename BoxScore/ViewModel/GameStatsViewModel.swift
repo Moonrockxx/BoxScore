@@ -232,11 +232,7 @@ public class GameStatsViewModel: ObservableObject {
                                                twoPointsAttempts: Int(player.twoPointsAttempts),
                                                twoPointsMade: Int(player.twoPointsMade),
                                                threePointsAttempts: Int(player.threePointsAttempts),
-                                               threePointsMade: Int(player.threePointsMade)
-//                                               freeThrowPercentage: Int(player.freeThrowPercentage),
-//                                               twoPointsPercentage: Int(player.twoPointsPercentage),
-//                                               threePointsPercentage: Int(player.threePointsPercentage)
-                    )
+                                               threePointsMade: Int(player.threePointsMade))
                     
                     self.fetchedPlayers.append(fetchedPlayer)
                 }
@@ -395,6 +391,7 @@ public class GameStatsViewModel: ObservableObject {
                         print(self.game?.oppositeTeam?.rebOff ?? 0)
                     }
                 }
+                self.isDefensiveRebond = false
             case .assist:
                 if self.game?.yourTeam == self.addForTeam {
                     guard let plr = player else { return }

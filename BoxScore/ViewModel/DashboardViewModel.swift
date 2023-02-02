@@ -9,9 +9,21 @@ import Foundation
 
 public class DashboardViewModel: ObservableObject {
     let coreDataManager: CoreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
-    public var menuElements: [MenuElements] = [MenuElements(id: UUID().uuidString, title: "Record a new game", image: "match", imageOffset: 40, linkValue: .newGame),
-                                               MenuElements(id: UUID().uuidString, title: "See all games", image: "game", imageOffset: -57, linkValue: .allGames),
-                                               MenuElements(id: UUID().uuidString, title: "Manage teams", image: "team", imageOffset: 0, linkValue: .teams)]
+    public var menuElements: [MenuElements] = [MenuElements(id: UUID().uuidString,
+                                                            title: "Record a new game",
+                                                            image: "match",
+                                                            imageOffset: 40,
+                                                            linkValue: .newGame),
+                                               MenuElements(id: UUID().uuidString,
+                                                            title: "See all games",
+                                                            image: "game",
+                                                            imageOffset: -57,
+                                                            linkValue: .allGames),
+                                               MenuElements(id: UUID().uuidString,
+                                                            title: "Manage teams",
+                                                            image: "team",
+                                                            imageOffset: 0,
+                                                            linkValue: .teams)]
     
     @Published public var fetchedGames: [Game] = []
     @Published public var error: String = ""

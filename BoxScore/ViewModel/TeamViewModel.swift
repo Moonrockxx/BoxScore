@@ -63,11 +63,7 @@ public class TeamViewModel: ObservableObject {
                                         twoPointsAttempts: Int(bsPlayer.twoPointsAttempts),
                                         twoPointsMade: Int(bsPlayer.twoPointsMade),
                                         threePointsAttempts: Int(bsPlayer.threePointsAttempts),
-                                        threePointsMade: Int(bsPlayer.threePointsMade)
-//                                        freeThrowPercentage: Int(bsPlayer.freeThrowPercentage),
-//                                        twoPointsPercentage: Int(bsPlayer.twoPointsPercentage),
-//                                        threePointsPercentage: Int(bsPlayer.threePointsPercentage)
-                    )
+                                        threePointsMade: Int(bsPlayer.threePointsMade))
                     
                     self.fetchedPlayers.append(player)
                 }
@@ -106,9 +102,6 @@ public class TeamViewModel: ObservableObject {
                                         twoPointsMade: Int(bsTeam.twoPointsMade),
                                         threePointsAttempts: Int(bsTeam.threePointsAttempts),
                                         threePointsMade: Int(bsTeam.threePointsMade),
-//                                        freeThrowPercentage: Int(bsTeam.freeThrowPercentage),
-//                                        twoPointsPercentage: Int(bsTeam.twoPointsPercentage),
-//                                        threePointsPercentage: Int(bsTeam.threePointsPercentage),
                                         isMenTeam: bsTeam.isMenTeam,
                                         isMultipleTeams: bsTeam.isMultipleTeam)
                         
@@ -170,11 +163,7 @@ public class TeamViewModel: ObservableObject {
                             twoPointsAttempts: 0,
                             twoPointsMade: 0,
                             threePointsAttempts: 0,
-                            threePointsMade: 0
-//                            freeThrowPercentage: 0,
-//                            twoPointsPercentage: 0,
-//                            threePointsPercentage: 0
-            )
+                            threePointsMade: 0)
             
         } else {
             self.showTeamError = true

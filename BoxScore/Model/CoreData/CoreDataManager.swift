@@ -42,9 +42,6 @@ class CoreDataManager {
         entity.twoPointsMade = Int64(player.twoPointsMade)
         entity.threePointsAttempts = Int64(player.threePointsAttempts)
         entity.threePointsMade = Int64(player.threePointsMade)
-//        entity.freeThrowPercentage = Int64(player.freeThrowPercentage ?? 0)
-//        entity.twoPointsPercentage = Int64(player.twoPointsPercentage ?? 0)
-//        entity.threePointsPercentage = Int64(player.threePointsPercentage ?? 0)
         
         do {
             try CoreDataStack.shared.mainContext.save()
@@ -81,16 +78,6 @@ class CoreDataManager {
             return completionHandler(.failure(.noData))
         }
     }
-    
-//    func playerAlreadySaved(id: UUID, firstName: String) -> Bool {
-//        let request: NSFetchRequest<BoxscorePlayer> = BoxscorePlayer.fetchRequest()
-//        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-//        request.predicate = NSPredicate(format: "firstName == %@", firstName)
-//
-//        guard let player = try? managedObjectContext.fetch(request) else { return false }
-//
-//        return !player.isEmpty
-//    }
     
     func removeAllPlayers() {
         let fetchRequest: NSFetchRequest<BoxscorePlayer> = BoxscorePlayer.fetchRequest()
@@ -191,9 +178,6 @@ class CoreDataManager {
             entity.twoPointsMade = Int64(team.twoPointsMade)
             entity.threePointsAttempts = Int64(team.threePointsAttempts)
             entity.threePointsMade = Int64(team.threePointsMade)
-//            entity.freeThrowPercentage = Int64(team.freeThrowPercentage)
-//            entity.twoPointsPercentage = Int64(team.twoPointsPercentage)
-//            entity.threePointsPercentage = Int64(team.threePointsPercentage)
             entity.isMenTeam = team.isMenTeam
             entity.isMultipleTeam = team.isMultipleTeams
             

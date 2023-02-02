@@ -184,11 +184,7 @@ struct StatLineView_Previews: PreviewProvider {
                                         twoPointsAttempts: 2,
                                         twoPointsMade: 1,
                                         threePointsAttempts: 4,
-                                        threePointsMade: 3
-//                                        freeThrowPercentage: 0,
-//                                        twoPointsPercentage: 50,
-//                                        threePointsPercentage: 75)
-        )
+                                        threePointsMade: 3)
     )}
 }
 
