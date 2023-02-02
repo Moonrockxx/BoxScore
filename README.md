@@ -11,10 +11,6 @@ Clone the project
 
     git clone https://github.com/Moonrockxx/BoxScore.git
 
-Open terminal and get in the project
+Open BoxScore.xcodeproj
 
-    cd YourPath/BoxScore
-    
-Installing dependencies
-
-    pod install
+Run it with your simultor/device
