@@ -95,8 +95,14 @@ struct ThirdStatLineGroup: View {
             
             Spacer(minLength: 25)
             
-//            Text("\(player.freeThrowPercentage ?? 0)")
-                .frame(width: 100)
+            if player.freeThrowAttempts == 0 {
+                Text("0%")
+                    .frame(width: 100)
+            } else {
+                Text("\((player.freeThrowMade / player.freeThrowAttempts) * 100)%")
+                    .frame(width: 100)
+            }
+            
             
             Spacer(minLength: 25)
             
@@ -113,18 +119,28 @@ struct LastStatLineGroup: View {
     
     var body: some View {
         Group {
-//            Text("\(player.twoPointsPercentage ?? 0)")
-//                .frame(width: 100)
+            if player.twoPointsAttempts == 0 {
+                Text("0%")
+                    .frame(width: 100)
+            } else {
+                Text("\((player.twoPointsMade / player.twoPointsAttempts) * 100)%")
+                    .frame(width: 100)
+            }
             
-//            Spacer(minLength: 25)
+            Spacer(minLength: 25)
             
-            Text("\(player.threePointsAttempts)/\(player.threePointsMade)")
+            Text("\(player.threePointsMade)/\(player.threePointsAttempts)")
                 .frame(width: 100)
             
-//            Spacer(minLength: 25)
-//            
-//            Text("\(player.threePointsPercentage ?? 0)")
-//                .frame(width: 100)
+            Spacer(minLength: 25)
+            
+            if player.threePointsAttempts == 0 {
+                Text("0%")
+                    .frame(width: 100)
+            } else {
+                Text("\((player.threePointsMade / player.threePointsAttempts) * 100)%")
+                    .frame(width: 100)
+            }
         }
     }
 }

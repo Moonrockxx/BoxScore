@@ -53,8 +53,8 @@ struct FinalGameStatView: View {
             }
             
             if !showYourTeamStats && !showOppositeTeamStats {
-                Text("General stats here")
-                    .padding(.top, 30)
+//                Text("General stats here")
+//                    .padding(.top, 30)
             }
             
             if showYourTeamStats {
